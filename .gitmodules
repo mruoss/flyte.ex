@@ -1,0 +1,6 @@
+[submodule "flyteidl"]
+	path = src/flyteidl
+	url = https://github.com/flyteorg/flyteidl
+[submodule "googleapis"]
+	path = src/googleapis
+	url = https://github.com/googleapis/googleapis
