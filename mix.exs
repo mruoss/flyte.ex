@@ -29,7 +29,7 @@ defmodule Flyte.MixProject do
   defp deps do
     [
       {:protobuf, "~> 0.12.0"},
-      {:grpc, "~> 0.8.0"},
+      {:grpc, "~> 0.9.0"},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end
