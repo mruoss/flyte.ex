@@ -47,8 +47,7 @@ jobs:
         id: tags
         run: |
           echo "current_tag=$(git describe --abbrev=0 --tags)" >> "$GITHUB_OUTPUT"
-          echo "new_tag=$(cd src/flyteidl && git describe --tags `git rev-list --tags --max-count=1`)" >> "$GITHUB_OUTPUT"
-          NEW_TAG=$(cd src/flyteidl && git describe --abbrev=0 --tags)
+          NEW_TAG=$(cd src/flyte && git tag -l "flyteidl/*" --sort=-creatordate | head -n 1 | cut -d'/' -f2)
           echo "new_tag=$NEW_TAG" >> "$GITHUB_OUTPUT"
           echo "version=${NEW_TAG#v}" >> "$GITHUB_OUTPUT"
 
@@ -73,7 +72,7 @@ jobs:
           title: "New Upstream Version ${{ steps.tags.outputs.new_tag }}"
           assignees: mruoss
           body: |
-            There is a new tag ${{ steps.tags.outputs.new_tag }} in the [upstream repository][1] 
+            There is a new tag ${{ steps.tags.outputs.new_tag }} in the [upstream repository][1]
 
             [1]: https://github.com/flyteorg/flyteidl
           draft: false
