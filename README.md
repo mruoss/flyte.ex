@@ -18,7 +18,6 @@ Additionally to `flyte`, you're gonna need `google_protos`:
 def deps do
   [
     {:flyte, "~> 1.5"},
-    {:google_protos, "~> 0.3.0"}
   ]
 end
 ```
