@@ -4,3 +4,6 @@
 [submodule "src/flyte"]
 	path = src/flyte
 	url = https://github.com/flyteorg/flyte
+[submodule "src/grpc-gateway"]
+	path = src/grpc-gateway
+	url = https://github.com/grpc-ecosystem/grpc-gateway.git

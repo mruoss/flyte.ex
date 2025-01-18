@@ -14,4 +14,4 @@ init:
 all: ${flyteidl_src}
 
 lib/flyte/%.pb.ex: src/flyte/flyteidl/protos/flyteidl/%.proto
-	ERL_AFLAGS='-kernel standard_io_encoding latin1' protoc --proto_path=./src/flyte/flyteidl/protos --proto_path=./src/googleapis --elixir_out=plugins=grpc:./lib $<
+	ERL_AFLAGS='-kernel standard_io_encoding latin1' protoc --proto_path=./src/flyte/flyteidl/protos --proto_path=./src/grpc-gateway --proto_path=./src/googleapis --elixir_out=plugins=grpc:./lib $<
