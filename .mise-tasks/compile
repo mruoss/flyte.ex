@@ -5,4 +5,6 @@
 #MISE outputs=["lib/flyte/**/*.pb.ex"]
 #MISE depends=["init"]
 
+shopt -s globstar
+
 mise x protoc -- protoc --proto_path=./src/flyte --proto_path=./src/protovalidate/proto/protovalidate --proto_path=./src/grpc-gateway --proto_path=./src/googleapis --elixir_out=plugins=grpc:./lib src/flyte/flyteidl2/**/*.proto
