@@ -7,3 +7,6 @@
 [submodule "src/grpc-gateway"]
 	path = src/grpc-gateway
 	url = https://github.com/grpc-ecosystem/grpc-gateway.git
+[submodule "src/protovalidate"]
+	path = src/protovalidate
+	url = https://github.com/bufbuild/protovalidate.git

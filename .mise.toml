@@ -1,2 +1,7 @@
 [settings]
 env_file = '.env'
+
+[tools]
+erlang = "28.1"
+elixir = "1.18.4"
+protoc = "33.0"
