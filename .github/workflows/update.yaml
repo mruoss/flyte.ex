@@ -40,7 +40,7 @@ jobs:
         id: tags
         run: |
           echo "current_tag=$(git describe --abbrev=0 --tags)" >> "$GITHUB_OUTPUT"
-          NEW_TAG=$(cd src/flyte && git tag -l "flyteidl/*" --sort=-creatordate | head -n 1 | cut -d'/' -f2)
+          NEW_TAG=$(cd src/flyte && git describe --tags $(git rev-list --tags="v2.*" --max-count=1))
           echo "new_tag=$NEW_TAG" >> "$GITHUB_OUTPUT"
           echo "version=${NEW_TAG#v}" >> "$GITHUB_OUTPUT"
 
