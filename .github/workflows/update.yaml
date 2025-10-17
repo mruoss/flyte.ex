@@ -30,7 +30,7 @@ jobs:
       - name: Setup protoc-gen-elixir
         id: protobuf
         run: |
-          mise x elixir -- mix escript.install hex protobuf --force
+          mise x erlang elixir -- mix escript.install hex protobuf --force
 
       - name: Init repository
         id: init-repo

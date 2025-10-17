@@ -37,8 +37,8 @@ jobs:
         env:
           HEX_API_KEY: ${{ secrets.HEX_API_KEY }}
         run: |
-          mise x elixir -- mix deps.get
-          mise x elixir -- mix hex.publish --yes
+          mise x erlang elixir -- mix deps.get
+          mise x erlang elixir -- mix hex.publish --yes
 
       - name: Create Release
         id: create_release
