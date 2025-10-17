@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 #MISE description="Checkout the latest tag from flyte"
 #MISE env={ERL_AFLAGS = "-kernel standard_io_encoding latin1"}
-#MISE sources=["src/flyte/flyteidl/**/*.proto", "src/flyte/flyteidl2/**/*.proto"]
+#MISE sources=["src/flyte/flyteidl/protos/flyteidl/**/*.proto"]
 #MISE outputs=["lib/flyte/**/*.pb.ex"]
 #MISE depends=["init"]
 
 shopt -s globstar
 
-mise x protoc -- protoc --proto_path=./src/flyte --proto_path=./src/protovalidate/proto/protovalidate --proto_path=./src/grpc-gateway --proto_path=./src/googleapis --elixir_out=plugins=grpc:./lib src/flyte/flyteidl2/**/*.proto
+mise x protoc -- protoc --proto_path=./src/flyte/flyteidl/protos --proto_path=./src/grpc-gateway --proto_path=./src/googleapis --elixir_out=plugins=grpc:./lib src/flyte/flyteidl/protos/flyteidl/**/*.proto

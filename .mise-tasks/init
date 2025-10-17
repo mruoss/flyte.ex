@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 #MISE description="Checkout the latest tag from flyte"
 
-REF=$(cd src/flyte && git describe --tags `git rev-list --tags --max-count=1`)
+REF=$(cd src/flyte && git describe --tags $(git rev-list --tags="v1.*" --max-count=1) | sed 's!.*/!!')
 (cd src/flyte && git checkout ${REF})
