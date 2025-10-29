@@ -9,7 +9,7 @@ defmodule Flyteidl2.Task.FixedRateUnit do
   field :FIXED_RATE_UNIT_DAY, 3
 end
 
-defmodule Flyteidl2.Task.TriggerAutomationSpec.Type do
+defmodule Flyteidl2.Task.TriggerAutomationSpecType do
   @moduledoc false
 
   use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
@@ -57,7 +57,7 @@ defmodule Flyteidl2.Task.TriggerAutomationSpec do
 
   oneof :automation, 0
 
-  field :type, 1, type: Flyteidl2.Task.TriggerAutomationSpec.Type, enum: true, deprecated: false
+  field :type, 1, type: Flyteidl2.Task.TriggerAutomationSpecType, enum: true, deprecated: false
   field :schedule, 2, type: Flyteidl2.Task.Schedule, oneof: 0
 end
 
