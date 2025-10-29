@@ -33,6 +33,34 @@ defmodule Flyteidl2.Core.Secret do
   field :env_var, 5, type: :string, json_name: "envVar"
 end
 
+defmodule Flyteidl2.Core.Connection.SecretsEntry do
+  @moduledoc false
+
+  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :key, 1, type: :string
+  field :value, 2, type: :string
+end
+
+defmodule Flyteidl2.Core.Connection.ConfigsEntry do
+  @moduledoc false
+
+  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :key, 1, type: :string
+  field :value, 2, type: :string
+end
+
+defmodule Flyteidl2.Core.Connection do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :task_type, 1, type: :string, json_name: "taskType"
+  field :secrets, 2, repeated: true, type: Flyteidl2.Core.Connection.SecretsEntry, map: true
+  field :configs, 3, repeated: true, type: Flyteidl2.Core.Connection.ConfigsEntry, map: true
+end
+
 defmodule Flyteidl2.Core.OAuth2Client do
   @moduledoc false
 

@@ -21,6 +21,19 @@ defmodule Flyteidl2.Task.TaskIdentifier do
   field :version, 5, type: :string, deprecated: false
 end
 
+defmodule Flyteidl2.Task.TaskTriggersSummary.TriggerDetails do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :name, 1, type: :string
+  field :active, 2, type: :bool
+
+  field :automation_spec, 3,
+    type: Flyteidl2.Task.TriggerAutomationSpec,
+    json_name: "automationSpec"
+end
+
 defmodule Flyteidl2.Task.TaskTriggersSummary.TriggerStats do
   @moduledoc false
 
@@ -37,11 +50,7 @@ defmodule Flyteidl2.Task.TaskTriggersSummary do
 
   oneof :summary, 0
 
-  field :automation_spec, 1,
-    type: Flyteidl2.Task.TriggerAutomationSpec,
-    json_name: "automationSpec",
-    oneof: 0
-
+  field :details, 3, type: Flyteidl2.Task.TaskTriggersSummary.TriggerDetails, oneof: 0
   field :stats, 2, type: Flyteidl2.Task.TaskTriggersSummary.TriggerStats, oneof: 0
 end
 
