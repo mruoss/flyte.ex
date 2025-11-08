@@ -38,6 +38,15 @@ defmodule Flyteidl2.Task.FixedRate do
   field :start_time, 3, type: Google.Protobuf.Timestamp, json_name: "startTime"
 end
 
+defmodule Flyteidl2.Task.Cron do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :expression, 1, type: :string, deprecated: false
+  field :timezone, 2, type: :string
+end
+
 defmodule Flyteidl2.Task.Schedule do
   @moduledoc false
 
@@ -46,7 +55,14 @@ defmodule Flyteidl2.Task.Schedule do
   oneof :expression, 0
 
   field :rate, 1, type: Flyteidl2.Task.FixedRate, oneof: 0
-  field :cron_expression, 2, type: :string, json_name: "cronExpression", oneof: 0
+
+  field :cron_expression, 2,
+    type: :string,
+    json_name: "cronExpression",
+    oneof: 0,
+    deprecated: true
+
+  field :cron, 4, type: Flyteidl2.Task.Cron, oneof: 0
   field :kickoff_time_input_arg, 3, type: :string, json_name: "kickoffTimeInputArg"
 end
 
