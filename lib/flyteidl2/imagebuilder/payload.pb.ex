@@ -4,7 +4,8 @@ defmodule Flyteidl2.Imagebuilder.GetImageRequest do
   use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :id, 1, type: Flyteidl2.Imagebuilder.ImageIdentifier, deprecated: false
-  field :organization, 2, type: :string
+  field :organization, 2, type: :string, deprecated: true
+  field :project_id, 3, type: Flyteidl2.Common.ProjectIdentifier, json_name: "projectId"
 end
 
 defmodule Flyteidl2.Imagebuilder.GetImageResponse do
