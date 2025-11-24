@@ -2,6 +2,6 @@
 env_file = '.env'
 
 [tools]
-erlang = "28.1.1"
+erlang = "28.2"
 elixir = "1.19.3"
 protoc = "33.1"
