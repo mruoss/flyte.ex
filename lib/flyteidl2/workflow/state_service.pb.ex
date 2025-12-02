@@ -103,7 +103,7 @@ defmodule Flyteidl2.Workflow.ActionUpdate do
     json_name: "actionId",
     deprecated: false
 
-  field :phase, 2, type: Flyteidl2.Workflow.Phase, enum: true
+  field :phase, 2, type: Flyteidl2.Common.ActionPhase, enum: true
   field :error, 3, proto3_optional: true, type: Flyteidl2.Core.ExecutionError
   field :output_uri, 4, type: :string, json_name: "outputUri"
 end

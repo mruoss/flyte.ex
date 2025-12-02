@@ -1,19 +1,3 @@
-defmodule Flyteidl2.Workflow.Phase do
-  @moduledoc false
-
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
-
-  field :PHASE_UNSPECIFIED, 0
-  field :PHASE_QUEUED, 1
-  field :PHASE_WAITING_FOR_RESOURCES, 2
-  field :PHASE_INITIALIZING, 3
-  field :PHASE_RUNNING, 4
-  field :PHASE_SUCCEEDED, 5
-  field :PHASE_FAILED, 6
-  field :PHASE_ABORTED, 7
-  field :PHASE_TIMED_OUT, 8
-end
-
 defmodule Flyteidl2.Workflow.ActionType do
   @moduledoc false
 
@@ -80,7 +64,7 @@ defmodule Flyteidl2.Workflow.TraceAction do
   use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
   field :name, 1, type: :string, deprecated: false
-  field :phase, 2, type: Flyteidl2.Workflow.Phase, enum: true
+  field :phase, 2, type: Flyteidl2.Common.ActionPhase, enum: true
   field :start_time, 3, type: Google.Protobuf.Timestamp, json_name: "startTime"
   field :end_time, 4, proto3_optional: true, type: Google.Protobuf.Timestamp, json_name: "endTime"
   field :outputs, 5, type: Flyteidl2.Task.OutputReferences
@@ -149,6 +133,10 @@ defmodule Flyteidl2.Workflow.ActionMetadata do
   field :condition, 9, type: Flyteidl2.Workflow.ConditionActionMetadata, oneof: 0
   field :action_type, 10, type: Flyteidl2.Workflow.ActionType, json_name: "actionType", enum: true
   field :trigger_id, 11, type: Flyteidl2.Common.TriggerIdentifier, json_name: "triggerId"
+  field :environment_name, 12, type: :string, json_name: "environmentName"
+  field :funtion_name, 13, type: :string, json_name: "funtionName"
+  field :trigger_name, 14, type: :string, json_name: "triggerName"
+  field :trigger_type, 15, type: Flyteidl2.Task.TriggerAutomationSpec, json_name: "triggerType"
 end
 
 defmodule Flyteidl2.Workflow.ActionStatus do
@@ -156,7 +144,7 @@ defmodule Flyteidl2.Workflow.ActionStatus do
 
   use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
-  field :phase, 1, type: Flyteidl2.Workflow.Phase, enum: true
+  field :phase, 1, type: Flyteidl2.Common.ActionPhase, enum: true
   field :start_time, 2, type: Google.Protobuf.Timestamp, json_name: "startTime"
   field :end_time, 3, proto3_optional: true, type: Google.Protobuf.Timestamp, json_name: "endTime"
   field :attempts, 4, type: :uint32, deprecated: false
@@ -165,6 +153,8 @@ defmodule Flyteidl2.Workflow.ActionStatus do
     type: Flyteidl2.Core.CatalogCacheStatus,
     json_name: "cacheStatus",
     enum: true
+
+  field :duration_ms, 6, proto3_optional: true, type: :uint64, json_name: "durationMs"
 end
 
 defmodule Flyteidl2.Workflow.Action do
@@ -243,7 +233,7 @@ defmodule Flyteidl2.Workflow.ActionAttempt do
 
   use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
-  field :phase, 1, type: Flyteidl2.Workflow.Phase, enum: true
+  field :phase, 1, type: Flyteidl2.Common.ActionPhase, enum: true
   field :start_time, 2, type: Google.Protobuf.Timestamp, json_name: "startTime"
   field :end_time, 3, proto3_optional: true, type: Google.Protobuf.Timestamp, json_name: "endTime"
 
@@ -290,7 +280,7 @@ defmodule Flyteidl2.Workflow.PhaseTransition do
 
   use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 
-  field :phase, 1, type: Flyteidl2.Workflow.Phase, enum: true
+  field :phase, 1, type: Flyteidl2.Common.ActionPhase, enum: true
   field :start_time, 2, type: Google.Protobuf.Timestamp, json_name: "startTime"
   field :end_time, 3, proto3_optional: true, type: Google.Protobuf.Timestamp, json_name: "endTime"
 end
@@ -302,7 +292,7 @@ defmodule Flyteidl2.Workflow.ActionEvent do
 
   field :id, 1, type: Flyteidl2.Common.ActionIdentifier, deprecated: false
   field :attempt, 2, type: :uint32, deprecated: false
-  field :phase, 3, type: Flyteidl2.Workflow.Phase, enum: true
+  field :phase, 3, type: Flyteidl2.Common.ActionPhase, enum: true
   field :version, 4, type: :uint32
   field :start_time, 5, type: Google.Protobuf.Timestamp, json_name: "startTime", deprecated: true
   field :updated_time, 6, type: Google.Protobuf.Timestamp, json_name: "updatedTime"
@@ -360,4 +350,32 @@ defmodule Flyteidl2.Workflow.ActionSpec do
   field :condition, 7, type: Flyteidl2.Workflow.ConditionAction, oneof: 0
   field :trace, 10, type: Flyteidl2.Workflow.TraceAction, oneof: 0
   field :group, 8, type: :string
+end
+
+defmodule Flyteidl2.Workflow.TaskGroup do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :task_name, 1, type: :string, json_name: "taskName"
+  field :environment_name, 2, type: :string, json_name: "environmentName"
+  field :total_runs, 3, type: :int64, json_name: "totalRuns"
+  field :latest_run_time, 4, type: Google.Protobuf.Timestamp, json_name: "latestRunTime"
+
+  field :recent_statuses, 5,
+    repeated: true,
+    type: Flyteidl2.Common.ActionPhase,
+    json_name: "recentStatuses",
+    enum: true
+
+  field :average_failure_rate, 6, type: :double, json_name: "averageFailureRate"
+  field :average_duration, 7, type: Google.Protobuf.Duration, json_name: "averageDuration"
+  field :latest_finished_time, 8, type: Google.Protobuf.Timestamp, json_name: "latestFinishedTime"
+
+  field :created_by, 9,
+    repeated: true,
+    type: Flyteidl2.Common.EnrichedIdentity,
+    json_name: "createdBy"
+
+  field :should_delete, 10, type: :bool, json_name: "shouldDelete"
 end

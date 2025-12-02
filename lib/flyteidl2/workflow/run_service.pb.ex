@@ -250,6 +250,51 @@ defmodule Flyteidl2.Workflow.AbortActionResponse do
   use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
 end
 
+defmodule Flyteidl2.Workflow.WatchGroupsRequest.KnownSortField do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  oneof :sort_by, 0
+
+  field :created_at, 1,
+    type: Flyteidl2.Common.Sort.Direction,
+    json_name: "createdAt",
+    enum: true,
+    oneof: 0
+end
+
+defmodule Flyteidl2.Workflow.WatchGroupsRequest do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  oneof :scope_by, 0
+
+  field :project_id, 1, type: Flyteidl2.Common.ProjectIdentifier, json_name: "projectId", oneof: 0
+  field :start_date, 2, type: Google.Protobuf.Timestamp, json_name: "startDate", deprecated: false
+  field :end_date, 3, type: Google.Protobuf.Timestamp, json_name: "endDate"
+  field :request, 4, type: Flyteidl2.Common.ListRequest
+
+  field :known_sort_fields, 5,
+    repeated: true,
+    type: Flyteidl2.Workflow.WatchGroupsRequest.KnownSortField,
+    json_name: "knownSortFields"
+end
+
+defmodule Flyteidl2.Workflow.WatchGroupsResponse do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :task_groups, 1,
+    repeated: true,
+    type: Flyteidl2.Workflow.TaskGroup,
+    json_name: "taskGroups"
+
+  field :sentinel, 2, type: :bool
+end
+
 defmodule Flyteidl2.Workflow.RunService.Service do
   @moduledoc false
 
@@ -296,6 +341,10 @@ defmodule Flyteidl2.Workflow.RunService.Service do
       stream(Flyteidl2.Workflow.WatchClusterEventsResponse)
 
   rpc :AbortAction, Flyteidl2.Workflow.AbortActionRequest, Flyteidl2.Workflow.AbortActionResponse
+
+  rpc :WatchGroups,
+      Flyteidl2.Workflow.WatchGroupsRequest,
+      stream(Flyteidl2.Workflow.WatchGroupsResponse)
 end
 
 defmodule Flyteidl2.Workflow.RunService.Stub do
