@@ -76,6 +76,8 @@ defmodule Flyteidl2.Task.TaskMetadata do
   field :triggers_summary, 5,
     type: Flyteidl2.Task.TaskTriggersSummary,
     json_name: "triggersSummary"
+
+  field :short_description, 6, type: :string, json_name: "shortDescription"
 end
 
 defmodule Flyteidl2.Task.Task do
@@ -85,6 +87,24 @@ defmodule Flyteidl2.Task.Task do
 
   field :task_id, 1, type: Flyteidl2.Task.TaskIdentifier, json_name: "taskId", deprecated: false
   field :metadata, 2, type: Flyteidl2.Task.TaskMetadata, deprecated: false
+end
+
+defmodule Flyteidl2.Task.SourceCode do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :link, 1, type: :string
+end
+
+defmodule Flyteidl2.Task.DocumentationEntity do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :short_description, 1, type: :string, json_name: "shortDescription", deprecated: false
+  field :long_description, 2, type: :string, json_name: "longDescription", deprecated: false
+  field :source_code, 3, type: Flyteidl2.Task.SourceCode, json_name: "sourceCode"
 end
 
 defmodule Flyteidl2.Task.TaskSpec do
@@ -104,6 +124,7 @@ defmodule Flyteidl2.Task.TaskSpec do
 
   field :short_name, 3, type: :string, json_name: "shortName", deprecated: false
   field :environment, 4, type: Flyteidl2.Task.Environment
+  field :documentation, 5, type: Flyteidl2.Task.DocumentationEntity
 end
 
 defmodule Flyteidl2.Task.TraceSpec do
@@ -145,4 +166,5 @@ defmodule Flyteidl2.Task.TaskTriggerSpec do
   field :active, 1, type: :bool
   field :inputs, 2, type: Flyteidl2.Task.Inputs
   field :run_spec, 3, type: Flyteidl2.Task.RunSpec, json_name: "runSpec"
+  field :description, 4, type: :string
 end

@@ -35,6 +35,7 @@ defmodule Flyteidl2.Trigger.TriggerSpec do
   field :run_spec, 3, type: Flyteidl2.Task.RunSpec, json_name: "runSpec"
   field :active, 4, type: :bool
   field :task_version, 5, type: :string, json_name: "taskVersion", deprecated: false
+  field :description, 6, type: :string
 end
 
 defmodule Flyteidl2.Trigger.TriggerStatus do
@@ -76,6 +77,8 @@ defmodule Flyteidl2.Trigger.TriggerDetails do
   field :automation_spec, 5,
     type: Flyteidl2.Task.TriggerAutomationSpec,
     json_name: "automationSpec"
+
+  field :description, 6, proto3_optional: true, type: :string, deprecated: false
 end
 
 defmodule Flyteidl2.Trigger.Trigger do
