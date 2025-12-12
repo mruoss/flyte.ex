@@ -54,6 +54,17 @@ defmodule Flyteidl2.Task.TaskTriggersSummary do
   field :stats, 2, type: Flyteidl2.Task.TaskTriggersSummary.TriggerStats, oneof: 0
 end
 
+defmodule Flyteidl2.Task.LatestRunSummary do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :run_id, 1, type: Flyteidl2.Common.RunIdentifier, json_name: "runId"
+  field :run_time, 2, type: Google.Protobuf.Timestamp, json_name: "runTime"
+  field :phase, 3, type: Flyteidl2.Common.ActionPhase, enum: true
+  field :root_task_name, 4, type: :string, json_name: "rootTaskName"
+end
+
 defmodule Flyteidl2.Task.TaskMetadata do
   @moduledoc false
 
@@ -80,6 +91,17 @@ defmodule Flyteidl2.Task.TaskMetadata do
   field :short_description, 6, type: :string, json_name: "shortDescription"
 end
 
+defmodule Flyteidl2.Task.TaskSummary do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+
+  field :latest_run, 1,
+    proto3_optional: true,
+    type: Flyteidl2.Task.LatestRunSummary,
+    json_name: "latestRun"
+end
+
 defmodule Flyteidl2.Task.Task do
   @moduledoc false
 
@@ -87,6 +109,11 @@ defmodule Flyteidl2.Task.Task do
 
   field :task_id, 1, type: Flyteidl2.Task.TaskIdentifier, json_name: "taskId", deprecated: false
   field :metadata, 2, type: Flyteidl2.Task.TaskMetadata, deprecated: false
+
+  field :task_summary, 3,
+    proto3_optional: true,
+    type: Flyteidl2.Task.TaskSummary,
+    json_name: "taskSummary"
 end
 
 defmodule Flyteidl2.Task.SourceCode do
