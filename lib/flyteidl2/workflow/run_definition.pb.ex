@@ -137,6 +137,7 @@ defmodule Flyteidl2.Workflow.ActionMetadata do
   field :funtion_name, 13, type: :string, json_name: "funtionName"
   field :trigger_name, 14, type: :string, json_name: "triggerName"
   field :trigger_type, 15, type: Flyteidl2.Task.TriggerAutomationSpec, json_name: "triggerType"
+  field :source, 16, type: Flyteidl2.Workflow.RunSource, enum: true
 end
 
 defmodule Flyteidl2.Workflow.ActionStatus do
@@ -378,4 +379,5 @@ defmodule Flyteidl2.Workflow.TaskGroup do
     json_name: "createdBy"
 
   field :should_delete, 10, type: :bool, json_name: "shouldDelete"
+  field :short_name, 11, type: :string, json_name: "shortName"
 end

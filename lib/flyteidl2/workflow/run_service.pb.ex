@@ -141,6 +141,8 @@ defmodule Flyteidl2.Workflow.ListRunsRequest do
   field :org, 2, type: :string, oneof: 0, deprecated: false
   field :project_id, 4, type: Flyteidl2.Common.ProjectIdentifier, json_name: "projectId", oneof: 0
   field :trigger_name, 6, type: Flyteidl2.Common.TriggerName, json_name: "triggerName", oneof: 0
+  field :task_name, 7, type: Flyteidl2.Task.TaskName, json_name: "taskName", oneof: 0
+  field :task_id, 8, type: Flyteidl2.Task.TaskIdentifier, json_name: "taskId", oneof: 0
 end
 
 defmodule Flyteidl2.Workflow.ListRunsResponse do
