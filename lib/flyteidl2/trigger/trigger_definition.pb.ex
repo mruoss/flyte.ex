@@ -62,6 +62,7 @@ defmodule Flyteidl2.Trigger.TriggerRevision do
   field :metadata, 2, type: Flyteidl2.Trigger.TriggerMetadata
   field :status, 3, type: Flyteidl2.Trigger.TriggerStatus
   field :action, 4, type: Flyteidl2.Trigger.TriggerRevisionAction, enum: true
+  field :created_at, 5, type: Google.Protobuf.Timestamp, json_name: "createdAt"
 end
 
 defmodule Flyteidl2.Trigger.TriggerDetails do

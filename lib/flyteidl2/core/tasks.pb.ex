@@ -185,6 +185,7 @@ defmodule Flyteidl2.Core.TaskMetadata do
   field :generates_deck, 15, type: Google.Protobuf.BoolValue, json_name: "generatesDeck"
   field :metadata, 16, type: Flyteidl2.Core.K8sObjectMetadata
   field :debuggable, 17, type: :bool
+  field :log_links, 18, repeated: true, type: Flyteidl2.Core.TaskLog, json_name: "logLinks"
 end
 
 defmodule Flyteidl2.Core.TaskTemplate.ConfigEntry do
