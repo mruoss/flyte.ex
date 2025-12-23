@@ -139,6 +139,7 @@ defmodule Flyteidl2.Core.TaskLog do
   field :HideOnceFinished, 6, type: :bool
   field :link_type, 7, type: Flyteidl2.Core.TaskLog.LinkType, json_name: "linkType", enum: true
   field :ready, 8, type: :bool
+  field :icon_uri, 9, type: :string, json_name: "iconUri"
 end
 
 defmodule Flyteidl2.Core.LogContext do
