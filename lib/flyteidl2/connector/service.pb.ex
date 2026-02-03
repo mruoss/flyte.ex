@@ -3,7 +3,7 @@ defmodule Flyteidl2.Connector.AsyncConnectorService.Service do
 
   use GRPC.Service,
     name: "flyteidl2.connector.AsyncConnectorService",
-    protoc_gen_elixir_version: "0.15.0"
+    protoc_gen_elixir_version: "0.16.0"
 
   rpc :CreateTask, Flyteidl2.Connector.CreateTaskRequest, Flyteidl2.Connector.CreateTaskResponse
 
@@ -31,7 +31,7 @@ defmodule Flyteidl2.Connector.ConnectorMetadataService.Service do
 
   use GRPC.Service,
     name: "flyteidl2.connector.ConnectorMetadataService",
-    protoc_gen_elixir_version: "0.15.0"
+    protoc_gen_elixir_version: "0.16.0"
 
   rpc :GetConnector,
       Flyteidl2.Connector.GetConnectorRequest,

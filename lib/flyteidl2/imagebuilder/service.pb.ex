@@ -3,7 +3,7 @@ defmodule Flyteidl2.Imagebuilder.ImageService.Service do
 
   use GRPC.Service,
     name: "flyteidl2.imagebuilder.ImageService",
-    protoc_gen_elixir_version: "0.15.0"
+    protoc_gen_elixir_version: "0.16.0"
 
   rpc :GetImage, Flyteidl2.Imagebuilder.GetImageRequest, Flyteidl2.Imagebuilder.GetImageResponse
 end

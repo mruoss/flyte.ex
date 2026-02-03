@@ -1,7 +1,10 @@
 defmodule Flyteidl2.Plugins.Kubeflow.ElasticConfig do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.plugins.kubeflow.ElasticConfig",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :rdzv_backend, 1, type: :string, json_name: "rdzvBackend"
   field :min_replicas, 2, type: :int32, json_name: "minReplicas"
@@ -13,7 +16,10 @@ end
 defmodule Flyteidl2.Plugins.Kubeflow.DistributedPyTorchTrainingTask do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.plugins.kubeflow.DistributedPyTorchTrainingTask",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :worker_replicas, 1,
     type: Flyteidl2.Plugins.Kubeflow.DistributedPyTorchTrainingReplicaSpec,
@@ -33,7 +39,10 @@ end
 defmodule Flyteidl2.Plugins.Kubeflow.DistributedPyTorchTrainingReplicaSpec do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.plugins.kubeflow.DistributedPyTorchTrainingReplicaSpec",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :replicas, 1, type: :int32, deprecated: true
   field :image, 2, type: :string, deprecated: true

@@ -1,7 +1,11 @@
 defmodule Flyteidl2.Common.RoleType do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.common.RoleType",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :ROLE_TYPE_NONE, 0
   field :ROLE_TYPE_ADMIN, 1
@@ -18,7 +22,10 @@ end
 defmodule Flyteidl2.Common.Role do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.common.Role",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :id, 1, type: Flyteidl2.Common.RoleIdentifier, deprecated: false
   field :permissions, 2, repeated: true, type: Flyteidl2.Common.Permission, deprecated: true
@@ -30,7 +37,10 @@ end
 defmodule Flyteidl2.Common.RoleSpec do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.common.RoleSpec",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :description, 1, type: :string
 end

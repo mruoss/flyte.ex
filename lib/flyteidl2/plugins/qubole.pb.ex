@@ -1,7 +1,10 @@
 defmodule Flyteidl2.Plugins.HiveQuery do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.plugins.HiveQuery",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :query, 1, type: :string
   field :timeout_sec, 2, type: :uint32, json_name: "timeoutSec"
@@ -11,7 +14,10 @@ end
 defmodule Flyteidl2.Plugins.HiveQueryCollection do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.plugins.HiveQueryCollection",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :queries, 2, repeated: true, type: Flyteidl2.Plugins.HiveQuery
 end
@@ -19,7 +25,10 @@ end
 defmodule Flyteidl2.Plugins.QuboleHiveJob do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.plugins.QuboleHiveJob",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :cluster_label, 1, type: :string, json_name: "clusterLabel"
 

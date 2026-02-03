@@ -1,7 +1,7 @@
 defmodule Flyteidl2.Secret.SecretService.Service do
   @moduledoc false
 
-  use GRPC.Service, name: "flyteidl2.secret.SecretService", protoc_gen_elixir_version: "0.15.0"
+  use GRPC.Service, name: "flyteidl2.secret.SecretService", protoc_gen_elixir_version: "0.16.0"
 
   rpc :CreateSecret, Flyteidl2.Secret.CreateSecretRequest, Flyteidl2.Secret.CreateSecretResponse
 

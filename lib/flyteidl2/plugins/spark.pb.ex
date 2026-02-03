@@ -1,7 +1,11 @@
 defmodule Flyteidl2.Plugins.SparkApplication.Type do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.plugins.SparkApplication.Type",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :PYTHON, 0
   field :JAVA, 1
@@ -12,13 +16,20 @@ end
 defmodule Flyteidl2.Plugins.SparkApplication do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.plugins.SparkApplication",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 end
 
 defmodule Flyteidl2.Plugins.SparkJob.SparkConfEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.plugins.SparkJob.SparkConfEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: :string
@@ -27,7 +38,11 @@ end
 defmodule Flyteidl2.Plugins.SparkJob.HadoopConfEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.plugins.SparkJob.HadoopConfEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: :string
@@ -36,7 +51,10 @@ end
 defmodule Flyteidl2.Plugins.SparkJob do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.plugins.SparkJob",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :applicationType, 1, type: Flyteidl2.Plugins.SparkApplication.Type, enum: true
   field :mainApplicationFile, 2, type: :string

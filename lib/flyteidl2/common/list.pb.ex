@@ -1,7 +1,11 @@
 defmodule Flyteidl2.Common.Sort.Direction do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.common.Sort.Direction",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :DESCENDING, 0
   field :ASCENDING, 1
@@ -10,7 +14,11 @@ end
 defmodule Flyteidl2.Common.Filter.Function do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.common.Filter.Function",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :EQUAL, 0
   field :NOT_EQUAL, 1
@@ -28,7 +36,10 @@ end
 defmodule Flyteidl2.Common.Sort do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.common.Sort",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :direction, 2, type: Flyteidl2.Common.Sort.Direction, enum: true
@@ -37,7 +48,10 @@ end
 defmodule Flyteidl2.Common.ListRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.common.ListRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :limit, 1, type: :uint32
   field :token, 2, type: :string
@@ -50,7 +64,10 @@ end
 defmodule Flyteidl2.Common.Filter do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.common.Filter",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :function, 1, type: Flyteidl2.Common.Filter.Function, enum: true
   field :field, 2, type: :string

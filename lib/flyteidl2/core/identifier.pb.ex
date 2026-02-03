@@ -1,7 +1,11 @@
 defmodule Flyteidl2.Core.ResourceType do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.core.ResourceType",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :UNSPECIFIED, 0
   field :TASK, 1
@@ -13,7 +17,10 @@ end
 defmodule Flyteidl2.Core.Identifier do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.Identifier",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :resource_type, 1,
     type: Flyteidl2.Core.ResourceType,
@@ -30,7 +37,10 @@ end
 defmodule Flyteidl2.Core.WorkflowExecutionIdentifier do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.WorkflowExecutionIdentifier",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :project, 1, type: :string
   field :domain, 2, type: :string
@@ -41,7 +51,10 @@ end
 defmodule Flyteidl2.Core.NodeExecutionIdentifier do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.NodeExecutionIdentifier",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :node_id, 1, type: :string, json_name: "nodeId"
 
@@ -53,7 +66,10 @@ end
 defmodule Flyteidl2.Core.TaskExecutionIdentifier do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.TaskExecutionIdentifier",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :task_id, 1, type: Flyteidl2.Core.Identifier, json_name: "taskId"
 
@@ -67,7 +83,10 @@ end
 defmodule Flyteidl2.Core.SignalIdentifier do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.SignalIdentifier",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :signal_id, 1, type: :string, json_name: "signalId"
 

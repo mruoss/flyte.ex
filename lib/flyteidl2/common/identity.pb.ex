@@ -1,7 +1,10 @@
 defmodule Flyteidl2.Common.User do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.common.User",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :id, 1, type: Flyteidl2.Common.UserIdentifier
   field :spec, 2, type: Flyteidl2.Common.UserSpec
@@ -12,7 +15,10 @@ end
 defmodule Flyteidl2.Common.UserSpec do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.common.UserSpec",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :first_name, 1, type: :string, json_name: "firstName"
   field :last_name, 2, type: :string, json_name: "lastName"
@@ -26,7 +32,10 @@ end
 defmodule Flyteidl2.Common.Application do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.common.Application",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :id, 1, type: Flyteidl2.Common.ApplicationIdentifier
   field :spec, 2, type: Flyteidl2.Common.AppSpec
@@ -35,7 +44,10 @@ end
 defmodule Flyteidl2.Common.AppSpec do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.common.AppSpec",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :name, 1, type: :string
   field :organization, 2, type: :string
@@ -44,7 +56,10 @@ end
 defmodule Flyteidl2.Common.EnrichedIdentity do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.common.EnrichedIdentity",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :principal, 0
 
@@ -55,7 +70,10 @@ end
 defmodule Flyteidl2.Common.Identity do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.common.Identity",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :principal, 0
 

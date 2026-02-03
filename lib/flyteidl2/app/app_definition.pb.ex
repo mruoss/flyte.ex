@@ -1,7 +1,11 @@
 defmodule Flyteidl2.App.Status.DeploymentStatus do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.app.Status.DeploymentStatus",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :DEPLOYMENT_STATUS_UNSPECIFIED, 0
   field :DEPLOYMENT_STATUS_UNASSIGNED, 1
@@ -19,7 +23,11 @@ end
 defmodule Flyteidl2.App.Spec.DesiredState do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.app.Spec.DesiredState",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :DESIRED_STATE_UNSPECIFIED, 0
   field :DESIRED_STATE_STOPPED, 1
@@ -30,7 +38,10 @@ end
 defmodule Flyteidl2.App.Identifier do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.app.Identifier",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :org, 1, type: :string
   field :project, 2, type: :string, deprecated: false
@@ -41,7 +52,11 @@ end
 defmodule Flyteidl2.App.Meta.LabelsEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.app.Meta.LabelsEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: :string
@@ -50,7 +65,10 @@ end
 defmodule Flyteidl2.App.Meta do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.app.Meta",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :id, 1, type: Flyteidl2.App.Identifier, deprecated: false
   field :revision, 2, type: :uint64, deprecated: false
@@ -60,7 +78,10 @@ end
 defmodule Flyteidl2.App.AppWrapper do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.app.AppWrapper",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :payload, 0
 
@@ -72,7 +93,10 @@ end
 defmodule Flyteidl2.App.App do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.app.App",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :metadata, 1, type: Flyteidl2.App.Meta, deprecated: false
   field :spec, 2, type: Flyteidl2.App.Spec, deprecated: false
@@ -82,7 +106,10 @@ end
 defmodule Flyteidl2.App.Condition do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.app.Condition",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :last_transition_time, 1, type: Google.Protobuf.Timestamp, json_name: "lastTransitionTime"
 
@@ -99,7 +126,10 @@ end
 defmodule Flyteidl2.App.Status do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.app.Status",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :assigned_cluster, 1, type: :string, json_name: "assignedCluster"
   field :current_replicas, 2, type: :uint32, json_name: "currentReplicas", deprecated: false
@@ -118,7 +148,10 @@ end
 defmodule Flyteidl2.App.K8sMetadata do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.app.K8sMetadata",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :namespace, 1, type: :string
 end
@@ -126,7 +159,10 @@ end
 defmodule Flyteidl2.App.Ingress do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.app.Ingress",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :public_url, 1, type: :string, json_name: "publicUrl", deprecated: false
   field :cname_url, 2, type: :string, json_name: "cnameUrl", deprecated: false
@@ -136,7 +172,10 @@ end
 defmodule Flyteidl2.App.Spec do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.app.Spec",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :app_payload, 0
 
@@ -172,7 +211,10 @@ end
 defmodule Flyteidl2.App.Link do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.app.Link",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :path, 1, type: :string, deprecated: false
   field :title, 2, type: :string
@@ -182,7 +224,10 @@ end
 defmodule Flyteidl2.App.Input do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.app.Input",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :value, 0
 
@@ -201,7 +246,10 @@ end
 defmodule Flyteidl2.App.MaterializedInputs do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.app.MaterializedInputs",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :items, 1, repeated: true, type: Flyteidl2.App.MaterializedInput
   field :revision, 2, type: :uint64, deprecated: false
@@ -210,7 +258,10 @@ end
 defmodule Flyteidl2.App.MaterializedInput do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.app.MaterializedInput",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :value, 0
 
@@ -221,7 +272,10 @@ end
 defmodule Flyteidl2.App.InputList do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.app.InputList",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :items, 1, repeated: true, type: Flyteidl2.App.Input
 end
@@ -229,7 +283,10 @@ end
 defmodule Flyteidl2.App.Profile do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.app.Profile",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :type, 1, type: :string
   field :name, 2, type: :string
@@ -240,7 +297,10 @@ end
 defmodule Flyteidl2.App.SecurityContext do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.app.SecurityContext",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :run_as, 1, type: Flyteidl2.Core.Identity, json_name: "runAs"
   field :secrets, 2, repeated: true, type: Flyteidl2.Core.Secret
@@ -250,7 +310,10 @@ end
 defmodule Flyteidl2.App.ImageSpec do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.app.ImageSpec",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :tag, 1, type: :string
   field :build_job_url, 2, type: :string, json_name: "buildJobUrl"
@@ -259,7 +322,10 @@ end
 defmodule Flyteidl2.App.ImageSpecSet do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.app.ImageSpecSet",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :images, 1, repeated: true, type: Flyteidl2.App.ImageSpec
 end
@@ -267,7 +333,10 @@ end
 defmodule Flyteidl2.App.IngressConfig do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.app.IngressConfig",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :private, 1, type: :bool
   field :subdomain, 2, type: :string
@@ -277,7 +346,10 @@ end
 defmodule Flyteidl2.App.AutoscalingConfig do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.app.AutoscalingConfig",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :replicas, 1, type: Flyteidl2.App.Replicas
   field :scaledown_period, 2, type: Google.Protobuf.Duration, json_name: "scaledownPeriod"
@@ -287,7 +359,10 @@ end
 defmodule Flyteidl2.App.ScalingMetric do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.app.ScalingMetric",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :metric, 0
 
@@ -298,7 +373,10 @@ end
 defmodule Flyteidl2.App.Concurrency do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.app.Concurrency",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :target_value, 1, type: :uint32, json_name: "targetValue", deprecated: false
 end
@@ -306,7 +384,10 @@ end
 defmodule Flyteidl2.App.RequestRate do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.app.RequestRate",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :target_value, 1, type: :uint32, json_name: "targetValue", deprecated: false
 end
@@ -314,7 +395,10 @@ end
 defmodule Flyteidl2.App.Replicas do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.app.Replicas",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :min, 1, type: :uint32, deprecated: false
   field :max, 2, type: :uint32, deprecated: false
@@ -323,7 +407,10 @@ end
 defmodule Flyteidl2.App.TimeoutConfig do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.app.TimeoutConfig",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :request_timeout, 1,
     type: Google.Protobuf.Duration,

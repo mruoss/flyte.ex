@@ -1,7 +1,11 @@
 defmodule Flyteidl2.Core.Granularity do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.core.Granularity",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :UNSET, 0
   field :MINUTE, 1
@@ -13,7 +17,11 @@ end
 defmodule Flyteidl2.Core.Operator do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.core.Operator",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :MINUS, 0
   field :PLUS, 1
@@ -22,7 +30,10 @@ end
 defmodule Flyteidl2.Core.ArtifactKey do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.ArtifactKey",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :project, 1, type: :string
   field :domain, 2, type: :string
@@ -33,7 +44,10 @@ end
 defmodule Flyteidl2.Core.ArtifactBindingData do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.ArtifactBindingData",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :partition_data, 0
 
@@ -45,7 +59,10 @@ end
 defmodule Flyteidl2.Core.TimeTransform do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.TimeTransform",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :transform, 1, type: :string
   field :op, 2, type: Flyteidl2.Core.Operator, enum: true
@@ -54,7 +71,10 @@ end
 defmodule Flyteidl2.Core.InputBindingData do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.InputBindingData",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :var, 1, type: :string
 end
@@ -62,13 +82,19 @@ end
 defmodule Flyteidl2.Core.RuntimeBinding do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.RuntimeBinding",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 end
 
 defmodule Flyteidl2.Core.LabelValue do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.LabelValue",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :value, 0
 
@@ -94,7 +120,11 @@ end
 defmodule Flyteidl2.Core.Partitions.ValueEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.Partitions.ValueEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: Flyteidl2.Core.LabelValue
@@ -103,7 +133,10 @@ end
 defmodule Flyteidl2.Core.Partitions do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.Partitions",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :value, 1, repeated: true, type: Flyteidl2.Core.Partitions.ValueEntry, map: true
 end
@@ -111,7 +144,10 @@ end
 defmodule Flyteidl2.Core.TimePartition do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.TimePartition",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :value, 1, type: Flyteidl2.Core.LabelValue
   field :granularity, 2, type: Flyteidl2.Core.Granularity, enum: true
@@ -120,7 +156,10 @@ end
 defmodule Flyteidl2.Core.ArtifactID do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.ArtifactID",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :artifact_key, 1, type: Flyteidl2.Core.ArtifactKey, json_name: "artifactKey"
   field :version, 2, type: :string
@@ -131,7 +170,10 @@ end
 defmodule Flyteidl2.Core.ArtifactTag do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.ArtifactTag",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :artifact_key, 1, type: Flyteidl2.Core.ArtifactKey, json_name: "artifactKey"
   field :value, 2, type: Flyteidl2.Core.LabelValue
@@ -140,7 +182,10 @@ end
 defmodule Flyteidl2.Core.ArtifactQuery do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.ArtifactQuery",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :identifier, 0
 

@@ -1,7 +1,10 @@
 defmodule Flyteidl2.Workflow.EnqueueActionRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.EnqueueActionRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :spec, 0
 
@@ -28,13 +31,19 @@ end
 defmodule Flyteidl2.Workflow.EnqueueActionResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.EnqueueActionResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 end
 
 defmodule Flyteidl2.Workflow.AbortQueuedRunRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.AbortQueuedRunRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :run_id, 1, type: Flyteidl2.Common.RunIdentifier, json_name: "runId", deprecated: false
   field :reason, 2, proto3_optional: true, type: :string
@@ -43,13 +52,19 @@ end
 defmodule Flyteidl2.Workflow.AbortQueuedRunResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.AbortQueuedRunResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 end
 
 defmodule Flyteidl2.Workflow.AbortQueuedActionRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.AbortQueuedActionRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :action_id, 1,
     type: Flyteidl2.Common.ActionIdentifier,
@@ -62,13 +77,16 @@ end
 defmodule Flyteidl2.Workflow.AbortQueuedActionResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.AbortQueuedActionResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 end
 
 defmodule Flyteidl2.Workflow.QueueService.Service do
   @moduledoc false
 
-  use GRPC.Service, name: "flyteidl2.workflow.QueueService", protoc_gen_elixir_version: "0.15.0"
+  use GRPC.Service, name: "flyteidl2.workflow.QueueService", protoc_gen_elixir_version: "0.16.0"
 
   rpc :EnqueueAction,
       Flyteidl2.Workflow.EnqueueActionRequest,

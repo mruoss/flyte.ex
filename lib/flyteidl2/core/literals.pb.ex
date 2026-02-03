@@ -1,7 +1,10 @@
 defmodule Flyteidl2.Core.Primitive do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.Primitive",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :value, 0
 
@@ -16,13 +19,19 @@ end
 defmodule Flyteidl2.Core.Void do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.Void",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 end
 
 defmodule Flyteidl2.Core.Blob do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.Blob",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :metadata, 1, type: Flyteidl2.Core.BlobMetadata
   field :uri, 3, type: :string
@@ -31,7 +40,10 @@ end
 defmodule Flyteidl2.Core.BlobMetadata do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.BlobMetadata",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :type, 1, type: Flyteidl2.Core.BlobType
 end
@@ -39,7 +51,10 @@ end
 defmodule Flyteidl2.Core.Binary do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.Binary",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :value, 1, type: :bytes
   field :tag, 2, type: :string
@@ -48,7 +63,10 @@ end
 defmodule Flyteidl2.Core.Schema do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.Schema",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :uri, 1, type: :string
   field :type, 3, type: Flyteidl2.Core.SchemaType
@@ -57,7 +75,10 @@ end
 defmodule Flyteidl2.Core.Union do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.Union",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :value, 1, type: Flyteidl2.Core.Literal
   field :type, 2, type: Flyteidl2.Core.LiteralType
@@ -66,7 +87,10 @@ end
 defmodule Flyteidl2.Core.StructuredDatasetMetadata do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.StructuredDatasetMetadata",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :structured_dataset_type, 1,
     type: Flyteidl2.Core.StructuredDatasetType,
@@ -76,7 +100,10 @@ end
 defmodule Flyteidl2.Core.StructuredDataset do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.StructuredDataset",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :uri, 1, type: :string
   field :metadata, 2, type: Flyteidl2.Core.StructuredDatasetMetadata
@@ -85,7 +112,10 @@ end
 defmodule Flyteidl2.Core.Scalar do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.Scalar",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :value, 0
 
@@ -108,7 +138,11 @@ end
 defmodule Flyteidl2.Core.Literal.MetadataEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.Literal.MetadataEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: :string
@@ -117,7 +151,10 @@ end
 defmodule Flyteidl2.Core.Literal do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.Literal",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :value, 0
 
@@ -137,7 +174,10 @@ end
 defmodule Flyteidl2.Core.LiteralOffloadedMetadata do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.LiteralOffloadedMetadata",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :uri, 1, type: :string
   field :size_bytes, 2, type: :uint64, json_name: "sizeBytes"
@@ -147,7 +187,10 @@ end
 defmodule Flyteidl2.Core.LiteralCollection do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.LiteralCollection",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :literals, 1, repeated: true, type: Flyteidl2.Core.Literal
 end
@@ -155,7 +198,11 @@ end
 defmodule Flyteidl2.Core.LiteralMap.LiteralsEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.LiteralMap.LiteralsEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: Flyteidl2.Core.Literal
@@ -164,7 +211,10 @@ end
 defmodule Flyteidl2.Core.LiteralMap do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.LiteralMap",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :literals, 1, repeated: true, type: Flyteidl2.Core.LiteralMap.LiteralsEntry, map: true
 end
@@ -172,7 +222,10 @@ end
 defmodule Flyteidl2.Core.BindingDataCollection do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.BindingDataCollection",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :bindings, 1, repeated: true, type: Flyteidl2.Core.BindingData
 end
@@ -180,7 +233,11 @@ end
 defmodule Flyteidl2.Core.BindingDataMap.BindingsEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.BindingDataMap.BindingsEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: Flyteidl2.Core.BindingData
@@ -189,7 +246,10 @@ end
 defmodule Flyteidl2.Core.BindingDataMap do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.BindingDataMap",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :bindings, 1, repeated: true, type: Flyteidl2.Core.BindingDataMap.BindingsEntry, map: true
 end
@@ -197,7 +257,10 @@ end
 defmodule Flyteidl2.Core.UnionInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.UnionInfo",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :targetType, 1, type: Flyteidl2.Core.LiteralType
 end
@@ -205,7 +268,10 @@ end
 defmodule Flyteidl2.Core.BindingData do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.BindingData",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :value, 0
 
@@ -225,7 +291,10 @@ end
 defmodule Flyteidl2.Core.Binding do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.Binding",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :var, 1, type: :string
   field :binding, 2, type: Flyteidl2.Core.BindingData
@@ -234,7 +303,10 @@ end
 defmodule Flyteidl2.Core.KeyValuePair do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.KeyValuePair",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: :string
@@ -243,7 +315,10 @@ end
 defmodule Flyteidl2.Core.RetryStrategy do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.RetryStrategy",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :retries, 5, type: :uint32
 end

@@ -1,7 +1,10 @@
 defmodule Flyteidl2.App.TailLogsRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.app.TailLogsRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :target, 0
 
@@ -12,7 +15,10 @@ end
 defmodule Flyteidl2.App.ReplicaIdentifierList do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.app.ReplicaIdentifierList",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :replicas, 1, repeated: true, type: Flyteidl2.App.ReplicaIdentifier
 end
@@ -20,7 +26,10 @@ end
 defmodule Flyteidl2.App.LogLines do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.app.LogLines",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :lines, 1, repeated: true, type: :string, deprecated: true
 
@@ -38,7 +47,10 @@ end
 defmodule Flyteidl2.App.LogLinesBatch do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.app.LogLinesBatch",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :logs, 1, repeated: true, type: Flyteidl2.App.LogLines
 end
@@ -46,7 +58,10 @@ end
 defmodule Flyteidl2.App.TailLogsResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.app.TailLogsResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :resp, 0
 

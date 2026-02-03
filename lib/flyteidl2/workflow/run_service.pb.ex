@@ -1,7 +1,10 @@
 defmodule Flyteidl2.Workflow.CreateRunRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.CreateRunRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :id, 0
 
@@ -20,7 +23,10 @@ end
 defmodule Flyteidl2.Workflow.CreateRunResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.CreateRunResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :run, 1, type: Flyteidl2.Workflow.Run
 end
@@ -28,7 +34,10 @@ end
 defmodule Flyteidl2.Workflow.AbortRunRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.AbortRunRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :run_id, 1, type: Flyteidl2.Common.RunIdentifier, json_name: "runId", deprecated: false
   field :reason, 2, proto3_optional: true, type: :string
@@ -37,13 +46,19 @@ end
 defmodule Flyteidl2.Workflow.AbortRunResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.AbortRunResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 end
 
 defmodule Flyteidl2.Workflow.GetRunDetailsRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.GetRunDetailsRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :run_id, 1, type: Flyteidl2.Common.RunIdentifier, json_name: "runId", deprecated: false
 end
@@ -51,7 +66,10 @@ end
 defmodule Flyteidl2.Workflow.GetRunDetailsResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.GetRunDetailsResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :details, 1, type: Flyteidl2.Workflow.RunDetails
 end
@@ -59,7 +77,10 @@ end
 defmodule Flyteidl2.Workflow.WatchRunDetailsRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchRunDetailsRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :run_id, 1, type: Flyteidl2.Common.RunIdentifier, json_name: "runId", deprecated: false
 end
@@ -67,7 +88,10 @@ end
 defmodule Flyteidl2.Workflow.WatchRunDetailsResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchRunDetailsResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :details, 1, type: Flyteidl2.Workflow.RunDetails
 end
@@ -75,7 +99,10 @@ end
 defmodule Flyteidl2.Workflow.GetActionDetailsRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.GetActionDetailsRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :action_id, 1,
     type: Flyteidl2.Common.ActionIdentifier,
@@ -86,7 +113,10 @@ end
 defmodule Flyteidl2.Workflow.GetActionDetailsResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.GetActionDetailsResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :details, 1, type: Flyteidl2.Workflow.ActionDetails
 end
@@ -94,7 +124,10 @@ end
 defmodule Flyteidl2.Workflow.WatchActionDetailsRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchActionDetailsRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :action_id, 1,
     type: Flyteidl2.Common.ActionIdentifier,
@@ -105,7 +138,10 @@ end
 defmodule Flyteidl2.Workflow.WatchActionDetailsResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchActionDetailsResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :details, 1, type: Flyteidl2.Workflow.ActionDetails
 end
@@ -113,7 +149,10 @@ end
 defmodule Flyteidl2.Workflow.GetActionDataRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.GetActionDataRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :action_id, 1,
     type: Flyteidl2.Common.ActionIdentifier,
@@ -124,7 +163,10 @@ end
 defmodule Flyteidl2.Workflow.GetActionDataResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.GetActionDataResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :inputs, 1, type: Flyteidl2.Task.Inputs
   field :outputs, 2, type: Flyteidl2.Task.Outputs
@@ -133,7 +175,10 @@ end
 defmodule Flyteidl2.Workflow.ListRunsRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.ListRunsRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :scope_by, 0
 
@@ -148,7 +193,10 @@ end
 defmodule Flyteidl2.Workflow.ListRunsResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.ListRunsResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :runs, 1, repeated: true, type: Flyteidl2.Workflow.Run
   field :token, 2, type: :string
@@ -157,7 +205,10 @@ end
 defmodule Flyteidl2.Workflow.WatchRunsRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchRunsRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :target, 0
 
@@ -170,7 +221,10 @@ end
 defmodule Flyteidl2.Workflow.WatchRunsResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchRunsResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :runs, 1, repeated: true, type: Flyteidl2.Workflow.Run
 end
@@ -178,7 +232,10 @@ end
 defmodule Flyteidl2.Workflow.ListActionsRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.ListActionsRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :request, 1, type: Flyteidl2.Common.ListRequest
   field :run_id, 2, type: Flyteidl2.Common.RunIdentifier, json_name: "runId", deprecated: false
@@ -187,7 +244,10 @@ end
 defmodule Flyteidl2.Workflow.ListActionsResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.ListActionsResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :actions, 1, repeated: true, type: Flyteidl2.Workflow.Action
   field :token, 2, type: :string
@@ -196,7 +256,10 @@ end
 defmodule Flyteidl2.Workflow.WatchActionsRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchActionsRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :run_id, 1, type: Flyteidl2.Common.RunIdentifier, json_name: "runId", deprecated: false
   field :filter, 2, repeated: true, type: Flyteidl2.Common.Filter
@@ -205,7 +268,10 @@ end
 defmodule Flyteidl2.Workflow.WatchActionsResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchActionsResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :enriched_actions, 1,
     repeated: true,
@@ -216,7 +282,10 @@ end
 defmodule Flyteidl2.Workflow.WatchClusterEventsRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchClusterEventsRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :id, 1, type: Flyteidl2.Common.ActionIdentifier, deprecated: false
   field :attempt, 2, type: :uint32, deprecated: false
@@ -225,7 +294,10 @@ end
 defmodule Flyteidl2.Workflow.WatchClusterEventsResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchClusterEventsResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :cluster_events, 1,
     repeated: true,
@@ -236,7 +308,10 @@ end
 defmodule Flyteidl2.Workflow.AbortActionRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.AbortActionRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :action_id, 1,
     type: Flyteidl2.Common.ActionIdentifier,
@@ -249,13 +324,19 @@ end
 defmodule Flyteidl2.Workflow.AbortActionResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.AbortActionResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 end
 
 defmodule Flyteidl2.Workflow.WatchGroupsRequest.KnownSortField do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchGroupsRequest.KnownSortField",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :sort_by, 0
 
@@ -269,7 +350,10 @@ end
 defmodule Flyteidl2.Workflow.WatchGroupsRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchGroupsRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :scope_by, 0
 
@@ -287,7 +371,10 @@ end
 defmodule Flyteidl2.Workflow.WatchGroupsResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchGroupsResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :task_groups, 1,
     repeated: true,
@@ -300,7 +387,7 @@ end
 defmodule Flyteidl2.Workflow.RunService.Service do
   @moduledoc false
 
-  use GRPC.Service, name: "flyteidl2.workflow.RunService", protoc_gen_elixir_version: "0.15.0"
+  use GRPC.Service, name: "flyteidl2.workflow.RunService", protoc_gen_elixir_version: "0.16.0"
 
   rpc :CreateRun, Flyteidl2.Workflow.CreateRunRequest, Flyteidl2.Workflow.CreateRunResponse
 

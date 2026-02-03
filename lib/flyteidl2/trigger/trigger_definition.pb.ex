@@ -1,7 +1,11 @@
 defmodule Flyteidl2.Trigger.TriggerRevisionAction do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.trigger.TriggerRevisionAction",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :TRIGGER_REVISION_ACTION_UNSPECIFIED, 0
   field :TRIGGER_REVISION_ACTION_DEPLOY, 1
@@ -13,7 +17,10 @@ end
 defmodule Flyteidl2.Trigger.TriggerMetadata do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.trigger.TriggerMetadata",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :deployed_by, 1,
     type: Flyteidl2.Common.EnrichedIdentity,
@@ -29,7 +36,10 @@ end
 defmodule Flyteidl2.Trigger.TriggerSpec do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.trigger.TriggerSpec",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :inputs, 2, type: Flyteidl2.Task.Inputs
   field :run_spec, 3, type: Flyteidl2.Task.RunSpec, json_name: "runSpec"
@@ -41,7 +51,10 @@ end
 defmodule Flyteidl2.Trigger.TriggerStatus do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.trigger.TriggerStatus",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :deployed_at, 1,
     type: Google.Protobuf.Timestamp,
@@ -56,7 +69,10 @@ end
 defmodule Flyteidl2.Trigger.TriggerRevision do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.trigger.TriggerRevision",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :id, 1, type: Flyteidl2.Common.TriggerIdentifier
   field :metadata, 2, type: Flyteidl2.Trigger.TriggerMetadata
@@ -68,7 +84,10 @@ end
 defmodule Flyteidl2.Trigger.TriggerDetails do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.trigger.TriggerDetails",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :id, 1, type: Flyteidl2.Common.TriggerIdentifier, deprecated: false
   field :metadata, 2, type: Flyteidl2.Trigger.TriggerMetadata
@@ -85,7 +104,10 @@ end
 defmodule Flyteidl2.Trigger.Trigger do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.trigger.Trigger",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :id, 1, type: Flyteidl2.Common.TriggerIdentifier
   field :metadata, 2, type: Flyteidl2.Trigger.TriggerMetadata
