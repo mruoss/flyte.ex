@@ -1,7 +1,10 @@
 defmodule Flyteidl2.Plugins.RayJob do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.plugins.RayJob",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :ray_cluster, 1, type: Flyteidl2.Plugins.RayCluster, json_name: "rayCluster"
   field :runtime_env, 2, type: :string, json_name: "runtimeEnv", deprecated: true
@@ -13,7 +16,10 @@ end
 defmodule Flyteidl2.Plugins.RayCluster do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.plugins.RayCluster",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :head_group_spec, 1, type: Flyteidl2.Plugins.HeadGroupSpec, json_name: "headGroupSpec"
 
@@ -28,7 +34,11 @@ end
 defmodule Flyteidl2.Plugins.HeadGroupSpec.RayStartParamsEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.plugins.HeadGroupSpec.RayStartParamsEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: :string
@@ -37,7 +47,10 @@ end
 defmodule Flyteidl2.Plugins.HeadGroupSpec do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.plugins.HeadGroupSpec",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :ray_start_params, 1,
     repeated: true,
@@ -51,7 +64,11 @@ end
 defmodule Flyteidl2.Plugins.WorkerGroupSpec.RayStartParamsEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.plugins.WorkerGroupSpec.RayStartParamsEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: :string
@@ -60,7 +77,10 @@ end
 defmodule Flyteidl2.Plugins.WorkerGroupSpec do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.plugins.WorkerGroupSpec",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :group_name, 1, type: :string, json_name: "groupName"
   field :replicas, 2, type: :int32

@@ -1,7 +1,11 @@
 defmodule Flyteidl2.Event.TaskExecutionMetadata.InstanceClass do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.event.TaskExecutionMetadata.InstanceClass",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :DEFAULT, 0
   field :INTERRUPTIBLE, 1
@@ -10,7 +14,10 @@ end
 defmodule Flyteidl2.Event.WorkflowExecutionEvent do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.event.WorkflowExecutionEvent",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :output_result, 0
 
@@ -29,7 +36,10 @@ end
 defmodule Flyteidl2.Event.NodeExecutionEvent do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.event.NodeExecutionEvent",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :input_value, 0
 
@@ -82,7 +92,10 @@ end
 defmodule Flyteidl2.Event.WorkflowNodeMetadata do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.event.WorkflowNodeMetadata",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :execution_id, 1,
     type: Flyteidl2.Core.WorkflowExecutionIdentifier,
@@ -92,7 +105,10 @@ end
 defmodule Flyteidl2.Event.TaskNodeMetadata do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.event.TaskNodeMetadata",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :cache_status, 1,
     type: Flyteidl2.Core.CatalogCacheStatus,
@@ -112,7 +128,10 @@ end
 defmodule Flyteidl2.Event.ParentTaskExecutionMetadata do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.event.ParentTaskExecutionMetadata",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :id, 1, type: Flyteidl2.Core.TaskExecutionIdentifier
 end
@@ -120,7 +139,10 @@ end
 defmodule Flyteidl2.Event.ParentNodeExecutionMetadata do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.event.ParentNodeExecutionMetadata",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :node_id, 1, type: :string, json_name: "nodeId"
 end
@@ -128,7 +150,10 @@ end
 defmodule Flyteidl2.Event.EventReason do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.event.EventReason",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :reason, 1, type: :string
   field :occurred_at, 2, type: Google.Protobuf.Timestamp, json_name: "occurredAt"
@@ -137,7 +162,10 @@ end
 defmodule Flyteidl2.Event.TaskExecutionEvent do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.event.TaskExecutionEvent",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :input_value, 0
 
@@ -173,7 +201,10 @@ end
 defmodule Flyteidl2.Event.ExternalResourceInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.event.ExternalResourceInfo",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :target_metadata, 0
 
@@ -201,7 +232,10 @@ end
 defmodule Flyteidl2.Event.ResourcePoolInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.event.ResourcePoolInfo",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :allocation_token, 1, type: :string, json_name: "allocationToken"
   field :namespace, 2, type: :string
@@ -210,7 +244,10 @@ end
 defmodule Flyteidl2.Event.TaskExecutionMetadata do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.event.TaskExecutionMetadata",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :generated_name, 1, type: :string, json_name: "generatedName"
 

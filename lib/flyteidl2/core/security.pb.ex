@@ -1,7 +1,11 @@
 defmodule Flyteidl2.Core.Secret.MountType do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.core.Secret.MountType",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :ANY, 0
   field :ENV_VAR, 1
@@ -11,7 +15,11 @@ end
 defmodule Flyteidl2.Core.OAuth2TokenRequest.Type do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.core.OAuth2TokenRequest.Type",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :CLIENT_CREDENTIALS, 0
 end
@@ -19,7 +27,10 @@ end
 defmodule Flyteidl2.Core.Secret do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.Secret",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :group, 1, type: :string
   field :group_version, 2, type: :string, json_name: "groupVersion"
@@ -36,7 +47,11 @@ end
 defmodule Flyteidl2.Core.Connection.SecretsEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.Connection.SecretsEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: :string
@@ -45,7 +60,11 @@ end
 defmodule Flyteidl2.Core.Connection.ConfigsEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.Connection.ConfigsEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: :string
@@ -54,7 +73,10 @@ end
 defmodule Flyteidl2.Core.Connection do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.Connection",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :task_type, 1, type: :string, json_name: "taskType"
   field :secrets, 2, repeated: true, type: Flyteidl2.Core.Connection.SecretsEntry, map: true
@@ -64,7 +86,10 @@ end
 defmodule Flyteidl2.Core.OAuth2Client do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.OAuth2Client",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :client_id, 1, type: :string, json_name: "clientId"
   field :client_secret, 2, type: Flyteidl2.Core.Secret, json_name: "clientSecret"
@@ -73,7 +98,10 @@ end
 defmodule Flyteidl2.Core.Identity do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.Identity",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :iam_role, 1, type: :string, json_name: "iamRole"
   field :k8s_service_account, 2, type: :string, json_name: "k8sServiceAccount"
@@ -84,7 +112,10 @@ end
 defmodule Flyteidl2.Core.OAuth2TokenRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.OAuth2TokenRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :name, 1, type: :string
   field :type, 2, type: Flyteidl2.Core.OAuth2TokenRequest.Type, enum: true
@@ -96,7 +127,10 @@ end
 defmodule Flyteidl2.Core.SecurityContext do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.SecurityContext",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :run_as, 1, type: Flyteidl2.Core.Identity, json_name: "runAs"
   field :secrets, 2, repeated: true, type: Flyteidl2.Core.Secret

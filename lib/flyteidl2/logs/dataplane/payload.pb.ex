@@ -1,7 +1,11 @@
 defmodule Flyteidl2.Logs.Dataplane.LogLineOriginator do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.logs.dataplane.LogLineOriginator",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :UNKNOWN, 0
   field :USER, 1
@@ -11,7 +15,11 @@ end
 defmodule Flyteidl2.Logs.Dataplane.LogsSource do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.logs.dataplane.LogsSource",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :LIVE_OR_PERSISTED, 0
   field :LIVE_ONLY, 1
@@ -21,7 +29,10 @@ end
 defmodule Flyteidl2.Logs.Dataplane.PodResource do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.logs.dataplane.PodResource",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :namespace, 1, type: :string, deprecated: false
   field :name, 2, type: :string, deprecated: false
@@ -31,7 +42,11 @@ end
 defmodule Flyteidl2.Logs.Dataplane.LoggingContext.KubernetesPodLabelsEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.logs.dataplane.LoggingContext.KubernetesPodLabelsEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: :string
@@ -40,7 +55,10 @@ end
 defmodule Flyteidl2.Logs.Dataplane.LoggingContext do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.logs.dataplane.LoggingContext",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :cluster_name, 3, type: :string, json_name: "clusterName", deprecated: false
 
@@ -74,7 +92,10 @@ end
 defmodule Flyteidl2.Logs.Dataplane.ContainerIdentifier do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.logs.dataplane.ContainerIdentifier",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :cluster_name, 1, type: :string, json_name: "clusterName", deprecated: false
 
@@ -90,7 +111,10 @@ end
 defmodule Flyteidl2.Logs.Dataplane.ContainerSelector do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.logs.dataplane.ContainerSelector",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :cluster_name, 1, type: :string, json_name: "clusterName", deprecated: false
 
@@ -107,7 +131,10 @@ end
 defmodule Flyteidl2.Logs.Dataplane.LiveLogsOptions do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.logs.dataplane.LiveLogsOptions",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :log_pod_status, 1, type: :bool, json_name: "logPodStatus"
   field :log_timestamps, 2, type: :bool, json_name: "logTimestamps"
@@ -116,7 +143,10 @@ end
 defmodule Flyteidl2.Logs.Dataplane.LogLine do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.logs.dataplane.LogLine",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :timestamp, 1, type: Google.Protobuf.Timestamp
   field :message, 2, type: :string
@@ -126,7 +156,10 @@ end
 defmodule Flyteidl2.Logs.Dataplane.LogLines do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.logs.dataplane.LogLines",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :lines, 1, repeated: true, type: :string, deprecated: true
   field :container_index, 2, type: :uint32, json_name: "containerIndex"
@@ -141,7 +174,10 @@ end
 defmodule Flyteidl2.Logs.Dataplane.LogContainersList do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.logs.dataplane.LogContainersList",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :containers, 1, repeated: true, type: Flyteidl2.Logs.Dataplane.ContainerIdentifier
 end
@@ -149,7 +185,10 @@ end
 defmodule Flyteidl2.Logs.Dataplane.LogLinesBatch do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.logs.dataplane.LogLinesBatch",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :logs, 1, repeated: true, type: Flyteidl2.Logs.Dataplane.LogLines
 end

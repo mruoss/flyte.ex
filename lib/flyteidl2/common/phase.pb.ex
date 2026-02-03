@@ -1,7 +1,11 @@
 defmodule Flyteidl2.Common.ActionPhase do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.common.ActionPhase",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :ACTION_PHASE_UNSPECIFIED, 0
   field :ACTION_PHASE_QUEUED, 1

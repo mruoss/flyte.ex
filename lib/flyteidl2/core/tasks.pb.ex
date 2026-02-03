@@ -1,7 +1,11 @@
 defmodule Flyteidl2.Core.Resources.ResourceName do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.core.Resources.ResourceName",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :UNKNOWN, 0
   field :CPU, 1
@@ -14,7 +18,11 @@ end
 defmodule Flyteidl2.Core.GPUAccelerator.DeviceClass do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.core.GPUAccelerator.DeviceClass",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :NVIDIA_GPU, 0
   field :GOOGLE_TPU, 1
@@ -26,7 +34,11 @@ end
 defmodule Flyteidl2.Core.RuntimeMetadata.RuntimeType do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.core.RuntimeMetadata.RuntimeType",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :OTHER, 0
   field :FLYTE_SDK, 1
@@ -35,7 +47,11 @@ end
 defmodule Flyteidl2.Core.Container.Architecture do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.core.Container.Architecture",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :UNKNOWN, 0
   field :AMD64, 1
@@ -47,7 +63,11 @@ end
 defmodule Flyteidl2.Core.IOStrategy.DownloadMode do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.core.IOStrategy.DownloadMode",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :DOWNLOAD_EAGER, 0
   field :DOWNLOAD_STREAM, 1
@@ -57,7 +77,11 @@ end
 defmodule Flyteidl2.Core.IOStrategy.UploadMode do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.core.IOStrategy.UploadMode",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :UPLOAD_ON_EXIT, 0
   field :UPLOAD_EAGER, 1
@@ -67,7 +91,11 @@ end
 defmodule Flyteidl2.Core.DataLoadingConfig.LiteralMapFormat do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.core.DataLoadingConfig.LiteralMapFormat",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :JSON, 0
   field :YAML, 1
@@ -77,7 +105,11 @@ end
 defmodule Flyteidl2.Core.Sql.Dialect do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.core.Sql.Dialect",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :UNDEFINED, 0
   field :ANSI, 1
@@ -88,7 +120,10 @@ end
 defmodule Flyteidl2.Core.Resources.ResourceEntry do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.Resources.ResourceEntry",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :name, 1, type: Flyteidl2.Core.Resources.ResourceName, enum: true
   field :value, 2, type: :string
@@ -97,7 +132,10 @@ end
 defmodule Flyteidl2.Core.Resources do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.Resources",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :requests, 1, repeated: true, type: Flyteidl2.Core.Resources.ResourceEntry
   field :limits, 2, repeated: true, type: Flyteidl2.Core.Resources.ResourceEntry
@@ -106,7 +144,10 @@ end
 defmodule Flyteidl2.Core.GPUAccelerator do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.GPUAccelerator",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :partition_size_value, 0
 
@@ -123,7 +164,10 @@ end
 defmodule Flyteidl2.Core.SharedMemory do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.SharedMemory",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :mount_path, 1, type: :string, json_name: "mountPath"
   field :mount_name, 2, type: :string, json_name: "mountName"
@@ -133,7 +177,10 @@ end
 defmodule Flyteidl2.Core.ExtendedResources do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.ExtendedResources",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :gpu_accelerator, 1, type: Flyteidl2.Core.GPUAccelerator, json_name: "gpuAccelerator"
   field :shared_memory, 2, type: Flyteidl2.Core.SharedMemory, json_name: "sharedMemory"
@@ -142,7 +189,10 @@ end
 defmodule Flyteidl2.Core.RuntimeMetadata do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.RuntimeMetadata",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :type, 1, type: Flyteidl2.Core.RuntimeMetadata.RuntimeType, enum: true
   field :version, 2, type: :string
@@ -152,7 +202,11 @@ end
 defmodule Flyteidl2.Core.TaskMetadata.TagsEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.TaskMetadata.TagsEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: :string
@@ -161,7 +215,10 @@ end
 defmodule Flyteidl2.Core.TaskMetadata do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.TaskMetadata",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :interruptible_value, 0
 
@@ -191,7 +248,11 @@ end
 defmodule Flyteidl2.Core.TaskTemplate.ConfigEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.TaskTemplate.ConfigEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: :string
@@ -200,7 +261,10 @@ end
 defmodule Flyteidl2.Core.TaskTemplate do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.TaskTemplate",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :target, 0
 
@@ -225,7 +289,10 @@ end
 defmodule Flyteidl2.Core.ContainerPort do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.ContainerPort",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :container_port, 1, type: :uint32, json_name: "containerPort"
   field :name, 2, type: :string
@@ -234,7 +301,10 @@ end
 defmodule Flyteidl2.Core.Container do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.Container",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :image, 1, type: :string
   field :command, 2, repeated: true, type: :string
@@ -250,7 +320,10 @@ end
 defmodule Flyteidl2.Core.IOStrategy do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.IOStrategy",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :download_mode, 1,
     type: Flyteidl2.Core.IOStrategy.DownloadMode,
@@ -266,7 +339,10 @@ end
 defmodule Flyteidl2.Core.DataLoadingConfig do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.DataLoadingConfig",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :enabled, 1, type: :bool
   field :input_path, 2, type: :string, json_name: "inputPath"
@@ -278,7 +354,10 @@ end
 defmodule Flyteidl2.Core.K8sPod do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.K8sPod",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :metadata, 1, type: Flyteidl2.Core.K8sObjectMetadata
   field :pod_spec, 2, type: Google.Protobuf.Struct, json_name: "podSpec"
@@ -289,7 +368,11 @@ end
 defmodule Flyteidl2.Core.K8sObjectMetadata.LabelsEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.K8sObjectMetadata.LabelsEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: :string
@@ -298,7 +381,11 @@ end
 defmodule Flyteidl2.Core.K8sObjectMetadata.AnnotationsEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.K8sObjectMetadata.AnnotationsEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: :string
@@ -307,7 +394,10 @@ end
 defmodule Flyteidl2.Core.K8sObjectMetadata do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.K8sObjectMetadata",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :labels, 1, repeated: true, type: Flyteidl2.Core.K8sObjectMetadata.LabelsEntry, map: true
 
@@ -320,7 +410,10 @@ end
 defmodule Flyteidl2.Core.Sql do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.Sql",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :statement, 1, type: :string
   field :dialect, 2, type: Flyteidl2.Core.Sql.Dialect, enum: true

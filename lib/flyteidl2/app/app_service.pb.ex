@@ -1,7 +1,7 @@
 defmodule Flyteidl2.App.AppService.Service do
   @moduledoc false
 
-  use GRPC.Service, name: "flyteidl2.app.AppService", protoc_gen_elixir_version: "0.15.0"
+  use GRPC.Service, name: "flyteidl2.app.AppService", protoc_gen_elixir_version: "0.16.0"
 
   rpc :Create, Flyteidl2.App.CreateRequest, Flyteidl2.App.CreateResponse
 

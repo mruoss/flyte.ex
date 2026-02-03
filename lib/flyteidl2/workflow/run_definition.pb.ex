@@ -1,7 +1,11 @@
 defmodule Flyteidl2.Workflow.ActionType do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.workflow.ActionType",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :ACTION_TYPE_UNSPECIFIED, 0
   field :ACTION_TYPE_TASK, 1
@@ -12,7 +16,11 @@ end
 defmodule Flyteidl2.Workflow.RunSource do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.workflow.RunSource",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :RUN_SOURCE_UNSPECIFIED, 0
   field :RUN_SOURCE_WEB, 1
@@ -23,7 +31,11 @@ end
 defmodule Flyteidl2.Workflow.ErrorInfo.Kind do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.workflow.ErrorInfo.Kind",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :KIND_UNSPECIFIED, 0
   field :KIND_USER, 1
@@ -33,7 +45,10 @@ end
 defmodule Flyteidl2.Workflow.Run do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.Run",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :action, 1, type: Flyteidl2.Workflow.Action
 end
@@ -41,7 +56,10 @@ end
 defmodule Flyteidl2.Workflow.RunDetails do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.RunDetails",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :run_spec, 1, type: Flyteidl2.Task.RunSpec, json_name: "runSpec"
   field :action, 2, type: Flyteidl2.Workflow.ActionDetails
@@ -50,7 +68,10 @@ end
 defmodule Flyteidl2.Workflow.TaskAction do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.TaskAction",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :id, 1, type: Flyteidl2.Task.TaskIdentifier
   field :spec, 2, type: Flyteidl2.Task.TaskSpec, deprecated: false
@@ -61,7 +82,10 @@ end
 defmodule Flyteidl2.Workflow.TraceAction do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.TraceAction",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :name, 1, type: :string, deprecated: false
   field :phase, 2, type: Flyteidl2.Common.ActionPhase, enum: true
@@ -74,7 +98,10 @@ end
 defmodule Flyteidl2.Workflow.ConditionAction do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.ConditionAction",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :scope, 0
 
@@ -90,7 +117,10 @@ end
 defmodule Flyteidl2.Workflow.TaskActionMetadata do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.TaskActionMetadata",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :id, 1, type: Flyteidl2.Task.TaskIdentifier
   field :task_type, 2, type: :string, json_name: "taskType"
@@ -100,7 +130,10 @@ end
 defmodule Flyteidl2.Workflow.TraceActionMetadata do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.TraceActionMetadata",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :name, 1, type: :string
 end
@@ -108,7 +141,10 @@ end
 defmodule Flyteidl2.Workflow.ConditionActionMetadata do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.ConditionActionMetadata",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :scope, 0
 
@@ -121,7 +157,10 @@ end
 defmodule Flyteidl2.Workflow.ActionMetadata do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.ActionMetadata",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :spec, 0
 
@@ -143,7 +182,10 @@ end
 defmodule Flyteidl2.Workflow.ActionStatus do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.ActionStatus",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :phase, 1, type: Flyteidl2.Common.ActionPhase, enum: true
   field :start_time, 2, type: Google.Protobuf.Timestamp, json_name: "startTime"
@@ -161,7 +203,10 @@ end
 defmodule Flyteidl2.Workflow.Action do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.Action",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :id, 1, type: Flyteidl2.Common.ActionIdentifier
   field :metadata, 2, type: Flyteidl2.Workflow.ActionMetadata
@@ -171,7 +216,11 @@ end
 defmodule Flyteidl2.Workflow.EnrichedAction.ChildrenPhaseCountsEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.EnrichedAction.ChildrenPhaseCountsEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :int32
   field :value, 2, type: :int32
@@ -180,7 +229,10 @@ end
 defmodule Flyteidl2.Workflow.EnrichedAction do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.EnrichedAction",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :action, 1, type: Flyteidl2.Workflow.Action
   field :meets_filter, 2, type: :bool, json_name: "meetsFilter"
@@ -195,7 +247,10 @@ end
 defmodule Flyteidl2.Workflow.ErrorInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.ErrorInfo",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :message, 1, type: :string
   field :kind, 2, type: Flyteidl2.Workflow.ErrorInfo.Kind, enum: true
@@ -204,7 +259,10 @@ end
 defmodule Flyteidl2.Workflow.AbortInfo do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.AbortInfo",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :reason, 1, type: :string
   field :aborted_by, 2, type: Flyteidl2.Common.EnrichedIdentity, json_name: "abortedBy"
@@ -213,7 +271,10 @@ end
 defmodule Flyteidl2.Workflow.ActionDetails do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.ActionDetails",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :result, 0
 
@@ -232,7 +293,10 @@ end
 defmodule Flyteidl2.Workflow.ActionAttempt do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.ActionAttempt",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :phase, 1, type: Flyteidl2.Common.ActionPhase, enum: true
   field :start_time, 2, type: Google.Protobuf.Timestamp, json_name: "startTime"
@@ -270,7 +334,10 @@ end
 defmodule Flyteidl2.Workflow.ClusterEvent do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.ClusterEvent",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :occurred_at, 1, type: Google.Protobuf.Timestamp, json_name: "occurredAt"
   field :message, 2, type: :string
@@ -279,7 +346,10 @@ end
 defmodule Flyteidl2.Workflow.PhaseTransition do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.PhaseTransition",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :phase, 1, type: Flyteidl2.Common.ActionPhase, enum: true
   field :start_time, 2, type: Google.Protobuf.Timestamp, json_name: "startTime"
@@ -289,7 +359,10 @@ end
 defmodule Flyteidl2.Workflow.ActionEvent do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.ActionEvent",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :id, 1, type: Flyteidl2.Common.ActionIdentifier, deprecated: false
   field :attempt, 2, type: :uint32, deprecated: false
@@ -330,7 +403,10 @@ end
 defmodule Flyteidl2.Workflow.ActionSpec do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.ActionSpec",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :spec, 0
 
@@ -353,10 +429,50 @@ defmodule Flyteidl2.Workflow.ActionSpec do
   field :group, 8, type: :string
 end
 
+defmodule Flyteidl2.Workflow.TaskGroup.RecentStatus do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.TaskGroup.RecentStatus",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :run_name, 1, type: :string, json_name: "runName"
+  field :phase, 2, type: Flyteidl2.Common.ActionPhase, enum: true
+end
+
+defmodule Flyteidl2.Workflow.TaskGroup.ErrorCounts do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.TaskGroup.ErrorCounts",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :user_error, 1, type: :int64, json_name: "userError"
+  field :system_error, 2, type: :int64, json_name: "systemError"
+  field :unspecified_error, 3, type: :int64, json_name: "unspecifiedError"
+end
+
+defmodule Flyteidl2.Workflow.TaskGroup.PhaseCounts do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.TaskGroup.PhaseCounts",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :phase, 1, type: Flyteidl2.Common.ActionPhase, enum: true
+  field :count, 2, type: :int64
+end
+
 defmodule Flyteidl2.Workflow.TaskGroup do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.workflow.TaskGroup",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :task_name, 1, type: :string, json_name: "taskName"
   field :environment_name, 2, type: :string, json_name: "environmentName"
@@ -365,9 +481,8 @@ defmodule Flyteidl2.Workflow.TaskGroup do
 
   field :recent_statuses, 5,
     repeated: true,
-    type: Flyteidl2.Common.ActionPhase,
-    json_name: "recentStatuses",
-    enum: true
+    type: Flyteidl2.Workflow.TaskGroup.RecentStatus,
+    json_name: "recentStatuses"
 
   field :average_failure_rate, 6, type: :double, json_name: "averageFailureRate"
   field :average_duration, 7, type: Google.Protobuf.Duration, json_name: "averageDuration"
@@ -380,4 +495,13 @@ defmodule Flyteidl2.Workflow.TaskGroup do
 
   field :should_delete, 10, type: :bool, json_name: "shouldDelete"
   field :short_name, 11, type: :string, json_name: "shortName"
+
+  field :error_counts, 12,
+    type: Flyteidl2.Workflow.TaskGroup.ErrorCounts,
+    json_name: "errorCounts"
+
+  field :phase_counts, 13,
+    repeated: true,
+    type: Flyteidl2.Workflow.TaskGroup.PhaseCounts,
+    json_name: "phaseCounts"
 end

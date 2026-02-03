@@ -1,7 +1,10 @@
 defmodule Flyteidl2.Plugins.Kubeflow.DistributedMPITrainingTask do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.plugins.kubeflow.DistributedMPITrainingTask",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :worker_replicas, 1,
     type: Flyteidl2.Plugins.Kubeflow.DistributedMPITrainingReplicaSpec,
@@ -18,7 +21,10 @@ end
 defmodule Flyteidl2.Plugins.Kubeflow.DistributedMPITrainingReplicaSpec do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.plugins.kubeflow.DistributedMPITrainingReplicaSpec",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :replicas, 1, type: :int32, deprecated: true
   field :image, 2, type: :string, deprecated: true

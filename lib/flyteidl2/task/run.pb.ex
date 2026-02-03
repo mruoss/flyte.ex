@@ -1,7 +1,11 @@
 defmodule Flyteidl2.Task.CacheLookupScope do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.task.CacheLookupScope",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :CACHE_LOOKUP_SCOPE_UNSPECIFIED, 0
   field :CACHE_LOOKUP_SCOPE_GLOBAL, 1
@@ -11,7 +15,11 @@ end
 defmodule Flyteidl2.Task.Labels.ValuesEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.task.Labels.ValuesEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: :string
@@ -20,7 +28,10 @@ end
 defmodule Flyteidl2.Task.Labels do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.task.Labels",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :values, 1, repeated: true, type: Flyteidl2.Task.Labels.ValuesEntry, map: true
 end
@@ -28,7 +39,11 @@ end
 defmodule Flyteidl2.Task.Annotations.ValuesEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.task.Annotations.ValuesEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: :string
@@ -37,7 +52,10 @@ end
 defmodule Flyteidl2.Task.Annotations do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.task.Annotations",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :values, 1, repeated: true, type: Flyteidl2.Task.Annotations.ValuesEntry, map: true
 end
@@ -45,7 +63,10 @@ end
 defmodule Flyteidl2.Task.Envs do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.task.Envs",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :values, 1, repeated: true, type: Flyteidl2.Core.KeyValuePair
 end
@@ -53,7 +74,10 @@ end
 defmodule Flyteidl2.Task.RawDataStorage do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.task.RawDataStorage",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :raw_data_prefix, 1, type: :string, json_name: "rawDataPrefix"
 end
@@ -61,7 +85,10 @@ end
 defmodule Flyteidl2.Task.CacheConfig do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.task.CacheConfig",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :overwrite_cache, 1, type: :bool, json_name: "overwriteCache"
 
@@ -74,7 +101,10 @@ end
 defmodule Flyteidl2.Task.RunSpec do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.task.RunSpec",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :labels, 1, type: Flyteidl2.Task.Labels
   field :annotations, 2, type: Flyteidl2.Task.Annotations

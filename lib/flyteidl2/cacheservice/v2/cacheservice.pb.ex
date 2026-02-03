@@ -1,7 +1,10 @@
 defmodule Flyteidl2.Cacheservice.V2.Identifier do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.cacheservice.v2.Identifier",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :org, 1, type: :string, deprecated: false
   field :project, 2, type: :string, deprecated: false
@@ -11,7 +14,10 @@ end
 defmodule Flyteidl2.Cacheservice.V2.GetCacheRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.cacheservice.v2.GetCacheRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :base_request, 1, type: Flyteidl2.Cacheservice.GetCacheRequest, json_name: "baseRequest"
   field :identifier, 2, type: Flyteidl2.Cacheservice.V2.Identifier, deprecated: false
@@ -20,7 +26,10 @@ end
 defmodule Flyteidl2.Cacheservice.V2.PutCacheRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.cacheservice.v2.PutCacheRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :base_request, 1, type: Flyteidl2.Cacheservice.PutCacheRequest, json_name: "baseRequest"
   field :identifier, 2, type: Flyteidl2.Cacheservice.V2.Identifier, deprecated: false
@@ -29,7 +38,10 @@ end
 defmodule Flyteidl2.Cacheservice.V2.DeleteCacheRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.cacheservice.v2.DeleteCacheRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :base_request, 1,
     type: Flyteidl2.Cacheservice.DeleteCacheRequest,
@@ -41,7 +53,10 @@ end
 defmodule Flyteidl2.Cacheservice.V2.GetOrExtendReservationRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.cacheservice.v2.GetOrExtendReservationRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :base_request, 1,
     type: Flyteidl2.Cacheservice.GetOrExtendReservationRequest,
@@ -53,7 +68,10 @@ end
 defmodule Flyteidl2.Cacheservice.V2.ReleaseReservationRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.cacheservice.v2.ReleaseReservationRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :base_request, 1,
     type: Flyteidl2.Cacheservice.ReleaseReservationRequest,
@@ -67,7 +85,7 @@ defmodule Flyteidl2.Cacheservice.V2.CacheService.Service do
 
   use GRPC.Service,
     name: "flyteidl2.cacheservice.v2.CacheService",
-    protoc_gen_elixir_version: "0.15.0"
+    protoc_gen_elixir_version: "0.16.0"
 
   rpc :Get, Flyteidl2.Cacheservice.V2.GetCacheRequest, Flyteidl2.Cacheservice.GetCacheResponse
 

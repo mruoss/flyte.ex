@@ -1,7 +1,11 @@
 defmodule Flyteidl2.Core.SimpleType do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.core.SimpleType",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :NONE, 0
   field :INTEGER, 1
@@ -18,7 +22,11 @@ end
 defmodule Flyteidl2.Core.SchemaType.SchemaColumn.SchemaColumnType do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.core.SchemaType.SchemaColumn.SchemaColumnType",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :INTEGER, 0
   field :FLOAT, 1
@@ -31,7 +39,11 @@ end
 defmodule Flyteidl2.Core.BlobType.BlobDimensionality do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.core.BlobType.BlobDimensionality",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :SINGLE, 0
   field :MULTIPART, 1
@@ -40,7 +52,10 @@ end
 defmodule Flyteidl2.Core.SchemaType.SchemaColumn do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.SchemaType.SchemaColumn",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :name, 1, type: :string
   field :type, 2, type: Flyteidl2.Core.SchemaType.SchemaColumn.SchemaColumnType, enum: true
@@ -49,7 +64,10 @@ end
 defmodule Flyteidl2.Core.SchemaType do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.SchemaType",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :columns, 3, repeated: true, type: Flyteidl2.Core.SchemaType.SchemaColumn
 end
@@ -57,7 +75,10 @@ end
 defmodule Flyteidl2.Core.StructuredDatasetType.DatasetColumn do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.StructuredDatasetType.DatasetColumn",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :name, 1, type: :string
   field :literal_type, 2, type: Flyteidl2.Core.LiteralType, json_name: "literalType"
@@ -66,7 +87,10 @@ end
 defmodule Flyteidl2.Core.StructuredDatasetType do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.StructuredDatasetType",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :columns, 1, repeated: true, type: Flyteidl2.Core.StructuredDatasetType.DatasetColumn
   field :format, 2, type: :string
@@ -77,7 +101,10 @@ end
 defmodule Flyteidl2.Core.BlobType do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.BlobType",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :format, 1, type: :string
   field :dimensionality, 2, type: Flyteidl2.Core.BlobType.BlobDimensionality, enum: true
@@ -86,7 +113,10 @@ end
 defmodule Flyteidl2.Core.EnumType do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.EnumType",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :values, 1, repeated: true, type: :string
 end
@@ -94,7 +124,10 @@ end
 defmodule Flyteidl2.Core.UnionType do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.UnionType",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :variants, 1, repeated: true, type: Flyteidl2.Core.LiteralType
 end
@@ -102,7 +135,11 @@ end
 defmodule Flyteidl2.Core.TypeStructure.DataclassTypeEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.TypeStructure.DataclassTypeEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: Flyteidl2.Core.LiteralType
@@ -111,7 +148,10 @@ end
 defmodule Flyteidl2.Core.TypeStructure do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.TypeStructure",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :tag, 1, type: :string
 
@@ -125,7 +165,10 @@ end
 defmodule Flyteidl2.Core.TypeAnnotation do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.TypeAnnotation",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :annotations, 1, type: Google.Protobuf.Struct
 end
@@ -133,7 +176,10 @@ end
 defmodule Flyteidl2.Core.LiteralType do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.LiteralType",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :type, 0
 
@@ -163,7 +209,10 @@ end
 defmodule Flyteidl2.Core.OutputReference do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.OutputReference",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :node_id, 1, type: :string, json_name: "nodeId"
   field :var, 2, type: :string
@@ -177,7 +226,10 @@ end
 defmodule Flyteidl2.Core.PromiseAttribute do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.PromiseAttribute",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :value, 0
 
@@ -188,7 +240,10 @@ end
 defmodule Flyteidl2.Core.Error do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.Error",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :failed_node_id, 1, type: :string, json_name: "failedNodeId"
   field :message, 2, type: :string

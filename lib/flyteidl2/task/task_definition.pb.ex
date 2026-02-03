@@ -1,7 +1,10 @@
 defmodule Flyteidl2.Task.TaskName do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.task.TaskName",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :org, 1, type: :string, deprecated: false
   field :project, 2, type: :string, deprecated: false
@@ -12,7 +15,10 @@ end
 defmodule Flyteidl2.Task.TaskIdentifier do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.task.TaskIdentifier",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :org, 1, type: :string, deprecated: false
   field :project, 2, type: :string, deprecated: false
@@ -24,7 +30,10 @@ end
 defmodule Flyteidl2.Task.TaskTriggersSummary.TriggerDetails do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.task.TaskTriggersSummary.TriggerDetails",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :name, 1, type: :string
   field :active, 2, type: :bool
@@ -37,7 +46,10 @@ end
 defmodule Flyteidl2.Task.TaskTriggersSummary.TriggerStats do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.task.TaskTriggersSummary.TriggerStats",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :total, 1, type: :uint32
   field :active, 2, type: :uint32
@@ -46,7 +58,10 @@ end
 defmodule Flyteidl2.Task.TaskTriggersSummary do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.task.TaskTriggersSummary",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :summary, 0
 
@@ -57,7 +72,10 @@ end
 defmodule Flyteidl2.Task.LatestRunSummary do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.task.LatestRunSummary",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :run_id, 1, type: Flyteidl2.Common.RunIdentifier, json_name: "runId"
   field :run_time, 2, type: Google.Protobuf.Timestamp, json_name: "runTime"
@@ -68,7 +86,10 @@ end
 defmodule Flyteidl2.Task.TaskMetadata do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.task.TaskMetadata",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :deployed_by, 1,
     type: Flyteidl2.Common.EnrichedIdentity,
@@ -94,7 +115,10 @@ end
 defmodule Flyteidl2.Task.TaskSummary do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.task.TaskSummary",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :latest_run, 1,
     proto3_optional: true,
@@ -105,7 +129,10 @@ end
 defmodule Flyteidl2.Task.Task do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.task.Task",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :task_id, 1, type: Flyteidl2.Task.TaskIdentifier, json_name: "taskId", deprecated: false
   field :metadata, 2, type: Flyteidl2.Task.TaskMetadata, deprecated: false
@@ -119,7 +146,10 @@ end
 defmodule Flyteidl2.Task.SourceCode do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.task.SourceCode",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :link, 1, type: :string
 end
@@ -127,7 +157,10 @@ end
 defmodule Flyteidl2.Task.DocumentationEntity do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.task.DocumentationEntity",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :short_description, 1, type: :string, json_name: "shortDescription", deprecated: false
   field :long_description, 2, type: :string, json_name: "longDescription", deprecated: false
@@ -137,7 +170,10 @@ end
 defmodule Flyteidl2.Task.TaskSpec do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.task.TaskSpec",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :task_template, 1,
     type: Flyteidl2.Core.TaskTemplate,
@@ -157,7 +193,10 @@ end
 defmodule Flyteidl2.Task.TraceSpec do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.task.TraceSpec",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :interface, 1, type: Flyteidl2.Core.TypedInterface
 end
@@ -165,7 +204,10 @@ end
 defmodule Flyteidl2.Task.TaskDetails do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.task.TaskDetails",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :task_id, 1, type: Flyteidl2.Task.TaskIdentifier, json_name: "taskId", deprecated: false
   field :metadata, 2, type: Flyteidl2.Task.TaskMetadata, deprecated: false
@@ -175,7 +217,10 @@ end
 defmodule Flyteidl2.Task.TaskTrigger do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.task.TaskTrigger",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :name, 1, type: :string, deprecated: false
   field :spec, 2, type: Flyteidl2.Task.TaskTriggerSpec, deprecated: false
@@ -188,7 +233,10 @@ end
 defmodule Flyteidl2.Task.TaskTriggerSpec do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.task.TaskTriggerSpec",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :active, 1, type: :bool
   field :inputs, 2, type: Flyteidl2.Task.Inputs

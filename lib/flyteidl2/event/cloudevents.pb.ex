@@ -1,7 +1,11 @@
 defmodule Flyteidl2.Event.CloudEventWorkflowExecution.LabelsEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.event.CloudEventWorkflowExecution.LabelsEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: :string
@@ -10,7 +14,10 @@ end
 defmodule Flyteidl2.Event.CloudEventWorkflowExecution do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.event.CloudEventWorkflowExecution",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :raw_event, 1, type: Flyteidl2.Event.WorkflowExecutionEvent, json_name: "rawEvent"
   field :output_interface, 2, type: Flyteidl2.Core.TypedInterface, json_name: "outputInterface"
@@ -36,7 +43,11 @@ end
 defmodule Flyteidl2.Event.CloudEventNodeExecution.LabelsEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.event.CloudEventNodeExecution.LabelsEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: :string
@@ -45,7 +56,10 @@ end
 defmodule Flyteidl2.Event.CloudEventNodeExecution do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.event.CloudEventNodeExecution",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :raw_event, 1, type: Flyteidl2.Event.NodeExecutionEvent, json_name: "rawEvent"
   field :task_exec_id, 2, type: Flyteidl2.Core.TaskExecutionIdentifier, json_name: "taskExecId"
@@ -68,7 +82,11 @@ end
 defmodule Flyteidl2.Event.CloudEventTaskExecution.LabelsEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.event.CloudEventTaskExecution.LabelsEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: :string
@@ -77,7 +95,10 @@ end
 defmodule Flyteidl2.Event.CloudEventTaskExecution do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.event.CloudEventTaskExecution",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :raw_event, 1, type: Flyteidl2.Event.TaskExecutionEvent, json_name: "rawEvent"
 
@@ -90,7 +111,10 @@ end
 defmodule Flyteidl2.Event.CloudEventExecutionStart do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.event.CloudEventExecutionStart",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :execution_id, 1,
     type: Flyteidl2.Core.WorkflowExecutionIdentifier,

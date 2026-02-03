@@ -1,7 +1,11 @@
 defmodule Flyteidl2.Core.WorkflowExecution.Phase do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.core.WorkflowExecution.Phase",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :UNDEFINED, 0
   field :QUEUED, 1
@@ -18,7 +22,11 @@ end
 defmodule Flyteidl2.Core.NodeExecution.Phase do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.core.NodeExecution.Phase",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :UNDEFINED, 0
   field :QUEUED, 1
@@ -36,7 +44,11 @@ end
 defmodule Flyteidl2.Core.TaskExecution.Phase do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.core.TaskExecution.Phase",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :UNDEFINED, 0
   field :QUEUED, 1
@@ -52,7 +64,11 @@ end
 defmodule Flyteidl2.Core.ExecutionError.ErrorKind do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.core.ExecutionError.ErrorKind",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :UNKNOWN, 0
   field :USER, 1
@@ -62,7 +78,11 @@ end
 defmodule Flyteidl2.Core.TaskLog.MessageFormat do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.core.TaskLog.MessageFormat",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :UNKNOWN, 0
   field :CSV, 1
@@ -72,7 +92,11 @@ end
 defmodule Flyteidl2.Core.TaskLog.LinkType do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.core.TaskLog.LinkType",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :EXTERNAL, 0
   field :DASHBOARD, 1
@@ -82,7 +106,11 @@ end
 defmodule Flyteidl2.Core.QualityOfService.Tier do
   @moduledoc false
 
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.core.QualityOfService.Tier",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :UNDEFINED, 0
   field :HIGH, 1
@@ -93,25 +121,37 @@ end
 defmodule Flyteidl2.Core.WorkflowExecution do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.WorkflowExecution",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 end
 
 defmodule Flyteidl2.Core.NodeExecution do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.NodeExecution",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 end
 
 defmodule Flyteidl2.Core.TaskExecution do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.TaskExecution",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 end
 
 defmodule Flyteidl2.Core.ExecutionError do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.ExecutionError",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :code, 1, type: :string
   field :message, 2, type: :string
@@ -124,7 +164,10 @@ end
 defmodule Flyteidl2.Core.TaskLog do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.TaskLog",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :uri, 1, type: :string
   field :name, 2, type: :string
@@ -145,7 +188,10 @@ end
 defmodule Flyteidl2.Core.LogContext do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.LogContext",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :pods, 1, repeated: true, type: Flyteidl2.Core.PodLogContext
   field :primary_pod_name, 2, type: :string, json_name: "primaryPodName"
@@ -154,7 +200,10 @@ end
 defmodule Flyteidl2.Core.PodLogContext do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.PodLogContext",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :namespace, 1, type: :string
   field :pod_name, 2, type: :string, json_name: "podName"
@@ -170,7 +219,10 @@ end
 defmodule Flyteidl2.Core.ContainerContext.ProcessContext do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.ContainerContext.ProcessContext",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :container_start_time, 1, type: Google.Protobuf.Timestamp, json_name: "containerStartTime"
   field :container_end_time, 2, type: Google.Protobuf.Timestamp, json_name: "containerEndTime"
@@ -179,7 +231,10 @@ end
 defmodule Flyteidl2.Core.ContainerContext do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.ContainerContext",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :container_name, 1, type: :string, json_name: "containerName"
   field :process, 2, type: Flyteidl2.Core.ContainerContext.ProcessContext
@@ -188,7 +243,10 @@ end
 defmodule Flyteidl2.Core.QualityOfServiceSpec do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.QualityOfServiceSpec",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :queueing_budget, 1, type: Google.Protobuf.Duration, json_name: "queueingBudget"
 end
@@ -196,7 +254,10 @@ end
 defmodule Flyteidl2.Core.QualityOfService do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.core.QualityOfService",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :designation, 0
 

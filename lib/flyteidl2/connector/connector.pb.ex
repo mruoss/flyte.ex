@@ -1,7 +1,11 @@
 defmodule Flyteidl2.Connector.TaskExecutionMetadata.LabelsEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.connector.TaskExecutionMetadata.LabelsEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: :string
@@ -10,7 +14,11 @@ end
 defmodule Flyteidl2.Connector.TaskExecutionMetadata.AnnotationsEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.connector.TaskExecutionMetadata.AnnotationsEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: :string
@@ -19,7 +27,11 @@ end
 defmodule Flyteidl2.Connector.TaskExecutionMetadata.EnvironmentVariablesEntry do
   @moduledoc false
 
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.connector.TaskExecutionMetadata.EnvironmentVariablesEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :key, 1, type: :string
   field :value, 2, type: :string
@@ -28,7 +40,10 @@ end
 defmodule Flyteidl2.Connector.TaskExecutionMetadata do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.connector.TaskExecutionMetadata",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :task_execution_id, 1,
     type: Flyteidl2.Core.TaskExecutionIdentifier,
@@ -67,7 +82,10 @@ end
 defmodule Flyteidl2.Connector.CreateTaskRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.connector.CreateTaskRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :inputs, 1, type: Flyteidl2.Task.Inputs
   field :template, 2, type: Flyteidl2.Core.TaskTemplate
@@ -83,7 +101,10 @@ end
 defmodule Flyteidl2.Connector.CreateTaskResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.connector.CreateTaskResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :resource_meta, 1, type: :bytes, json_name: "resourceMeta"
 end
@@ -91,7 +112,10 @@ end
 defmodule Flyteidl2.Connector.CreateRequestHeader do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.connector.CreateRequestHeader",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :template, 1, type: Flyteidl2.Core.TaskTemplate
   field :output_prefix, 2, type: :string, json_name: "outputPrefix"
@@ -107,7 +131,10 @@ end
 defmodule Flyteidl2.Connector.GetTaskRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.connector.GetTaskRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :resource_meta, 2, type: :bytes, json_name: "resourceMeta"
   field :task_category, 3, type: Flyteidl2.Connector.TaskCategory, json_name: "taskCategory"
@@ -118,7 +145,10 @@ end
 defmodule Flyteidl2.Connector.GetTaskResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.connector.GetTaskResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :resource, 1, type: Flyteidl2.Connector.Resource
 end
@@ -126,7 +156,10 @@ end
 defmodule Flyteidl2.Connector.Resource do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.connector.Resource",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :outputs, 2, type: Flyteidl2.Task.Outputs
   field :message, 3, type: :string
@@ -138,7 +171,10 @@ end
 defmodule Flyteidl2.Connector.DeleteTaskRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.connector.DeleteTaskRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :resource_meta, 2, type: :bytes, json_name: "resourceMeta"
   field :task_category, 3, type: Flyteidl2.Connector.TaskCategory, json_name: "taskCategory"
@@ -148,13 +184,19 @@ end
 defmodule Flyteidl2.Connector.DeleteTaskResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.connector.DeleteTaskResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 end
 
 defmodule Flyteidl2.Connector.Connector do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.connector.Connector",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :name, 1, type: :string
 
@@ -167,7 +209,10 @@ end
 defmodule Flyteidl2.Connector.TaskCategory do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.connector.TaskCategory",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :name, 1, type: :string
   field :version, 2, type: :int32
@@ -176,7 +221,10 @@ end
 defmodule Flyteidl2.Connector.GetConnectorRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.connector.GetConnectorRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :name, 1, type: :string
 end
@@ -184,7 +232,10 @@ end
 defmodule Flyteidl2.Connector.GetConnectorResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.connector.GetConnectorResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :connector, 1, type: Flyteidl2.Connector.Connector
 end
@@ -192,13 +243,19 @@ end
 defmodule Flyteidl2.Connector.ListConnectorsRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.connector.ListConnectorsRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 end
 
 defmodule Flyteidl2.Connector.ListConnectorsResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.connector.ListConnectorsResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :connectors, 1, repeated: true, type: Flyteidl2.Connector.Connector
 end
@@ -206,7 +263,10 @@ end
 defmodule Flyteidl2.Connector.GetTaskMetricsRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.connector.GetTaskMetricsRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :resource_meta, 2, type: :bytes, json_name: "resourceMeta"
   field :queries, 3, repeated: true, type: :string
@@ -219,7 +279,10 @@ end
 defmodule Flyteidl2.Connector.GetTaskMetricsResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.connector.GetTaskMetricsResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :results, 1, repeated: true, type: Flyteidl2.Core.ExecutionMetricResult
 end
@@ -227,7 +290,10 @@ end
 defmodule Flyteidl2.Connector.GetTaskLogsRequest do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.connector.GetTaskLogsRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :resource_meta, 2, type: :bytes, json_name: "resourceMeta"
   field :lines, 3, type: :uint64
@@ -238,7 +304,10 @@ end
 defmodule Flyteidl2.Connector.GetTaskLogsResponseHeader do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.connector.GetTaskLogsResponseHeader",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :token, 1, type: :string
 end
@@ -246,7 +315,10 @@ end
 defmodule Flyteidl2.Connector.GetTaskLogsResponseBody do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.connector.GetTaskLogsResponseBody",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   field :results, 1, repeated: true, type: :string
 end
@@ -254,7 +326,10 @@ end
 defmodule Flyteidl2.Connector.GetTaskLogsResponse do
   @moduledoc false
 
-  use Protobuf, protoc_gen_elixir_version: "0.15.0", syntax: :proto3
+  use Protobuf,
+    full_name: "flyteidl2.connector.GetTaskLogsResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
 
   oneof :part, 0
 
