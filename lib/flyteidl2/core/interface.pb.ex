@@ -12,12 +12,11 @@ defmodule Flyteidl2.Core.Variable do
   field :artifact_tag, 4, type: Flyteidl2.Core.ArtifactTag, json_name: "artifactTag"
 end
 
-defmodule Flyteidl2.Core.VariableMap.VariablesEntry do
+defmodule Flyteidl2.Core.VariableEntry do
   @moduledoc false
 
   use Protobuf,
-    full_name: "flyteidl2.core.VariableMap.VariablesEntry",
-    map: true,
+    full_name: "flyteidl2.core.VariableEntry",
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
@@ -33,7 +32,7 @@ defmodule Flyteidl2.Core.VariableMap do
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
-  field :variables, 1, repeated: true, type: Flyteidl2.Core.VariableMap.VariablesEntry, map: true
+  field :variables, 1, repeated: true, type: Flyteidl2.Core.VariableEntry
 end
 
 defmodule Flyteidl2.Core.TypedInterface do
