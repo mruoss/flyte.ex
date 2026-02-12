@@ -504,4 +504,8 @@ defmodule Flyteidl2.Workflow.TaskGroup do
     repeated: true,
     type: Flyteidl2.Workflow.TaskGroup.PhaseCounts,
     json_name: "phaseCounts"
+
+  field :average_time_to_running, 14,
+    type: Google.Protobuf.Duration,
+    json_name: "averageTimeToRunning"
 end
