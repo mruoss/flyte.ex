@@ -87,6 +87,9 @@ defmodule Flyteidl2.Logs.Dataplane.LoggingContext do
     type: Flyteidl2.Logs.Dataplane.LoggingContext.KubernetesPodLabelsEntry,
     json_name: "kubernetesPodLabels",
     map: true
+
+  field :order, 10, type: Flyteidl2.Common.Sort.Direction, enum: true
+  field :number_of_batches, 11, type: :uint64, json_name: "numberOfBatches"
 end
 
 defmodule Flyteidl2.Logs.Dataplane.ContainerIdentifier do
