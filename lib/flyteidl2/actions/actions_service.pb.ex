@@ -1,8 +1,8 @@
-defmodule Flyteidl2.Actions.EnqueueRequest do
+defmodule Flyteidl2.Actions.Action do
   @moduledoc false
 
   use Protobuf,
-    full_name: "flyteidl2.actions.EnqueueRequest",
+    full_name: "flyteidl2.actions.Action",
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
@@ -18,14 +18,25 @@ defmodule Flyteidl2.Actions.EnqueueRequest do
     type: :string,
     json_name: "parentActionName"
 
-  field :run_spec, 3, type: Flyteidl2.Task.RunSpec, json_name: "runSpec"
-  field :input_uri, 6, type: :string, json_name: "inputUri", deprecated: false
-  field :run_output_base, 7, type: :string, json_name: "runOutputBase", deprecated: false
-  field :group, 8, type: :string
-  field :subject, 9, type: :string
-  field :task, 10, type: Flyteidl2.Workflow.TaskAction, oneof: 0
-  field :trace, 11, type: Flyteidl2.Workflow.TraceAction, oneof: 0
-  field :condition, 12, type: Flyteidl2.Workflow.ConditionAction, oneof: 0
+  field :input_uri, 3, type: :string, json_name: "inputUri", deprecated: false
+  field :run_output_base, 4, type: :string, json_name: "runOutputBase", deprecated: false
+  field :group, 5, type: :string
+  field :subject, 6, type: :string
+  field :task, 7, type: Flyteidl2.Workflow.TaskAction, oneof: 0
+  field :trace, 8, type: Flyteidl2.Workflow.TraceAction, oneof: 0
+  field :condition, 9, type: Flyteidl2.Workflow.ConditionAction, oneof: 0
+end
+
+defmodule Flyteidl2.Actions.EnqueueRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.actions.EnqueueRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :action, 1, type: Flyteidl2.Actions.Action, deprecated: false
+  field :run_spec, 2, type: Flyteidl2.Task.RunSpec, json_name: "runSpec"
 end
 
 defmodule Flyteidl2.Actions.EnqueueResponse do
