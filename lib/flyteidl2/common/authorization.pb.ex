@@ -24,6 +24,7 @@ defmodule Flyteidl2.Common.Action do
   field :ACTION_EDIT_CLUSTER_RELATED_ATTRIBUTES, 14
   field :ACTION_EDIT_UNUSED_ATTRIBUTES, 15
   field :ACTION_SUPPORT_SYSTEM_LOGS, 16
+  field :ACTION_VIEW_IDENTITIES, 17
 end
 
 defmodule Flyteidl2.Common.Organization do
