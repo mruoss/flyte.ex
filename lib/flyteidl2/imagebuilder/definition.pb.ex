@@ -98,6 +98,7 @@ defmodule Flyteidl2.Imagebuilder.UVProject do
   field :uvlock, 2, type: :string
   field :options, 3, type: Flyteidl2.Imagebuilder.PipOptions
   field :secret_mounts, 4, repeated: true, type: Flyteidl2.Core.Secret, json_name: "secretMounts"
+  field :source_dir, 5, type: :string, json_name: "sourceDir"
 end
 
 defmodule Flyteidl2.Imagebuilder.Commands do

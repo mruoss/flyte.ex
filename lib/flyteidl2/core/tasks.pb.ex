@@ -243,6 +243,7 @@ defmodule Flyteidl2.Core.TaskMetadata do
   field :metadata, 16, type: Flyteidl2.Core.K8sObjectMetadata
   field :debuggable, 17, type: :bool
   field :log_links, 18, repeated: true, type: Flyteidl2.Core.TaskLog, json_name: "logLinks"
+  field :image_build_run, 19, type: Flyteidl2.Common.RunIdentifier, json_name: "imageBuildRun"
 end
 
 defmodule Flyteidl2.Core.TaskTemplate.ConfigEntry do
