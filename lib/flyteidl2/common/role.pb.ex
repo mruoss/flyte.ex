@@ -17,6 +17,7 @@ defmodule Flyteidl2.Common.RoleType do
   field :ROLE_TYPE_SERVERLESS_VIEWER, 7
   field :ROLE_TYPE_SERVERLESS_CONTRIBUTOR, 8
   field :ROLE_TYPE_SUPPORT, 9
+  field :ROLE_TYPE_SYSTEM_PROVISIONED_ACCESS, 10
 end
 
 defmodule Flyteidl2.Common.Role do
