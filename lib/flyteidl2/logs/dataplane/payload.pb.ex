@@ -129,6 +129,7 @@ defmodule Flyteidl2.Logs.Dataplane.ContainerSelector do
   field :kubernetes_pod_name_prefix, 3, type: :string, json_name: "kubernetesPodNamePrefix"
   field :kubernetes_container_name, 4, type: :string, json_name: "kubernetesContainerName"
   field :kubernetes_pod_label_selector, 5, type: :string, json_name: "kubernetesPodLabelSelector"
+  field :node_name, 6, type: :string, json_name: "nodeName"
 end
 
 defmodule Flyteidl2.Logs.Dataplane.LiveLogsOptions do

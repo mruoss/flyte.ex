@@ -49,6 +49,7 @@ defmodule Flyteidl2.Secret.GetSecretRequest do
     syntax: :proto3
 
   field :id, 1, type: Flyteidl2.Secret.SecretIdentifier, deprecated: false
+  field :include_system_secrets, 2, type: :bool, json_name: "includeSystemSecrets"
 end
 
 defmodule Flyteidl2.Secret.GetSecretResponse do
@@ -71,6 +72,7 @@ defmodule Flyteidl2.Secret.DeleteSecretRequest do
     syntax: :proto3
 
   field :id, 1, type: Flyteidl2.Secret.SecretIdentifier, deprecated: false
+  field :include_system_secrets, 2, type: :bool, json_name: "includeSystemSecrets"
 end
 
 defmodule Flyteidl2.Secret.DeleteSecretResponse do
@@ -114,6 +116,8 @@ defmodule Flyteidl2.Secret.ListSecretsRequest do
     type: Flyteidl2.Secret.ListSecretsRequest.PerClusterTokensEntry,
     json_name: "perClusterTokens",
     map: true
+
+  field :include_system_secrets, 7, type: :bool, json_name: "includeSystemSecrets"
 end
 
 defmodule Flyteidl2.Secret.ListSecretsResponse.PerClusterTokensEntry do

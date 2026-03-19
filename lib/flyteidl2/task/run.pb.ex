@@ -106,6 +106,8 @@ defmodule Flyteidl2.Task.RunSpec do
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
+  oneof :notification_settings, 0
+
   field :labels, 1, type: Flyteidl2.Task.Labels
   field :annotations, 2, type: Flyteidl2.Task.Annotations
   field :envs, 3, type: Flyteidl2.Task.Envs
@@ -115,4 +117,46 @@ defmodule Flyteidl2.Task.RunSpec do
   field :raw_data_storage, 7, type: Flyteidl2.Task.RawDataStorage, json_name: "rawDataStorage"
   field :security_context, 8, type: Flyteidl2.Core.SecurityContext, json_name: "securityContext"
   field :cache_config, 9, type: Flyteidl2.Task.CacheConfig, json_name: "cacheConfig"
+  field :notification_rule_name, 10, type: :string, json_name: "notificationRuleName", oneof: 0
+
+  field :notification_rules, 11,
+    type: Flyteidl2.Task.InlineRuleList,
+    json_name: "notificationRules",
+    oneof: 0
+end
+
+defmodule Flyteidl2.Task.InlineRuleList do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.task.InlineRuleList",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :rules, 1, repeated: true, type: Flyteidl2.Task.InlineRule, deprecated: false
+end
+
+defmodule Flyteidl2.Task.InlineRule do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.task.InlineRule",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  oneof :delivery, 0
+
+  field :on_phases, 1,
+    repeated: true,
+    type: Flyteidl2.Common.ActionPhase,
+    json_name: "onPhases",
+    enum: true,
+    deprecated: false
+
+  field :delivery_config_name, 2, type: :string, json_name: "deliveryConfigName", oneof: 0
+
+  field :delivery_template, 3,
+    type: Flyteidl2.Notification.DeliveryConfigTemplate,
+    json_name: "deliveryTemplate",
+    oneof: 0
 end
