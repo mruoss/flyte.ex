@@ -53,6 +53,7 @@ defmodule Flyteidl2.Task.ListTasksRequest.KnownFilter do
   oneof :filter_by, 0
 
   field :deployed_by, 1, type: :string, json_name: "deployedBy", oneof: 0
+  field :is_entrypoint, 2, type: :bool, json_name: "isEntrypoint", oneof: 0
 end
 
 defmodule Flyteidl2.Task.ListTasksRequest do
