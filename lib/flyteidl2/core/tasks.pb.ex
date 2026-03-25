@@ -244,6 +244,8 @@ defmodule Flyteidl2.Core.TaskMetadata do
   field :debuggable, 17, type: :bool
   field :log_links, 18, repeated: true, type: Flyteidl2.Core.TaskLog, json_name: "logLinks"
   field :image_build_run, 19, type: Flyteidl2.Common.RunIdentifier, json_name: "imageBuildRun"
+  field :is_entrypoint, 20, type: :bool, json_name: "isEntrypoint"
+  field :code_bundle_uri, 21, type: :string, json_name: "codeBundleUri"
 end
 
 defmodule Flyteidl2.Core.TaskTemplate.ConfigEntry do
