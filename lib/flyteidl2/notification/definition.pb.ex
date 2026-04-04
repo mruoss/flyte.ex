@@ -102,6 +102,50 @@ defmodule Flyteidl2.Notification.EmailRecipient do
   field :address, 2, type: :string
 end
 
+defmodule Flyteidl2.Notification.InlineEmailTemplate do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.notification.InlineEmailTemplate",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :subject, 1, type: :string, deprecated: false
+  field :html_template, 2, type: :string, json_name: "htmlTemplate", deprecated: false
+  field :text_template, 3, type: :string, json_name: "textTemplate"
+end
+
+defmodule Flyteidl2.Notification.ProviderEmailTemplate.TemplateDataEntry do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.notification.ProviderEmailTemplate.TemplateDataEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :key, 1, type: :string
+  field :value, 2, type: :string
+end
+
+defmodule Flyteidl2.Notification.ProviderEmailTemplate do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.notification.ProviderEmailTemplate",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :template_id, 1, type: :string, json_name: "templateId", deprecated: false
+
+  field :template_data, 2,
+    repeated: true,
+    type: Flyteidl2.Notification.ProviderEmailTemplate.TemplateDataEntry,
+    json_name: "templateData",
+    map: true,
+    deprecated: false
+end
+
 defmodule Flyteidl2.Notification.EmailDeliveryTemplate do
   @moduledoc false
 
@@ -110,10 +154,15 @@ defmodule Flyteidl2.Notification.EmailDeliveryTemplate do
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
-  field :subject, 1, type: :string, deprecated: false
-  field :to, 2, repeated: true, type: Flyteidl2.Notification.EmailRecipient, deprecated: false
-  field :cc, 3, repeated: true, type: Flyteidl2.Notification.EmailRecipient
-  field :bcc, 4, repeated: true, type: Flyteidl2.Notification.EmailRecipient
-  field :html_template, 5, type: :string, json_name: "htmlTemplate", deprecated: false
-  field :text_template, 6, type: :string, json_name: "textTemplate"
+  oneof :content, 0
+
+  field :to, 1, repeated: true, type: Flyteidl2.Notification.EmailRecipient, deprecated: false
+  field :cc, 2, repeated: true, type: Flyteidl2.Notification.EmailRecipient
+  field :bcc, 3, repeated: true, type: Flyteidl2.Notification.EmailRecipient
+  field :inline, 4, type: Flyteidl2.Notification.InlineEmailTemplate, oneof: 0
+
+  field :provider_template, 5,
+    type: Flyteidl2.Notification.ProviderEmailTemplate,
+    json_name: "providerTemplate",
+    oneof: 0
 end

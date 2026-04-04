@@ -63,7 +63,7 @@ defmodule Flyteidl2.Actions.UpdateRequest do
 
   field :attempt, 2, type: :uint32, deprecated: false
   field :status, 3, type: Flyteidl2.Workflow.ActionStatus, deprecated: false
-  field :state, 4, type: :string, deprecated: false
+  field :state, 4, type: :string
 end
 
 defmodule Flyteidl2.Actions.UpdateResponse do
