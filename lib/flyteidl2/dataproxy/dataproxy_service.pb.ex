@@ -48,6 +48,39 @@ defmodule Flyteidl2.Dataproxy.CreateUploadLocationResponse do
     map: true
 end
 
+defmodule Flyteidl2.Dataproxy.UploadInputsRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.dataproxy.UploadInputsRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  oneof :id, 0
+
+  oneof :task, 1
+
+  field :run_id, 1, type: Flyteidl2.Common.RunIdentifier, json_name: "runId", oneof: 0
+  field :project_id, 2, type: Flyteidl2.Common.ProjectIdentifier, json_name: "projectId", oneof: 0
+  field :task_id, 3, type: Flyteidl2.Task.TaskIdentifier, json_name: "taskId", oneof: 1
+  field :task_spec, 4, type: Flyteidl2.Task.TaskSpec, json_name: "taskSpec", oneof: 1
+  field :trigger_name, 5, type: Flyteidl2.Common.TriggerName, json_name: "triggerName", oneof: 1
+  field :inputs, 6, type: Flyteidl2.Task.Inputs
+end
+
+defmodule Flyteidl2.Dataproxy.UploadInputsResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.dataproxy.UploadInputsResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :offloaded_input_data, 1,
+    type: Flyteidl2.Common.OffloadedInputData,
+    json_name: "offloadedInputData"
+end
+
 defmodule Flyteidl2.Dataproxy.DataProxyService.Service do
   @moduledoc false
 
@@ -58,6 +91,10 @@ defmodule Flyteidl2.Dataproxy.DataProxyService.Service do
   rpc :CreateUploadLocation,
       Flyteidl2.Dataproxy.CreateUploadLocationRequest,
       Flyteidl2.Dataproxy.CreateUploadLocationResponse
+
+  rpc :UploadInputs,
+      Flyteidl2.Dataproxy.UploadInputsRequest,
+      Flyteidl2.Dataproxy.UploadInputsResponse
 end
 
 defmodule Flyteidl2.Dataproxy.DataProxyService.Stub do

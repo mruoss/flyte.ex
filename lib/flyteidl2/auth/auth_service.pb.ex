@@ -68,6 +68,7 @@ defmodule Flyteidl2.Auth.GetPublicClientConfigResponse do
   field :authorization_metadata_key, 4, type: :string, json_name: "authorizationMetadataKey"
   field :service_http_endpoint, 5, type: :string, json_name: "serviceHttpEndpoint"
   field :audience, 6, type: :string
+  field :dataplane_domain, 7, type: :string, json_name: "dataplaneDomain"
 end
 
 defmodule Flyteidl2.Auth.AuthMetadataService.Service do
