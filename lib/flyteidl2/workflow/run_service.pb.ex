@@ -180,6 +180,60 @@ defmodule Flyteidl2.Workflow.GetActionDataResponse do
   field :outputs, 2, type: Flyteidl2.Task.Outputs
 end
 
+defmodule Flyteidl2.Workflow.GetActionDataURIsRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.GetActionDataURIsRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :action_id, 1,
+    type: Flyteidl2.Common.ActionIdentifier,
+    json_name: "actionId",
+    deprecated: false
+end
+
+defmodule Flyteidl2.Workflow.GetActionDataURIsResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.GetActionDataURIsResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :inputs_uri, 1, type: :string, json_name: "inputsUri"
+  field :outputs_uri, 2, type: :string, json_name: "outputsUri"
+end
+
+defmodule Flyteidl2.Workflow.GetActionLogContextRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.GetActionLogContextRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :action_id, 1,
+    type: Flyteidl2.Common.ActionIdentifier,
+    json_name: "actionId",
+    deprecated: false
+
+  field :attempt, 2, type: :uint32, deprecated: false
+end
+
+defmodule Flyteidl2.Workflow.GetActionLogContextResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.GetActionLogContextResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :log_context, 1, type: Flyteidl2.Core.LogContext, json_name: "logContext"
+  field :cluster, 2, type: :string
+end
+
 defmodule Flyteidl2.Workflow.ListRunsRequest do
   @moduledoc false
 
@@ -442,6 +496,14 @@ defmodule Flyteidl2.Workflow.RunService.Service do
   rpc :WatchGroups,
       Flyteidl2.Workflow.WatchGroupsRequest,
       stream(Flyteidl2.Workflow.WatchGroupsResponse)
+
+  rpc :GetActionDataURIs,
+      Flyteidl2.Workflow.GetActionDataURIsRequest,
+      Flyteidl2.Workflow.GetActionDataURIsResponse
+
+  rpc :GetActionLogContext,
+      Flyteidl2.Workflow.GetActionLogContextRequest,
+      Flyteidl2.Workflow.GetActionLogContextResponse
 end
 
 defmodule Flyteidl2.Workflow.RunService.Stub do
