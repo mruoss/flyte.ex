@@ -1,9 +1,9 @@
-defmodule Flyteidl2.Org.SettingState do
+defmodule Flyteidl2.Settings.SettingState do
   @moduledoc false
 
   use Protobuf,
     enum: true,
-    full_name: "flyteidl2.org.SettingState",
+    full_name: "flyteidl2.settings.SettingState",
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
@@ -12,12 +12,12 @@ defmodule Flyteidl2.Org.SettingState do
   field :SETTING_STATE_VALUE, 2
 end
 
-defmodule Flyteidl2.Org.ScopeLevel do
+defmodule Flyteidl2.Settings.ScopeLevel do
   @moduledoc false
 
   use Protobuf,
     enum: true,
-    full_name: "flyteidl2.org.ScopeLevel",
+    full_name: "flyteidl2.settings.ScopeLevel",
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
@@ -26,22 +26,22 @@ defmodule Flyteidl2.Org.ScopeLevel do
   field :SCOPE_LEVEL_PROJECT, 2
 end
 
-defmodule Flyteidl2.Org.StringValues do
+defmodule Flyteidl2.Settings.StringValues do
   @moduledoc false
 
   use Protobuf,
-    full_name: "flyteidl2.org.StringValues",
+    full_name: "flyteidl2.settings.StringValues",
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
   field :values, 1, repeated: true, type: :string
 end
 
-defmodule Flyteidl2.Org.StringMap.EntriesEntry do
+defmodule Flyteidl2.Settings.StringMap.EntriesEntry do
   @moduledoc false
 
   use Protobuf,
-    full_name: "flyteidl2.org.StringMap.EntriesEntry",
+    full_name: "flyteidl2.settings.StringMap.EntriesEntry",
     map: true,
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
@@ -50,22 +50,22 @@ defmodule Flyteidl2.Org.StringMap.EntriesEntry do
   field :value, 2, type: :string
 end
 
-defmodule Flyteidl2.Org.StringMap do
+defmodule Flyteidl2.Settings.StringMap do
   @moduledoc false
 
   use Protobuf,
-    full_name: "flyteidl2.org.StringMap",
+    full_name: "flyteidl2.settings.StringMap",
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
-  field :entries, 1, repeated: true, type: Flyteidl2.Org.StringMap.EntriesEntry, map: true
+  field :entries, 1, repeated: true, type: Flyteidl2.Settings.StringMap.EntriesEntry, map: true
 end
 
-defmodule Flyteidl2.Org.SettingsKey do
+defmodule Flyteidl2.Settings.SettingsKey do
   @moduledoc false
 
   use Protobuf,
-    full_name: "flyteidl2.org.SettingsKey",
+    full_name: "flyteidl2.settings.SettingsKey",
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
@@ -74,184 +74,188 @@ defmodule Flyteidl2.Org.SettingsKey do
   field :project, 3, type: :string
 end
 
-defmodule Flyteidl2.Org.StringSetting do
+defmodule Flyteidl2.Settings.StringSetting do
   @moduledoc false
 
   use Protobuf,
-    full_name: "flyteidl2.org.StringSetting",
+    full_name: "flyteidl2.settings.StringSetting",
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
-  field :state, 1, type: Flyteidl2.Org.SettingState, enum: true
+  field :state, 1, type: Flyteidl2.Settings.SettingState, enum: true
   field :string_value, 2, type: :string, json_name: "stringValue"
-  field :scope_level, 3, type: Flyteidl2.Org.ScopeLevel, json_name: "scopeLevel", enum: true
+  field :scope_level, 3, type: Flyteidl2.Settings.ScopeLevel, json_name: "scopeLevel", enum: true
 end
 
-defmodule Flyteidl2.Org.Int64Setting do
+defmodule Flyteidl2.Settings.Int64Setting do
   @moduledoc false
 
   use Protobuf,
-    full_name: "flyteidl2.org.Int64Setting",
+    full_name: "flyteidl2.settings.Int64Setting",
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
-  field :state, 1, type: Flyteidl2.Org.SettingState, enum: true
+  field :state, 1, type: Flyteidl2.Settings.SettingState, enum: true
   field :int_value, 2, type: :int64, json_name: "intValue"
-  field :scope_level, 3, type: Flyteidl2.Org.ScopeLevel, json_name: "scopeLevel", enum: true
+  field :scope_level, 3, type: Flyteidl2.Settings.ScopeLevel, json_name: "scopeLevel", enum: true
 end
 
-defmodule Flyteidl2.Org.BoolSetting do
+defmodule Flyteidl2.Settings.BoolSetting do
   @moduledoc false
 
   use Protobuf,
-    full_name: "flyteidl2.org.BoolSetting",
+    full_name: "flyteidl2.settings.BoolSetting",
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
-  field :state, 1, type: Flyteidl2.Org.SettingState, enum: true
+  field :state, 1, type: Flyteidl2.Settings.SettingState, enum: true
   field :bool_value, 2, type: :bool, json_name: "boolValue"
-  field :scope_level, 3, type: Flyteidl2.Org.ScopeLevel, json_name: "scopeLevel", enum: true
+  field :scope_level, 3, type: Flyteidl2.Settings.ScopeLevel, json_name: "scopeLevel", enum: true
 end
 
-defmodule Flyteidl2.Org.StringListSetting do
+defmodule Flyteidl2.Settings.StringListSetting do
   @moduledoc false
 
   use Protobuf,
-    full_name: "flyteidl2.org.StringListSetting",
+    full_name: "flyteidl2.settings.StringListSetting",
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
-  field :state, 1, type: Flyteidl2.Org.SettingState, enum: true
-  field :list_value, 2, type: Flyteidl2.Org.StringValues, json_name: "listValue"
-  field :scope_level, 3, type: Flyteidl2.Org.ScopeLevel, json_name: "scopeLevel", enum: true
+  field :state, 1, type: Flyteidl2.Settings.SettingState, enum: true
+  field :list_value, 2, type: Flyteidl2.Settings.StringValues, json_name: "listValue"
+  field :scope_level, 3, type: Flyteidl2.Settings.ScopeLevel, json_name: "scopeLevel", enum: true
 end
 
-defmodule Flyteidl2.Org.StringMapSetting do
+defmodule Flyteidl2.Settings.StringMapSetting do
   @moduledoc false
 
   use Protobuf,
-    full_name: "flyteidl2.org.StringMapSetting",
+    full_name: "flyteidl2.settings.StringMapSetting",
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
-  field :state, 1, type: Flyteidl2.Org.SettingState, enum: true
-  field :map_value, 2, type: Flyteidl2.Org.StringMap, json_name: "mapValue"
-  field :scope_level, 3, type: Flyteidl2.Org.ScopeLevel, json_name: "scopeLevel", enum: true
+  field :state, 1, type: Flyteidl2.Settings.SettingState, enum: true
+  field :map_value, 2, type: Flyteidl2.Settings.StringMap, json_name: "mapValue"
+  field :scope_level, 3, type: Flyteidl2.Settings.ScopeLevel, json_name: "scopeLevel", enum: true
 end
 
-defmodule Flyteidl2.Org.QuantitySetting do
+defmodule Flyteidl2.Settings.QuantitySetting do
   @moduledoc false
 
   use Protobuf,
-    full_name: "flyteidl2.org.QuantitySetting",
+    full_name: "flyteidl2.settings.QuantitySetting",
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
-  field :state, 1, type: Flyteidl2.Org.SettingState, enum: true
+  field :state, 1, type: Flyteidl2.Settings.SettingState, enum: true
   field :quantity_value, 2, type: :string, json_name: "quantityValue"
-  field :scope_level, 3, type: Flyteidl2.Org.ScopeLevel, json_name: "scopeLevel", enum: true
+  field :scope_level, 3, type: Flyteidl2.Settings.ScopeLevel, json_name: "scopeLevel", enum: true
 end
 
-defmodule Flyteidl2.Org.RunSettings do
+defmodule Flyteidl2.Settings.RunSettings do
   @moduledoc false
 
   use Protobuf,
-    full_name: "flyteidl2.org.RunSettings",
+    full_name: "flyteidl2.settings.RunSettings",
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
   field :default_queue, 1,
-    type: Flyteidl2.Org.StringSetting,
+    type: Flyteidl2.Settings.StringSetting,
     json_name: "defaultQueue",
     deprecated: false
 
   field :run_concurrency, 2,
-    type: Flyteidl2.Org.Int64Setting,
+    type: Flyteidl2.Settings.Int64Setting,
     json_name: "runConcurrency",
     deprecated: false
 
   field :action_concurrency, 3,
-    type: Flyteidl2.Org.Int64Setting,
+    type: Flyteidl2.Settings.Int64Setting,
     json_name: "actionConcurrency",
     deprecated: false
 end
 
-defmodule Flyteidl2.Org.SecuritySettings do
+defmodule Flyteidl2.Settings.SecuritySettings do
   @moduledoc false
 
   use Protobuf,
-    full_name: "flyteidl2.org.SecuritySettings",
+    full_name: "flyteidl2.settings.SecuritySettings",
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
   field :service_account, 1,
-    type: Flyteidl2.Org.StringSetting,
+    type: Flyteidl2.Settings.StringSetting,
     json_name: "serviceAccount",
     deprecated: false
 end
 
-defmodule Flyteidl2.Org.StorageSettings do
+defmodule Flyteidl2.Settings.StorageSettings do
   @moduledoc false
 
   use Protobuf,
-    full_name: "flyteidl2.org.StorageSettings",
+    full_name: "flyteidl2.settings.StorageSettings",
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
   field :raw_data_path, 1,
-    type: Flyteidl2.Org.StringSetting,
+    type: Flyteidl2.Settings.StringSetting,
     json_name: "rawDataPath",
     deprecated: false
 end
 
-defmodule Flyteidl2.Org.TaskResourceDefaults do
+defmodule Flyteidl2.Settings.TaskResourceDefaults do
   @moduledoc false
 
   use Protobuf,
-    full_name: "flyteidl2.org.TaskResourceDefaults",
+    full_name: "flyteidl2.settings.TaskResourceDefaults",
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
-  field :cpu, 1, type: Flyteidl2.Org.QuantitySetting, deprecated: false
-  field :gpu, 2, type: Flyteidl2.Org.QuantitySetting, deprecated: false
-  field :memory, 3, type: Flyteidl2.Org.QuantitySetting, deprecated: false
-  field :storage, 4, type: Flyteidl2.Org.QuantitySetting, deprecated: false
+  field :cpu, 1, type: Flyteidl2.Settings.QuantitySetting, deprecated: false
+  field :gpu, 2, type: Flyteidl2.Settings.QuantitySetting, deprecated: false
+  field :memory, 3, type: Flyteidl2.Settings.QuantitySetting, deprecated: false
+  field :storage, 4, type: Flyteidl2.Settings.QuantitySetting, deprecated: false
 end
 
-defmodule Flyteidl2.Org.TaskResourceSettings do
+defmodule Flyteidl2.Settings.TaskResourceSettings do
   @moduledoc false
 
   use Protobuf,
-    full_name: "flyteidl2.org.TaskResourceSettings",
+    full_name: "flyteidl2.settings.TaskResourceSettings",
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
-  field :min, 1, type: Flyteidl2.Org.TaskResourceDefaults, deprecated: false
-  field :max, 2, type: Flyteidl2.Org.TaskResourceDefaults, deprecated: false
+  field :min, 1, type: Flyteidl2.Settings.TaskResourceDefaults, deprecated: false
+  field :max, 2, type: Flyteidl2.Settings.TaskResourceDefaults, deprecated: false
 
   field :mirror_limits_request, 3,
-    type: Flyteidl2.Org.BoolSetting,
+    type: Flyteidl2.Settings.BoolSetting,
     json_name: "mirrorLimitsRequest",
     deprecated: false
 end
 
-defmodule Flyteidl2.Org.Settings do
+defmodule Flyteidl2.Settings.Settings do
   @moduledoc false
 
   use Protobuf,
-    full_name: "flyteidl2.org.Settings",
+    full_name: "flyteidl2.settings.Settings",
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
-  field :run, 1, type: Flyteidl2.Org.RunSettings
-  field :security, 2, type: Flyteidl2.Org.SecuritySettings
-  field :storage, 3, type: Flyteidl2.Org.StorageSettings
-  field :task_resource, 4, type: Flyteidl2.Org.TaskResourceSettings, json_name: "taskResource"
-  field :labels, 5, type: Flyteidl2.Org.StringListSetting, deprecated: false
-  field :annotations, 6, type: Flyteidl2.Org.StringMapSetting, deprecated: false
+  field :run, 1, type: Flyteidl2.Settings.RunSettings
+  field :security, 2, type: Flyteidl2.Settings.SecuritySettings
+  field :storage, 3, type: Flyteidl2.Settings.StorageSettings
+
+  field :task_resource, 4,
+    type: Flyteidl2.Settings.TaskResourceSettings,
+    json_name: "taskResource"
+
+  field :labels, 5, type: Flyteidl2.Settings.StringListSetting, deprecated: false
+  field :annotations, 6, type: Flyteidl2.Settings.StringMapSetting, deprecated: false
 
   field :environment_variables, 7,
-    type: Flyteidl2.Org.StringMapSetting,
+    type: Flyteidl2.Settings.StringMapSetting,
     json_name: "environmentVariables",
     deprecated: false
 end
