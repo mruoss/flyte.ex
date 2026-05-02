@@ -16,4 +16,5 @@ defmodule Flyteidl2.Common.ActionPhase do
   field :ACTION_PHASE_FAILED, 6
   field :ACTION_PHASE_ABORTED, 7
   field :ACTION_PHASE_TIMED_OUT, 8
+  field :ACTION_PHASE_PAUSED, 9
 end

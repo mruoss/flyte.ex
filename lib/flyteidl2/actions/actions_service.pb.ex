@@ -164,6 +164,32 @@ defmodule Flyteidl2.Actions.AbortResponse do
     syntax: :proto3
 end
 
+defmodule Flyteidl2.Actions.SignalRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.actions.SignalRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :action_id, 1,
+    type: Flyteidl2.Common.ActionIdentifier,
+    json_name: "actionId",
+    deprecated: false
+
+  field :parent_action_name, 2, type: :string, json_name: "parentActionName", deprecated: false
+  field :value, 3, type: Flyteidl2.Core.Literal, deprecated: false
+end
+
+defmodule Flyteidl2.Actions.SignalResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.actions.SignalResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+end
+
 defmodule Flyteidl2.Actions.ActionsService.Service do
   @moduledoc false
 
@@ -182,6 +208,8 @@ defmodule Flyteidl2.Actions.ActionsService.Service do
   rpc :Update, Flyteidl2.Actions.UpdateRequest, Flyteidl2.Actions.UpdateResponse
 
   rpc :Abort, Flyteidl2.Actions.AbortRequest, Flyteidl2.Actions.AbortResponse
+
+  rpc :Signal, Flyteidl2.Actions.SignalRequest, Flyteidl2.Actions.SignalResponse
 end
 
 defmodule Flyteidl2.Actions.ActionsService.Stub do

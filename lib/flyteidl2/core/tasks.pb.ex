@@ -246,6 +246,7 @@ defmodule Flyteidl2.Core.TaskMetadata do
   field :image_build_run, 19, type: Flyteidl2.Common.RunIdentifier, json_name: "imageBuildRun"
   field :is_entrypoint, 20, type: :bool, json_name: "isEntrypoint"
   field :code_bundle_uri, 21, type: :string, json_name: "codeBundleUri"
+  field :timeouts, 22, type: Flyteidl2.Core.TimeoutStrategy
 end
 
 defmodule Flyteidl2.Core.TaskTemplate.ConfigEntry do
