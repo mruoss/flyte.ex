@@ -1,3 +1,17 @@
+defmodule Flyteidl2.Workflow.ConditionPromptType do
+  @moduledoc false
+
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.workflow.ConditionPromptType",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :CONDITION_PROMPT_TYPE_UNSPECIFIED, 0
+  field :CONDITION_PROMPT_TYPE_TEXT, 1
+  field :CONDITION_PROMPT_TYPE_MARKDOWN, 2
+end
+
 defmodule Flyteidl2.Workflow.ActionType do
   @moduledoc false
 
@@ -103,15 +117,30 @@ defmodule Flyteidl2.Workflow.ConditionAction do
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
-  oneof :scope, 0
-
   field :name, 1, type: :string, deprecated: false
-  field :run_id, 2, type: :string, json_name: "runId", oneof: 0, deprecated: false
-  field :action_id, 3, type: :string, json_name: "actionId", oneof: 0, deprecated: false
-  field :global, 4, type: :bool, oneof: 0
   field :type, 6, type: Flyteidl2.Core.LiteralType
   field :prompt, 7, type: :string
   field :description, 8, type: :string
+
+  field :prompt_type, 9,
+    type: Flyteidl2.Workflow.ConditionPromptType,
+    json_name: "promptType",
+    enum: true
+
+  field :timeout, 10, type: Google.Protobuf.Duration
+  field :webhook, 11, type: Flyteidl2.Workflow.ConditionWebhook
+end
+
+defmodule Flyteidl2.Workflow.ConditionWebhook do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.ConditionWebhook",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :url, 1, type: :string
+  field :payload, 2, type: Google.Protobuf.Struct
 end
 
 defmodule Flyteidl2.Workflow.TaskActionMetadata do
@@ -146,12 +175,7 @@ defmodule Flyteidl2.Workflow.ConditionActionMetadata do
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
-  oneof :scope, 0
-
   field :name, 1, type: :string
-  field :run_id, 2, type: :string, json_name: "runId", oneof: 0, deprecated: false
-  field :action_id, 3, type: :string, json_name: "actionId", oneof: 0, deprecated: false
-  field :global, 4, type: :bool, oneof: 0
 end
 
 defmodule Flyteidl2.Workflow.ActionMetadata do

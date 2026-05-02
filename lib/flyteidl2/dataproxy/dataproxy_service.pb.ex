@@ -185,6 +185,7 @@ defmodule Flyteidl2.Dataproxy.TailLogsRequest do
     deprecated: false
 
   field :attempt, 2, type: :uint32, deprecated: false
+  field :pod_name, 3, type: :string, json_name: "podName"
 end
 
 defmodule Flyteidl2.Dataproxy.TailLogsResponse.Logs do

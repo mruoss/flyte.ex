@@ -312,6 +312,19 @@ defmodule Flyteidl2.Core.KeyValuePair do
   field :value, 2, type: :string
 end
 
+defmodule Flyteidl2.Core.Backoff do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.core.Backoff",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :base, 1, type: Google.Protobuf.Duration, deprecated: false
+  field :factor, 2, proto3_optional: true, type: :double, deprecated: false
+  field :cap, 3, type: Google.Protobuf.Duration, deprecated: false
+end
+
 defmodule Flyteidl2.Core.RetryStrategy do
   @moduledoc false
 
@@ -321,4 +334,21 @@ defmodule Flyteidl2.Core.RetryStrategy do
     syntax: :proto3
 
   field :retries, 5, type: :uint32
+  field :backoff, 6, type: Flyteidl2.Core.Backoff
+end
+
+defmodule Flyteidl2.Core.TimeoutStrategy do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.core.TimeoutStrategy",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :queued_timeout, 1,
+    type: Google.Protobuf.Duration,
+    json_name: "queuedTimeout",
+    deprecated: false
+
+  field :deadline, 2, type: Google.Protobuf.Duration, deprecated: false
 end
