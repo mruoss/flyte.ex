@@ -164,16 +164,6 @@ defmodule Flyteidl2.Settings.RunSettings do
     type: Flyteidl2.Settings.StringSetting,
     json_name: "defaultQueue",
     deprecated: false
-
-  field :run_concurrency, 2,
-    type: Flyteidl2.Settings.Int64Setting,
-    json_name: "runConcurrency",
-    deprecated: false
-
-  field :action_concurrency, 3,
-    type: Flyteidl2.Settings.Int64Setting,
-    json_name: "actionConcurrency",
-    deprecated: false
 end
 
 defmodule Flyteidl2.Settings.SecuritySettings do
@@ -251,7 +241,7 @@ defmodule Flyteidl2.Settings.Settings do
     type: Flyteidl2.Settings.TaskResourceSettings,
     json_name: "taskResource"
 
-  field :labels, 5, type: Flyteidl2.Settings.StringListSetting, deprecated: false
+  field :labels, 5, type: Flyteidl2.Settings.StringMapSetting, deprecated: false
   field :annotations, 6, type: Flyteidl2.Settings.StringMapSetting, deprecated: false
 
   field :environment_variables, 7,
