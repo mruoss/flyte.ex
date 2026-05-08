@@ -186,6 +186,11 @@ defmodule Flyteidl2.Dataproxy.TailLogsRequest do
 
   field :attempt, 2, type: :uint32, deprecated: false
   field :pod_name, 3, type: :string, json_name: "podName"
+
+  field :connector_endpoint, 4,
+    proto3_optional: true,
+    type: :string,
+    json_name: "connectorEndpoint"
 end
 
 defmodule Flyteidl2.Dataproxy.TailLogsResponse.Logs do

@@ -320,7 +320,8 @@ defmodule Flyteidl2.Connector.GetTaskLogsResponseBody do
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
-  field :results, 1, repeated: true, type: :string
+  field :results, 1, repeated: true, type: :string, deprecated: true
+  field :lines, 2, repeated: true, type: Flyteidl2.Logs.Dataplane.LogLine
 end
 
 defmodule Flyteidl2.Connector.GetTaskLogsResponse do

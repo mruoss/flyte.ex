@@ -234,6 +234,18 @@ defmodule Flyteidl2.Core.LogContext do
 
   field :pods, 1, repeated: true, type: Flyteidl2.Core.PodLogContext
   field :primary_pod_name, 2, type: :string, json_name: "primaryPodName"
+  field :connector, 3, type: Flyteidl2.Core.ConnectorLogContext
+end
+
+defmodule Flyteidl2.Core.ConnectorLogContext do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.core.ConnectorLogContext",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :endpoint, 1, type: :string
 end
 
 defmodule Flyteidl2.Core.PodLogContext do
