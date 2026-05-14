@@ -15,6 +15,7 @@ defmodule Flyteidl2.Cluster.SelectClusterRequest.Operation do
   field :OPERATION_CREATE_DOWNLOAD_LINK, 5
   field :OPERATION_TAIL_LOGS, 6
   field :OPERATION_GET_ACTION_ATTEMPT_METRICS, 7
+  field :OPERATION_USE_SECRETS, 8
 end
 
 defmodule Flyteidl2.Cluster.SelectClusterRequest do
@@ -38,6 +39,13 @@ defmodule Flyteidl2.Cluster.SelectClusterRequest do
     oneof: 0
 
   field :app_id, 6, type: Flyteidl2.App.Identifier, json_name: "appId", oneof: 0
+
+  field :cluster_pool_id, 7,
+    type: Flyteidl2.Common.ClusterPoolIdentifier,
+    json_name: "clusterPoolId",
+    oneof: 0
+
+  field :domain_id, 9, type: Flyteidl2.Common.DomainIdentifier, json_name: "domainId", oneof: 0
 
   field :operation, 8,
     type: Flyteidl2.Cluster.SelectClusterRequest.Operation,
