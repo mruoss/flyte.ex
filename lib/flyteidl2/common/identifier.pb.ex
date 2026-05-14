@@ -11,6 +11,18 @@ defmodule Flyteidl2.Common.ProjectIdentifier do
   field :name, 3, type: :string, deprecated: false
 end
 
+defmodule Flyteidl2.Common.DomainIdentifier do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.common.DomainIdentifier",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :organization, 1, type: :string, deprecated: false
+  field :name, 2, type: :string, deprecated: false
+end
+
 defmodule Flyteidl2.Common.ClusterIdentifier do
   @moduledoc false
 
