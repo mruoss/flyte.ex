@@ -325,6 +325,7 @@ defmodule Flyteidl2.Workflow.WatchActionsRequest do
 
   field :run_id, 1, type: Flyteidl2.Common.RunIdentifier, json_name: "runId", deprecated: false
   field :filter, 2, repeated: true, type: Flyteidl2.Common.Filter
+  field :enable_run_store, 3, type: :bool, json_name: "enableRunStore"
 end
 
 defmodule Flyteidl2.Workflow.WatchActionsResponse do

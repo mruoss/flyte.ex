@@ -84,6 +84,7 @@ defmodule Flyteidl2.Imagebuilder.PythonWheels do
   field :dir, 1, type: :string
   field :options, 2, type: Flyteidl2.Imagebuilder.PipOptions
   field :secret_mounts, 3, repeated: true, type: Flyteidl2.Core.Secret, json_name: "secretMounts"
+  field :package_name, 4, type: :string, json_name: "packageName"
 end
 
 defmodule Flyteidl2.Imagebuilder.UVProject do
