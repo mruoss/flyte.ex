@@ -179,13 +179,17 @@ defmodule Flyteidl2.Dataproxy.TailLogsRequest do
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
+  oneof :pod_selector, 0
+
   field :action_id, 1,
     type: Flyteidl2.Common.ActionIdentifier,
     json_name: "actionId",
     deprecated: false
 
   field :attempt, 2, type: :uint32, deprecated: false
-  field :pod_name, 3, type: :string, json_name: "podName"
+  field :primary_pod, 6, type: :bool, json_name: "primaryPod", oneof: 0
+  field :all_pods, 5, type: :bool, json_name: "allPods", oneof: 0
+  field :pod_name, 3, type: :string, json_name: "podName", oneof: 0
 
   field :connector_endpoint, 4,
     proto3_optional: true,
@@ -202,6 +206,7 @@ defmodule Flyteidl2.Dataproxy.TailLogsResponse.Logs do
     syntax: :proto3
 
   field :lines, 1, repeated: true, type: Flyteidl2.Logs.Dataplane.LogLine
+  field :container, 2, type: Flyteidl2.Logs.Dataplane.ContainerIdentifier
 end
 
 defmodule Flyteidl2.Dataproxy.TailLogsResponse do

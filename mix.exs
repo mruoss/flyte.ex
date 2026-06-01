@@ -3,7 +3,7 @@ defmodule Flyte.MixProject do
 
   @app :flyte
   @source_url "https://github.com/mruoss/flyte.ex"
-  @version "2.0.17"
+  @version "2.0.19"
 
   def project do
     [
