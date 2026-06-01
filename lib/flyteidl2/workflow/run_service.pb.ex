@@ -232,6 +232,8 @@ defmodule Flyteidl2.Workflow.GetActionLogContextResponse do
 
   field :log_context, 1, type: Flyteidl2.Core.LogContext, json_name: "logContext"
   field :cluster, 2, type: :string
+  field :start_time, 3, type: Google.Protobuf.Timestamp, json_name: "startTime"
+  field :end_time, 4, type: Google.Protobuf.Timestamp, json_name: "endTime"
 end
 
 defmodule Flyteidl2.Workflow.ListRunsRequest do
@@ -393,6 +395,48 @@ defmodule Flyteidl2.Workflow.AbortActionResponse do
     syntax: :proto3
 end
 
+defmodule Flyteidl2.Workflow.EventPayload do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.EventPayload",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  oneof :value, 0
+
+  field :bool_value, 1, type: :bool, json_name: "boolValue", oneof: 0
+  field :int_value, 2, type: :int64, json_name: "intValue", oneof: 0
+  field :float_value, 3, type: :double, json_name: "floatValue", oneof: 0
+  field :string_value, 4, type: :string, json_name: "stringValue", oneof: 0
+end
+
+defmodule Flyteidl2.Workflow.SignalEventRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.SignalEventRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :action_id, 1,
+    type: Flyteidl2.Common.ActionIdentifier,
+    json_name: "actionId",
+    deprecated: false
+
+  field :parent_action_name, 2, type: :string, json_name: "parentActionName"
+  field :payload, 3, type: Flyteidl2.Workflow.EventPayload, deprecated: false
+end
+
+defmodule Flyteidl2.Workflow.SignalEventResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.SignalEventResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+end
+
 defmodule Flyteidl2.Workflow.WatchGroupsRequest.KnownSortField do
   @moduledoc false
 
@@ -493,6 +537,8 @@ defmodule Flyteidl2.Workflow.RunService.Service do
       stream(Flyteidl2.Workflow.WatchClusterEventsResponse)
 
   rpc :AbortAction, Flyteidl2.Workflow.AbortActionRequest, Flyteidl2.Workflow.AbortActionResponse
+
+  rpc :SignalEvent, Flyteidl2.Workflow.SignalEventRequest, Flyteidl2.Workflow.SignalEventResponse
 
   rpc :WatchGroups,
       Flyteidl2.Workflow.WatchGroupsRequest,

@@ -176,6 +176,7 @@ defmodule Flyteidl2.Workflow.ConditionActionMetadata do
     syntax: :proto3
 
   field :name, 1, type: :string
+  field :type, 5, type: Flyteidl2.Core.LiteralType
 end
 
 defmodule Flyteidl2.Workflow.ActionMetadata do
@@ -311,6 +312,7 @@ defmodule Flyteidl2.Workflow.ActionDetails do
   field :abort_info, 5, type: Flyteidl2.Workflow.AbortInfo, json_name: "abortInfo", oneof: 0
   field :task, 6, type: Flyteidl2.Task.TaskSpec, oneof: 1
   field :trace, 8, type: Flyteidl2.Task.TraceSpec, oneof: 1
+  field :condition, 9, type: Flyteidl2.Workflow.ConditionAction, oneof: 1
   field :attempts, 7, repeated: true, type: Flyteidl2.Workflow.ActionAttempt
 end
 
