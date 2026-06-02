@@ -59,6 +59,10 @@ defmodule Flyteidl2.Plugins.HeadGroupSpec do
     map: true
 
   field :k8s_pod, 2, type: Flyteidl2.Core.K8sPod, json_name: "k8sPod"
+
+  field :extended_resources, 3,
+    type: Flyteidl2.Core.ExtendedResources,
+    json_name: "extendedResources"
 end
 
 defmodule Flyteidl2.Plugins.WorkerGroupSpec.RayStartParamsEntry do
@@ -94,4 +98,8 @@ defmodule Flyteidl2.Plugins.WorkerGroupSpec do
     map: true
 
   field :k8s_pod, 6, type: Flyteidl2.Core.K8sPod, json_name: "k8sPod"
+
+  field :extended_resources, 7,
+    type: Flyteidl2.Core.ExtendedResources,
+    json_name: "extendedResources"
 end
