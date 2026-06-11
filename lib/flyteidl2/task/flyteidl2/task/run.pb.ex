@@ -125,6 +125,7 @@ defmodule Flyteidl2.Task.RunSpec do
     oneof: 0
 
   field :run_start_time, 12, type: Google.Protobuf.Timestamp, json_name: "runStartTime"
+  field :max_action_concurrency, 13, type: :uint32, json_name: "maxActionConcurrency"
 end
 
 defmodule Flyteidl2.Task.InlineRuleList do
