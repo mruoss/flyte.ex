@@ -8,6 +8,8 @@ defmodule Flyteidl2.Workflow.LiteralsToLaunchFormJsonRequest do
 
   field :literals, 1, repeated: true, type: Flyteidl2.Task.NamedLiteral
   field :variables, 2, type: Flyteidl2.Core.VariableMap
+  field :literals_uri, 3, type: :string, json_name: "literalsUri"
+  field :action_id, 4, type: Flyteidl2.Common.ActionIdentifier, json_name: "actionId"
 end
 
 defmodule Flyteidl2.Workflow.LiteralsToLaunchFormJsonResponse do

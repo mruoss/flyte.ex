@@ -169,6 +169,8 @@ defmodule Flyteidl2.Dataproxy.GetActionDataResponse do
 
   field :inputs, 1, type: Flyteidl2.Task.Inputs
   field :outputs, 2, type: Flyteidl2.Task.Outputs
+  field :inputs_uri, 3, type: :string, json_name: "inputsUri"
+  field :outputs_uri, 4, type: :string, json_name: "outputsUri"
 end
 
 defmodule Flyteidl2.Dataproxy.TailLogsRequest do
