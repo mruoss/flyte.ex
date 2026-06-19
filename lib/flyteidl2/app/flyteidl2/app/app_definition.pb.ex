@@ -73,6 +73,8 @@ defmodule Flyteidl2.App.Meta do
   field :id, 1, type: Flyteidl2.App.Identifier, deprecated: false
   field :revision, 2, type: :uint64, deprecated: false
   field :labels, 3, repeated: true, type: Flyteidl2.App.Meta.LabelsEntry, map: true
+  field :code_bundle_uri, 4, type: :string, json_name: "codeBundleUri"
+  field :source_code, 5, type: Flyteidl2.Task.SourceCode, json_name: "sourceCode"
 end
 
 defmodule Flyteidl2.App.AppWrapper do
