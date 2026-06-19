@@ -307,6 +307,18 @@ defmodule Flyteidl2.Workflow.AbortInfo do
   field :aborted_by, 2, type: Flyteidl2.Common.EnrichedIdentity, json_name: "abortedBy"
 end
 
+defmodule Flyteidl2.Workflow.SignalInfo do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.SignalInfo",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :signalled_by, 1, type: Flyteidl2.Common.EnrichedIdentity, json_name: "signalledBy"
+  field :output, 2, type: Flyteidl2.Core.Literal
+end
+
 defmodule Flyteidl2.Workflow.ActionDetails do
   @moduledoc false
 
@@ -324,6 +336,7 @@ defmodule Flyteidl2.Workflow.ActionDetails do
   field :status, 3, type: Flyteidl2.Workflow.ActionStatus
   field :error_info, 4, type: Flyteidl2.Workflow.ErrorInfo, json_name: "errorInfo", oneof: 0
   field :abort_info, 5, type: Flyteidl2.Workflow.AbortInfo, json_name: "abortInfo", oneof: 0
+  field :signal_info, 10, type: Flyteidl2.Workflow.SignalInfo, json_name: "signalInfo", oneof: 0
   field :task, 6, type: Flyteidl2.Task.TaskSpec, oneof: 1
   field :trace, 8, type: Flyteidl2.Task.TraceSpec, oneof: 1
   field :condition, 9, type: Flyteidl2.Workflow.ConditionAction, oneof: 1

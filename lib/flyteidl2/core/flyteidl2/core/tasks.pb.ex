@@ -102,6 +102,19 @@ defmodule Flyteidl2.Core.DataLoadingConfig.LiteralMapFormat do
   field :PROTO, 2
 end
 
+defmodule Flyteidl2.Core.DataLoadingConfig.FileInputLayout do
+  @moduledoc false
+
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.core.DataLoadingConfig.FileInputLayout",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :DIRECT, 0
+  field :NAMED_DIR, 1
+end
+
 defmodule Flyteidl2.Core.Sql.Dialect do
   @moduledoc false
 
@@ -353,6 +366,11 @@ defmodule Flyteidl2.Core.DataLoadingConfig do
   field :output_path, 3, type: :string, json_name: "outputPath"
   field :format, 4, type: Flyteidl2.Core.DataLoadingConfig.LiteralMapFormat, enum: true
   field :io_strategy, 5, type: Flyteidl2.Core.IOStrategy, json_name: "ioStrategy"
+
+  field :file_input_layout, 6,
+    type: Flyteidl2.Core.DataLoadingConfig.FileInputLayout,
+    json_name: "fileInputLayout",
+    enum: true
 end
 
 defmodule Flyteidl2.Core.K8sPod do

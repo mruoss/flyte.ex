@@ -102,6 +102,7 @@ defmodule Flyteidl2.App.ListRequest do
   field :org, 2, type: :string, oneof: 0, deprecated: false
   field :cluster_id, 3, type: Flyteidl2.Common.ClusterIdentifier, json_name: "clusterId", oneof: 0
   field :project, 4, type: Flyteidl2.Common.ProjectIdentifier, oneof: 0
+  field :disable_identity_enrichment, 5, type: :bool, json_name: "disableIdentityEnrichment"
 end
 
 defmodule Flyteidl2.App.ListResponse do

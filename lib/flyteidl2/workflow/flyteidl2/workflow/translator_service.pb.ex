@@ -6,10 +6,13 @@ defmodule Flyteidl2.Workflow.LiteralsToLaunchFormJsonRequest do
     protoc_gen_elixir_version: "0.17.0",
     syntax: :proto3
 
+  oneof :owner, 0
+
   field :literals, 1, repeated: true, type: Flyteidl2.Task.NamedLiteral
   field :variables, 2, type: Flyteidl2.Core.VariableMap
   field :literals_uri, 3, type: :string, json_name: "literalsUri"
-  field :action_id, 4, type: Flyteidl2.Common.ActionIdentifier, json_name: "actionId"
+  field :action_id, 4, type: Flyteidl2.Common.ActionIdentifier, json_name: "actionId", oneof: 0
+  field :trigger_id, 5, type: Flyteidl2.Common.TriggerIdentifier, json_name: "triggerId", oneof: 0
 end
 
 defmodule Flyteidl2.Workflow.LiteralsToLaunchFormJsonResponse do

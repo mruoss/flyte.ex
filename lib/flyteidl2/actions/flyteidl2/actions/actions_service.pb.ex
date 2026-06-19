@@ -125,6 +125,11 @@ defmodule Flyteidl2.Actions.AbortRequest do
     deprecated: false
 
   field :reason, 2, proto3_optional: true, type: :string
+
+  field :aborted_by, 3,
+    proto3_optional: true,
+    type: Flyteidl2.Common.EnrichedIdentity,
+    json_name: "abortedBy"
 end
 
 defmodule Flyteidl2.Actions.AbortResponse do
@@ -151,6 +156,11 @@ defmodule Flyteidl2.Actions.SignalRequest do
 
   field :parent_action_name, 2, type: :string, json_name: "parentActionName", deprecated: false
   field :value, 3, type: Flyteidl2.Core.Literal, deprecated: false
+
+  field :signalled_by, 4,
+    proto3_optional: true,
+    type: Flyteidl2.Common.EnrichedIdentity,
+    json_name: "signalledBy"
 end
 
 defmodule Flyteidl2.Actions.SignalResponse do
