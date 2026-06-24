@@ -268,6 +268,7 @@ defmodule Flyteidl2.Workflow.ListRunsRequest do
   field :trigger_name, 6, type: Flyteidl2.Common.TriggerName, json_name: "triggerName", oneof: 0
   field :task_name, 7, type: Flyteidl2.Task.TaskName, json_name: "taskName", oneof: 0
   field :task_id, 8, type: Flyteidl2.Task.TaskIdentifier, json_name: "taskId", oneof: 0
+  field :paused_actions_only, 9, type: :bool, json_name: "pausedActionsOnly"
 end
 
 defmodule Flyteidl2.Workflow.ListRunsResponse do
