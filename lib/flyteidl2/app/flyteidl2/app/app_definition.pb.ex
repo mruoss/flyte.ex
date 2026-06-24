@@ -20,6 +20,25 @@ defmodule Flyteidl2.App.Status.DeploymentStatus do
   field :DEPLOYMENT_STATUS_DEPLOYING, 10
 end
 
+defmodule Flyteidl2.App.Status.Substate do
+  @moduledoc false
+
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.app.Status.Substate",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :SUBSTATE_UNSPECIFIED, 0
+  field :PULLING_IMAGE, 1
+  field :INITIALIZING, 2
+  field :WEBHOOK_ERROR, 3
+  field :IMAGE_PULL_ERROR, 4
+  field :SECRET_MOUNT_ERROR, 5
+  field :CRASH_LOOP, 6
+  field :OOM_KILLED, 7
+end
+
 defmodule Flyteidl2.App.Spec.DesiredState do
   @moduledoc false
 
@@ -123,6 +142,7 @@ defmodule Flyteidl2.App.Condition do
   field :message, 3, type: :string
   field :revision, 4, type: :uint64, deprecated: false
   field :actor, 5, type: Flyteidl2.Common.EnrichedIdentity
+  field :substate, 6, type: Flyteidl2.App.Status.Substate, enum: true
 end
 
 defmodule Flyteidl2.App.Status do
