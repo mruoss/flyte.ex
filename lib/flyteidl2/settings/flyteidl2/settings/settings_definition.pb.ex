@@ -197,6 +197,11 @@ defmodule Flyteidl2.Settings.StorageSettings do
     type: Flyteidl2.Settings.StringSetting,
     json_name: "rawDataPath",
     deprecated: false
+
+  field :run_base_dir, 2,
+    type: Flyteidl2.Settings.StringSetting,
+    json_name: "runBaseDir",
+    deprecated: false
 end
 
 defmodule Flyteidl2.Settings.TaskResourceDefaults do

@@ -80,6 +80,7 @@ defmodule Flyteidl2.Dataproxy.UploadInputsRequest do
   field :task_spec, 4, type: Flyteidl2.Task.TaskSpec, json_name: "taskSpec", oneof: 1
   field :trigger_name, 5, type: Flyteidl2.Common.TriggerName, json_name: "triggerName", oneof: 1
   field :inputs, 6, type: Flyteidl2.Task.Inputs
+  field :base_dir, 7, type: :string, json_name: "baseDir"
 end
 
 defmodule Flyteidl2.Dataproxy.UploadInputsResponse do
