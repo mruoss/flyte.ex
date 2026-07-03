@@ -169,6 +169,11 @@ defmodule Flyteidl2.Settings.RunSettings do
     type: Flyteidl2.Settings.Int64Setting,
     json_name: "maxActionConcurrency",
     deprecated: false
+
+  field :run_base_dir, 3,
+    type: Flyteidl2.Settings.StringSetting,
+    json_name: "runBaseDir",
+    deprecated: false
 end
 
 defmodule Flyteidl2.Settings.SecuritySettings do
