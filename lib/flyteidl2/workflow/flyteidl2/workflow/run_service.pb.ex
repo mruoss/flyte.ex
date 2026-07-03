@@ -423,7 +423,10 @@ defmodule Flyteidl2.Workflow.WatchWindowedActionsRequest.UpdateWindow do
     protoc_gen_elixir_version: "0.17.0",
     syntax: :proto3
 
-  field :selected_item_id, 1, type: :string, json_name: "selectedItemId"
+  oneof :window_anchor, 0
+
+  field :selected_item_id, 1, type: :string, json_name: "selectedItemId", oneof: 0
+  field :anchor_flat_index, 7, type: :uint64, json_name: "anchorFlatIndex", oneof: 0
   field :overscan_before, 2, type: :int32, json_name: "overscanBefore", deprecated: false
   field :overscan_after, 3, type: :int32, json_name: "overscanAfter", deprecated: false
 
