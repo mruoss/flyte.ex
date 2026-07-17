@@ -494,6 +494,7 @@ defmodule Flyteidl2.Workflow.WatchWindowedActionsResponse do
   field :initial_snapshot_complete, 5, type: :bool, json_name: "initialSnapshotComplete"
   field :truncations, 6, repeated: true, type: Flyteidl2.Workflow.TruncationNotice
   field :resync_hint, 7, type: :bool, json_name: "resyncHint"
+  field :hydration_complete, 8, type: :bool, json_name: "hydrationComplete"
 end
 
 defmodule Flyteidl2.Workflow.WindowedItem do
@@ -523,6 +524,8 @@ defmodule Flyteidl2.Workflow.ActionLeaf do
   field :action_id, 1, type: :string, json_name: "actionId"
   field :short_name, 2, type: :string, json_name: "shortName"
   field :duration, 3, type: Google.Protobuf.Duration
+  field :phase, 4, type: Flyteidl2.Common.ActionPhase, enum: true
+  field :start_time, 5, type: Google.Protobuf.Timestamp, json_name: "startTime"
 end
 
 defmodule Flyteidl2.Workflow.GroupAggregations do
