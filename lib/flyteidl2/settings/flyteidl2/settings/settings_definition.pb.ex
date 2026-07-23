@@ -113,19 +113,6 @@ defmodule Flyteidl2.Settings.BoolSetting do
   field :scope_level, 3, type: Flyteidl2.Settings.ScopeLevel, json_name: "scopeLevel", enum: true
 end
 
-defmodule Flyteidl2.Settings.StringListSetting do
-  @moduledoc false
-
-  use Protobuf,
-    full_name: "flyteidl2.settings.StringListSetting",
-    protoc_gen_elixir_version: "0.17.0",
-    syntax: :proto3
-
-  field :state, 1, type: Flyteidl2.Settings.SettingState, enum: true
-  field :list_value, 2, type: Flyteidl2.Settings.StringValues, json_name: "listValue"
-  field :scope_level, 3, type: Flyteidl2.Settings.ScopeLevel, json_name: "scopeLevel", enum: true
-end
-
 defmodule Flyteidl2.Settings.StringMapSetting do
   @moduledoc false
 
@@ -202,11 +189,6 @@ defmodule Flyteidl2.Settings.StorageSettings do
     type: Flyteidl2.Settings.StringSetting,
     json_name: "rawDataPath",
     deprecated: false
-
-  field :run_base_dir, 2,
-    type: Flyteidl2.Settings.StringSetting,
-    json_name: "runBaseDir",
-    deprecated: false
 end
 
 defmodule Flyteidl2.Settings.TaskResourceDefaults do
@@ -240,6 +222,20 @@ defmodule Flyteidl2.Settings.TaskResourceSettings do
     deprecated: false
 end
 
+defmodule Flyteidl2.Settings.AppSettings do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.settings.AppSettings",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :disallow_anonymous, 1,
+    type: Flyteidl2.Settings.BoolSetting,
+    json_name: "disallowAnonymous",
+    deprecated: false
+end
+
 defmodule Flyteidl2.Settings.Settings do
   @moduledoc false
 
@@ -263,4 +259,6 @@ defmodule Flyteidl2.Settings.Settings do
     type: Flyteidl2.Settings.StringMapSetting,
     json_name: "environmentVariables",
     deprecated: false
+
+  field :app, 8, type: Flyteidl2.Settings.AppSettings, deprecated: false
 end
