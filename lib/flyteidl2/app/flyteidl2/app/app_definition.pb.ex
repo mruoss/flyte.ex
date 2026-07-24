@@ -143,6 +143,7 @@ defmodule Flyteidl2.App.Condition do
   field :revision, 4, type: :uint64, deprecated: false
   field :actor, 5, type: Flyteidl2.Common.EnrichedIdentity
   field :substate, 6, type: Flyteidl2.App.Status.Substate, enum: true
+  field :deployment_id, 7, type: :string, json_name: "deploymentId"
 end
 
 defmodule Flyteidl2.App.Status do

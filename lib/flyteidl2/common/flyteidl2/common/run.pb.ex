@@ -10,6 +10,7 @@ defmodule Flyteidl2.Common.RelationType do
   field :RELATION_TYPE_UNSPECIFIED, 0
   field :RELATION_TYPE_RERUN, 1
   field :RELATION_TYPE_RECOVER, 2
+  field :RELATION_TYPE_SPAWN, 3
 end
 
 defmodule Flyteidl2.Common.OffloadedInputData do
