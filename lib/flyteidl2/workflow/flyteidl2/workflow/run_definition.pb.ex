@@ -104,7 +104,7 @@ defmodule Flyteidl2.Workflow.TaskAction do
   field :id, 1, type: Flyteidl2.Task.TaskIdentifier
   field :spec, 2, type: Flyteidl2.Task.TaskSpec, deprecated: false
   field :cache_key, 3, type: Google.Protobuf.StringValue, json_name: "cacheKey"
-  field :cluster, 4, type: :string
+  field :queue, 4, type: :string
 end
 
 defmodule Flyteidl2.Workflow.TraceAction do
@@ -384,6 +384,7 @@ defmodule Flyteidl2.Workflow.ActionAttempt do
 
   field :cluster, 12, type: :string
   field :log_context, 13, type: Flyteidl2.Core.LogContext, json_name: "logContext"
+  field :cache_metadata, 14, type: Flyteidl2.Workflow.CacheMetadata, json_name: "cacheMetadata"
 end
 
 defmodule Flyteidl2.Workflow.ClusterEvent do
@@ -453,6 +454,7 @@ defmodule Flyteidl2.Workflow.ActionEvent do
     json_name: "clusterEvents"
 
   field :reported_time, 15, type: Google.Protobuf.Timestamp, json_name: "reportedTime"
+  field :cache_metadata, 16, type: Flyteidl2.Workflow.CacheMetadata, json_name: "cacheMetadata"
 end
 
 defmodule Flyteidl2.Workflow.ActionSpec do
@@ -563,4 +565,17 @@ defmodule Flyteidl2.Workflow.TaskGroup do
   field :average_time_to_running, 14,
     type: Google.Protobuf.Duration,
     json_name: "averageTimeToRunning"
+end
+
+defmodule Flyteidl2.Workflow.CacheMetadata do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.CacheMetadata",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :source_action_attempt, 1,
+    type: Flyteidl2.Common.ActionAttemptIdentifier,
+    json_name: "sourceActionAttempt"
 end

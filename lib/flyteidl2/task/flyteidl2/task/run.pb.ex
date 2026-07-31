@@ -142,7 +142,7 @@ defmodule Flyteidl2.Task.RunSpec do
   field :envs, 3, type: Flyteidl2.Task.Envs
   field :interruptible, 4, type: Google.Protobuf.BoolValue
   field :overwrite_cache, 5, type: :bool, json_name: "overwriteCache", deprecated: true
-  field :cluster, 6, type: :string
+  field :queue, 6, type: :string
   field :raw_data_storage, 7, type: Flyteidl2.Task.RawDataStorage, json_name: "rawDataStorage"
   field :security_context, 8, type: Flyteidl2.Core.SecurityContext, json_name: "securityContext"
   field :cache_config, 9, type: Flyteidl2.Task.CacheConfig, json_name: "cacheConfig"
