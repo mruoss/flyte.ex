@@ -166,6 +166,8 @@ defmodule Flyteidl2.App.Status do
   field :materialized_inputs, 9,
     type: Flyteidl2.App.MaterializedInputs,
     json_name: "materializedInputs"
+
+  field :last_started_at, 10, type: Google.Protobuf.Timestamp, json_name: "lastStartedAt"
 end
 
 defmodule Flyteidl2.App.K8sMetadata do

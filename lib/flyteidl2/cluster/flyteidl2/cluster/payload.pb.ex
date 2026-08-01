@@ -17,6 +17,7 @@ defmodule Flyteidl2.Cluster.SelectClusterRequest.Operation do
   field :OPERATION_GET_ACTION_ATTEMPT_METRICS, 7
   field :OPERATION_USE_SECRETS, 8
   field :OPERATION_UPLOAD_TRIGGER, 9
+  field :OPERATION_GET_IMAGE, 10
 end
 
 defmodule Flyteidl2.Cluster.SelectClusterRequest do
