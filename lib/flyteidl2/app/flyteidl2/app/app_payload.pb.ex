@@ -103,6 +103,7 @@ defmodule Flyteidl2.App.ListRequest do
   field :cluster_id, 3, type: Flyteidl2.Common.ClusterIdentifier, json_name: "clusterId", oneof: 0
   field :project, 4, type: Flyteidl2.Common.ProjectIdentifier, oneof: 0
   field :disable_identity_enrichment, 5, type: :bool, json_name: "disableIdentityEnrichment"
+  field :include_total_count, 6, type: :bool, json_name: "includeTotalCount"
 end
 
 defmodule Flyteidl2.App.ListResponse do
@@ -115,6 +116,7 @@ defmodule Flyteidl2.App.ListResponse do
 
   field :apps, 1, repeated: true, type: Flyteidl2.App.App
   field :token, 2, type: :string
+  field :total_count, 3, type: :int64, json_name: "totalCount"
 end
 
 defmodule Flyteidl2.App.WatchRequest do
