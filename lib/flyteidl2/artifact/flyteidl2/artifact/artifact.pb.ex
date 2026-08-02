@@ -37,6 +37,36 @@ defmodule Flyteidl2.Artifact.Card do
   field :type, 3, type: :string, deprecated: false
 end
 
+defmodule Flyteidl2.Artifact.TaskActionSource do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.artifact.TaskActionSource",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :action, 1, type: Flyteidl2.Common.ActionIdentifier, deprecated: false
+  field :attempt, 2, type: :uint32
+end
+
+defmodule Flyteidl2.Artifact.ArtifactSource do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.artifact.ArtifactSource",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  oneof :source, 0
+
+  field :task_action, 1,
+    type: Flyteidl2.Artifact.TaskActionSource,
+    json_name: "taskAction",
+    oneof: 0
+
+  field :external_ref, 2, type: :string, json_name: "externalRef", oneof: 0, deprecated: false
+end
+
 defmodule Flyteidl2.Artifact.ArtifactSpec.UserMetadataEntry do
   @moduledoc false
 
@@ -69,6 +99,7 @@ defmodule Flyteidl2.Artifact.ArtifactSpec do
     map: true
 
   field :card, 5, type: Flyteidl2.Artifact.Card
+  field :source, 6, type: Flyteidl2.Artifact.ArtifactSource
 end
 
 defmodule Flyteidl2.Artifact.Artifact do
