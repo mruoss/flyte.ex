@@ -18,6 +18,7 @@ defmodule Flyteidl2.Cluster.SelectClusterRequest.Operation do
   field :OPERATION_USE_SECRETS, 8
   field :OPERATION_UPLOAD_TRIGGER, 9
   field :OPERATION_GET_IMAGE, 10
+  field :OPERATION_LOCAL_RUN_DATA, 11
 end
 
 defmodule Flyteidl2.Cluster.SelectClusterRequest do
@@ -64,4 +65,5 @@ defmodule Flyteidl2.Cluster.SelectClusterResponse do
     syntax: :proto3
 
   field :cluster_endpoint, 1, type: :string, json_name: "clusterEndpoint"
+  field :cluster, 2, type: :string
 end

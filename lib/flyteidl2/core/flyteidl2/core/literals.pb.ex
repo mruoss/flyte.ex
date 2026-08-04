@@ -169,6 +169,7 @@ defmodule Flyteidl2.Core.Literal do
 
   field :hash, 4, type: :string
   field :metadata, 5, repeated: true, type: Flyteidl2.Core.Literal.MetadataEntry, map: true
+  field :artifact_id, 9, type: Flyteidl2.Core.ArtifactVersionId, json_name: "artifactId"
 end
 
 defmodule Flyteidl2.Core.LiteralOffloadedMetadata do

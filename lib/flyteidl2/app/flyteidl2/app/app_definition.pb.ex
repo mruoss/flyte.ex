@@ -37,6 +37,11 @@ defmodule Flyteidl2.App.Status.Substate do
   field :SECRET_MOUNT_ERROR, 5
   field :CRASH_LOOP, 6
   field :OOM_KILLED, 7
+  field :RUNNING, 8
+  field :SCALED_TO_ZERO, 9
+  field :SCALING_FROM_ZERO, 10
+  field :SCALING_UP, 11
+  field :SCALING_DOWN, 12
 end
 
 defmodule Flyteidl2.App.Spec.DesiredState do
