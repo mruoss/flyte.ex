@@ -158,6 +158,8 @@ defmodule Flyteidl2.Dataproxy.GetActionDataRequest do
     type: Flyteidl2.Common.ActionIdentifier,
     json_name: "actionId",
     deprecated: false
+
+  field :run_source, 2, type: Flyteidl2.Workflow.RunSource, json_name: "runSource", enum: true
 end
 
 defmodule Flyteidl2.Dataproxy.GetActionDataResponse do
