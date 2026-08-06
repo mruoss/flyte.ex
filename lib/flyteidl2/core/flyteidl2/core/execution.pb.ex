@@ -235,7 +235,8 @@ defmodule Flyteidl2.Core.LogContext do
   field :pods, 1, repeated: true, type: Flyteidl2.Core.PodLogContext
   field :primary_pod_name, 2, type: :string, json_name: "primaryPodName"
   field :connector, 3, type: Flyteidl2.Core.ConnectorLogContext
-  field :pod_name_prefix, 4, type: :string, json_name: "podNamePrefix"
+  field :pod_name_prefix, 4, type: :string, json_name: "podNamePrefix", deprecated: true
+  field :pod_name_prefixes, 5, repeated: true, type: :string, json_name: "podNamePrefixes"
 end
 
 defmodule Flyteidl2.Core.ConnectorLogContext do
