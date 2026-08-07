@@ -40,7 +40,7 @@ defmodule Flyteidl2.Workflow.RunSource do
   field :RUN_SOURCE_WEB, 1
   field :RUN_SOURCE_CLI, 2
   field :RUN_SOURCE_SCHEDULE_TRIGGER, 3
-  field :RUN_SOURCE_LOCAL, 4
+  field :RUN_SOURCE_TRACKED, 4
   field :RUN_SOURCE_ARTIFACT_TRIGGER, 5
 end
 

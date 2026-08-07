@@ -90,7 +90,8 @@ defmodule Flyteidl2.Logs.Dataplane.LoggingContext do
 
   field :order, 10, type: Flyteidl2.Common.Sort.Direction, enum: true
   field :number_of_batches, 11, type: :uint64, json_name: "numberOfBatches"
-  field :pod_name_prefix, 12, type: :string, json_name: "podNamePrefix"
+  field :pod_name_prefix, 12, type: :string, json_name: "podNamePrefix", deprecated: true
+  field :pod_name_prefixes, 13, repeated: true, type: :string, json_name: "podNamePrefixes"
 end
 
 defmodule Flyteidl2.Logs.Dataplane.ContainerIdentifier do
