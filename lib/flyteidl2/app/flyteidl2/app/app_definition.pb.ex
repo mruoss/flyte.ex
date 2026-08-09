@@ -263,14 +263,8 @@ defmodule Flyteidl2.App.Input do
 
   field :name, 1, type: :string, deprecated: false
   field :string_value, 2, type: :string, json_name: "stringValue", oneof: 0, deprecated: false
-
-  field :artifact_query, 3,
-    type: Flyteidl2.Core.ArtifactQuery,
-    json_name: "artifactQuery",
-    oneof: 0
-
-  field :artifact_id, 4, type: Flyteidl2.Core.ArtifactID, json_name: "artifactId", oneof: 0
   field :app_id, 5, type: Flyteidl2.App.Identifier, json_name: "appId", oneof: 0
+  field :artifact_id, 6, type: Flyteidl2.Core.ArtifactVersionId, json_name: "artifactId", oneof: 0
 end
 
 defmodule Flyteidl2.App.MaterializedInputs do
