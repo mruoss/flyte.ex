@@ -19,6 +19,7 @@ defmodule Flyteidl2.Cluster.SelectClusterRequest.Operation do
   field :OPERATION_UPLOAD_TRIGGER, 9
   field :OPERATION_GET_IMAGE, 10
   field :OPERATION_TRACKED_RUN_DATA, 11
+  field :OPERATION_GET_CLUSTER_CONFIG, 12
 end
 
 defmodule Flyteidl2.Cluster.SelectClusterRequest do
@@ -49,6 +50,11 @@ defmodule Flyteidl2.Cluster.SelectClusterRequest do
     oneof: 0
 
   field :domain_id, 9, type: Flyteidl2.Common.DomainIdentifier, json_name: "domainId", oneof: 0
+
+  field :cluster_id, 10,
+    type: Flyteidl2.Common.ClusterIdentifier,
+    json_name: "clusterId",
+    oneof: 0
 
   field :operation, 8,
     type: Flyteidl2.Cluster.SelectClusterRequest.Operation,

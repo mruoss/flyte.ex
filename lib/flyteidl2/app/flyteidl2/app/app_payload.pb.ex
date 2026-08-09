@@ -88,6 +88,20 @@ defmodule Flyteidl2.App.DeleteResponse do
     syntax: :proto3
 end
 
+defmodule Flyteidl2.App.ConsumedArtifactFilter do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.app.ConsumedArtifactFilter",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :project, 1, type: :string, deprecated: false
+  field :domain, 2, type: :string, deprecated: false
+  field :name, 3, type: :string, deprecated: false
+  field :version, 4, type: :string
+end
+
 defmodule Flyteidl2.App.ListRequest do
   @moduledoc false
 
@@ -102,6 +116,7 @@ defmodule Flyteidl2.App.ListRequest do
   field :org, 2, type: :string, oneof: 0, deprecated: false
   field :cluster_id, 3, type: Flyteidl2.Common.ClusterIdentifier, json_name: "clusterId", oneof: 0
   field :project, 4, type: Flyteidl2.Common.ProjectIdentifier, oneof: 0
+  field :artifact, 7, type: Flyteidl2.App.ConsumedArtifactFilter, oneof: 0
   field :disable_identity_enrichment, 5, type: :bool, json_name: "disableIdentityEnrichment"
   field :include_total_count, 6, type: :bool, json_name: "includeTotalCount"
 end
