@@ -1,3 +1,18 @@
+defmodule Flyteidl2.Plugins.AutoscalerOptions.UpscalingMode do
+  @moduledoc false
+
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.plugins.AutoscalerOptions.UpscalingMode",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :UPSCALING_MODE_UNSPECIFIED, 0
+  field :UPSCALING_MODE_DEFAULT, 1
+  field :UPSCALING_MODE_AGGRESSIVE, 2
+  field :UPSCALING_MODE_CONSERVATIVE, 3
+end
+
 defmodule Flyteidl2.Plugins.RayJob do
   @moduledoc false
 
@@ -11,6 +26,25 @@ defmodule Flyteidl2.Plugins.RayJob do
   field :shutdown_after_job_finishes, 3, type: :bool, json_name: "shutdownAfterJobFinishes"
   field :ttl_seconds_after_finished, 4, type: :int32, json_name: "ttlSecondsAfterFinished"
   field :runtime_env_yaml, 5, type: :string, json_name: "runtimeEnvYaml"
+end
+
+defmodule Flyteidl2.Plugins.AutoscalerOptions do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.plugins.AutoscalerOptions",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :upscaling_mode, 1,
+    type: Flyteidl2.Plugins.AutoscalerOptions.UpscalingMode,
+    json_name: "upscalingMode",
+    enum: true
+
+  field :idle_timeout_seconds, 2, type: :int32, json_name: "idleTimeoutSeconds"
+  field :env, 3, repeated: true, type: Flyteidl2.Core.KeyValuePair
+  field :image, 4, type: :string
+  field :resources, 5, type: Flyteidl2.Core.Resources
 end
 
 defmodule Flyteidl2.Plugins.RayCluster do
@@ -29,6 +63,10 @@ defmodule Flyteidl2.Plugins.RayCluster do
     json_name: "workerGroupSpec"
 
   field :enable_autoscaling, 3, type: :bool, json_name: "enableAutoscaling"
+
+  field :autoscaler_options, 4,
+    type: Flyteidl2.Plugins.AutoscalerOptions,
+    json_name: "autoscalerOptions"
 end
 
 defmodule Flyteidl2.Plugins.HeadGroupSpec.RayStartParamsEntry do

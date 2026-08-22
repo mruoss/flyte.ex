@@ -261,4 +261,9 @@ defmodule Flyteidl2.Settings.Settings do
     deprecated: false
 
   field :app, 8, type: Flyteidl2.Settings.AppSettings, deprecated: false
+
+  field :pod_template_name, 9,
+    type: Flyteidl2.Settings.StringSetting,
+    json_name: "podTemplateName",
+    deprecated: false
 end
