@@ -173,6 +173,7 @@ defmodule Flyteidl2.App.Status do
     json_name: "materializedInputs"
 
   field :last_started_at, 10, type: Google.Protobuf.Timestamp, json_name: "lastStartedAt"
+  field :last_assigned_cluster, 11, type: :string, json_name: "lastAssignedCluster"
 end
 
 defmodule Flyteidl2.App.K8sMetadata do

@@ -12,6 +12,20 @@ defmodule Flyteidl2.Logs.Dataplane.LogLineOriginator do
   field :SYSTEM, 2
 end
 
+defmodule Flyteidl2.Logs.Dataplane.LogLineSource do
+  @moduledoc false
+
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.logs.dataplane.LogLineSource",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :LOG_LINE_SOURCE_UNSPECIFIED, 0
+  field :LOG_LINE_SOURCE_LIVE, 1
+  field :LOG_LINE_SOURCE_PERSISTED, 2
+end
+
 defmodule Flyteidl2.Logs.Dataplane.LogsSource do
   @moduledoc false
 
@@ -157,6 +171,7 @@ defmodule Flyteidl2.Logs.Dataplane.LogLine do
   field :timestamp, 1, type: Google.Protobuf.Timestamp
   field :message, 2, type: :string
   field :originator, 3, type: Flyteidl2.Logs.Dataplane.LogLineOriginator, enum: true
+  field :short_pod_name, 4, type: :string, json_name: "shortPodName"
 end
 
 defmodule Flyteidl2.Logs.Dataplane.LogLines do
@@ -175,6 +190,8 @@ defmodule Flyteidl2.Logs.Dataplane.LogLines do
     repeated: true,
     type: Flyteidl2.Logs.Dataplane.LogLine,
     json_name: "structuredLines"
+
+  field :source, 5, type: Flyteidl2.Logs.Dataplane.LogLineSource, enum: true
 end
 
 defmodule Flyteidl2.Logs.Dataplane.LogContainersList do

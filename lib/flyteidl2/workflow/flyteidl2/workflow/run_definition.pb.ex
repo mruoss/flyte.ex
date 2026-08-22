@@ -58,6 +58,20 @@ defmodule Flyteidl2.Workflow.ErrorInfo.Kind do
   field :KIND_SYSTEM, 2
 end
 
+defmodule Flyteidl2.Workflow.ClusterEvent.Type do
+  @moduledoc false
+
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.workflow.ClusterEvent.Type",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :TYPE_UNSPECIFIED, 0
+  field :TYPE_NORMAL, 1
+  field :TYPE_WARNING, 2
+end
+
 defmodule Flyteidl2.Workflow.Run.LabelsEntry do
   @moduledoc false
 
@@ -399,6 +413,10 @@ defmodule Flyteidl2.Workflow.ClusterEvent do
 
   field :occurred_at, 1, type: Google.Protobuf.Timestamp, json_name: "occurredAt"
   field :message, 2, type: :string
+  field :type, 3, type: Flyteidl2.Workflow.ClusterEvent.Type, enum: true
+  field :reason, 4, type: :string
+  field :source_component, 5, type: :string, json_name: "sourceComponent"
+  field :count, 6, type: :int32
 end
 
 defmodule Flyteidl2.Workflow.PhaseTransition do
