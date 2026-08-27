@@ -1,0 +1,822 @@
+defmodule Flyteidl2.Workflow.TruncationNotice.Reason do
+  @moduledoc false
+
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.workflow.TruncationNotice.Reason",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :REASON_UNSPECIFIED, 0
+  field :REASON_RUN_NODE_LIMIT, 1
+  field :REASON_PARENT_CHILD_LIMIT, 2
+  field :REASON_HYDRATING, 3
+end
+
+defmodule Flyteidl2.Workflow.CreateRunRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.CreateRunRequest",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  oneof :id, 0
+
+  oneof :task, 1
+
+  oneof :input_wrapper, 2
+
+  field :run_id, 1, type: Flyteidl2.Common.RunIdentifier, json_name: "runId", oneof: 0
+  field :project_id, 6, type: Flyteidl2.Common.ProjectIdentifier, json_name: "projectId", oneof: 0
+  field :task_id, 2, type: Flyteidl2.Task.TaskIdentifier, json_name: "taskId", oneof: 1
+  field :task_spec, 3, type: Flyteidl2.Task.TaskSpec, json_name: "taskSpec", oneof: 1
+  field :trigger_name, 7, type: Flyteidl2.Common.TriggerName, json_name: "triggerName", oneof: 1
+  field :inputs, 4, type: Flyteidl2.Task.Inputs, oneof: 2
+
+  field :offloaded_input_data, 9,
+    type: Flyteidl2.Common.OffloadedInputData,
+    json_name: "offloadedInputData",
+    oneof: 2
+
+  field :run_spec, 5, type: Flyteidl2.Task.RunSpec, json_name: "runSpec"
+  field :source, 8, type: Flyteidl2.Workflow.RunSource, enum: true
+  field :run_start_time, 10, type: Google.Protobuf.Timestamp, json_name: "runStartTime"
+end
+
+defmodule Flyteidl2.Workflow.CreateRunResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.CreateRunResponse",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :run, 1, type: Flyteidl2.Workflow.Run
+end
+
+defmodule Flyteidl2.Workflow.AbortRunRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.AbortRunRequest",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :run_id, 1, type: Flyteidl2.Common.RunIdentifier, json_name: "runId", deprecated: false
+  field :reason, 2, proto3_optional: true, type: :string
+end
+
+defmodule Flyteidl2.Workflow.AbortRunResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.AbortRunResponse",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+end
+
+defmodule Flyteidl2.Workflow.GetRunDetailsRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.GetRunDetailsRequest",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :run_id, 1, type: Flyteidl2.Common.RunIdentifier, json_name: "runId", deprecated: false
+end
+
+defmodule Flyteidl2.Workflow.GetRunDetailsResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.GetRunDetailsResponse",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :details, 1, type: Flyteidl2.Workflow.RunDetails
+end
+
+defmodule Flyteidl2.Workflow.WatchRunDetailsRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchRunDetailsRequest",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :run_id, 1, type: Flyteidl2.Common.RunIdentifier, json_name: "runId", deprecated: false
+end
+
+defmodule Flyteidl2.Workflow.WatchRunDetailsResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchRunDetailsResponse",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :details, 1, type: Flyteidl2.Workflow.RunDetails
+end
+
+defmodule Flyteidl2.Workflow.GetActionDetailsRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.GetActionDetailsRequest",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :action_id, 1,
+    type: Flyteidl2.Common.ActionIdentifier,
+    json_name: "actionId",
+    deprecated: false
+end
+
+defmodule Flyteidl2.Workflow.GetActionDetailsResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.GetActionDetailsResponse",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :details, 1, type: Flyteidl2.Workflow.ActionDetails
+end
+
+defmodule Flyteidl2.Workflow.WatchActionDetailsRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchActionDetailsRequest",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :action_id, 1,
+    type: Flyteidl2.Common.ActionIdentifier,
+    json_name: "actionId",
+    deprecated: false
+end
+
+defmodule Flyteidl2.Workflow.WatchActionDetailsResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchActionDetailsResponse",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :details, 1, type: Flyteidl2.Workflow.ActionDetails
+end
+
+defmodule Flyteidl2.Workflow.GetActionDataRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.GetActionDataRequest",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :action_id, 1,
+    type: Flyteidl2.Common.ActionIdentifier,
+    json_name: "actionId",
+    deprecated: false
+end
+
+defmodule Flyteidl2.Workflow.GetActionDataResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.GetActionDataResponse",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :inputs, 1, type: Flyteidl2.Task.Inputs
+  field :outputs, 2, type: Flyteidl2.Task.Outputs
+end
+
+defmodule Flyteidl2.Workflow.GetActionDataURIsRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.GetActionDataURIsRequest",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :action_id, 1,
+    type: Flyteidl2.Common.ActionIdentifier,
+    json_name: "actionId",
+    deprecated: false
+end
+
+defmodule Flyteidl2.Workflow.GetActionDataURIsResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.GetActionDataURIsResponse",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :inputs_uri, 1, type: :string, json_name: "inputsUri"
+  field :outputs_uri, 2, type: :string, json_name: "outputsUri"
+end
+
+defmodule Flyteidl2.Workflow.GetActionLogContextRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.GetActionLogContextRequest",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :action_id, 1,
+    type: Flyteidl2.Common.ActionIdentifier,
+    json_name: "actionId",
+    deprecated: false
+
+  field :attempt, 2, type: :uint32, deprecated: false
+end
+
+defmodule Flyteidl2.Workflow.GetActionLogContextResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.GetActionLogContextResponse",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :log_context, 1, type: Flyteidl2.Core.LogContext, json_name: "logContext"
+  field :cluster, 2, type: :string
+  field :start_time, 3, type: Google.Protobuf.Timestamp, json_name: "startTime"
+  field :end_time, 4, type: Google.Protobuf.Timestamp, json_name: "endTime"
+end
+
+defmodule Flyteidl2.Workflow.ListRunsRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.ListRunsRequest",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  oneof :scope_by, 0
+
+  field :request, 1, type: Flyteidl2.Common.ListRequest
+  field :org, 2, type: :string, oneof: 0, deprecated: false
+  field :project_id, 4, type: Flyteidl2.Common.ProjectIdentifier, json_name: "projectId", oneof: 0
+  field :trigger_name, 6, type: Flyteidl2.Common.TriggerName, json_name: "triggerName", oneof: 0
+  field :task_name, 7, type: Flyteidl2.Task.TaskName, json_name: "taskName", oneof: 0
+  field :task_id, 8, type: Flyteidl2.Task.TaskIdentifier, json_name: "taskId", oneof: 0
+  field :paused_actions_only, 9, type: :bool, json_name: "pausedActionsOnly"
+end
+
+defmodule Flyteidl2.Workflow.ListRunsResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.ListRunsResponse",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :runs, 1, repeated: true, type: Flyteidl2.Workflow.Run
+  field :token, 2, type: :string
+end
+
+defmodule Flyteidl2.Workflow.WatchRunsRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchRunsRequest",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  oneof :target, 0
+
+  field :org, 2, type: :string, oneof: 0, deprecated: false
+  field :cluster_id, 3, type: Flyteidl2.Common.ClusterIdentifier, json_name: "clusterId", oneof: 0
+  field :project_id, 4, type: Flyteidl2.Common.ProjectIdentifier, json_name: "projectId", oneof: 0
+  field :task_id, 5, type: Flyteidl2.Task.TaskIdentifier, json_name: "taskId", oneof: 0
+end
+
+defmodule Flyteidl2.Workflow.WatchRunsResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchRunsResponse",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :runs, 1, repeated: true, type: Flyteidl2.Workflow.Run
+end
+
+defmodule Flyteidl2.Workflow.ListActionsRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.ListActionsRequest",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :request, 1, type: Flyteidl2.Common.ListRequest
+  field :run_id, 2, type: Flyteidl2.Common.RunIdentifier, json_name: "runId", deprecated: false
+end
+
+defmodule Flyteidl2.Workflow.ListActionsResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.ListActionsResponse",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :actions, 1, repeated: true, type: Flyteidl2.Workflow.Action
+  field :token, 2, type: :string
+end
+
+defmodule Flyteidl2.Workflow.WatchActionsRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchActionsRequest",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :run_id, 1, type: Flyteidl2.Common.RunIdentifier, json_name: "runId", deprecated: false
+  field :filter, 2, repeated: true, type: Flyteidl2.Common.Filter
+  field :enable_run_store, 3, type: :bool, json_name: "enableRunStore"
+end
+
+defmodule Flyteidl2.Workflow.WatchActionsResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchActionsResponse",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :enriched_actions, 1,
+    repeated: true,
+    type: Flyteidl2.Workflow.EnrichedAction,
+    json_name: "enrichedActions"
+end
+
+defmodule Flyteidl2.Workflow.WatchWindowedActionsRequest.Subscribe.ExpandedNodesEntry do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchWindowedActionsRequest.Subscribe.ExpandedNodesEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :key, 1, type: :string
+  field :value, 2, type: Flyteidl2.Workflow.NodeExpansionParams
+end
+
+defmodule Flyteidl2.Workflow.WatchWindowedActionsRequest.Subscribe do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchWindowedActionsRequest.Subscribe",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :run_id, 1, type: Flyteidl2.Common.RunIdentifier, json_name: "runId", deprecated: false
+  field :selected_item_id, 2, type: :string, json_name: "selectedItemId"
+  field :overscan_before, 3, type: :int32, json_name: "overscanBefore", deprecated: false
+  field :overscan_after, 4, type: :int32, json_name: "overscanAfter", deprecated: false
+
+  field :expanded_nodes, 5,
+    repeated: true,
+    type: Flyteidl2.Workflow.WatchWindowedActionsRequest.Subscribe.ExpandedNodesEntry,
+    json_name: "expandedNodes",
+    map: true
+
+  field :phase_filter, 6,
+    repeated: true,
+    type: Flyteidl2.Common.ActionPhase,
+    json_name: "phaseFilter",
+    enum: true
+
+  field :name_filter, 7, type: :string, json_name: "nameFilter"
+end
+
+defmodule Flyteidl2.Workflow.WatchWindowedActionsRequest.UpdateWindow.ExpandedNodesEntry do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchWindowedActionsRequest.UpdateWindow.ExpandedNodesEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :key, 1, type: :string
+  field :value, 2, type: Flyteidl2.Workflow.NodeExpansionParams
+end
+
+defmodule Flyteidl2.Workflow.WatchWindowedActionsRequest.UpdateWindow do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchWindowedActionsRequest.UpdateWindow",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  oneof :window_anchor, 0
+
+  field :selected_item_id, 1, type: :string, json_name: "selectedItemId", oneof: 0
+  field :anchor_flat_index, 7, type: :uint64, json_name: "anchorFlatIndex", oneof: 0
+  field :overscan_before, 2, type: :int32, json_name: "overscanBefore", deprecated: false
+  field :overscan_after, 3, type: :int32, json_name: "overscanAfter", deprecated: false
+
+  field :expanded_nodes, 4,
+    repeated: true,
+    type: Flyteidl2.Workflow.WatchWindowedActionsRequest.UpdateWindow.ExpandedNodesEntry,
+    json_name: "expandedNodes",
+    map: true
+
+  field :phase_filter, 5,
+    repeated: true,
+    type: Flyteidl2.Common.ActionPhase,
+    json_name: "phaseFilter",
+    enum: true
+
+  field :name_filter, 6, type: :string, json_name: "nameFilter"
+end
+
+defmodule Flyteidl2.Workflow.WatchWindowedActionsRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchWindowedActionsRequest",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  oneof :msg, 0
+
+  field :subscribe, 1, type: Flyteidl2.Workflow.WatchWindowedActionsRequest.Subscribe, oneof: 0
+
+  field :update_window, 2,
+    type: Flyteidl2.Workflow.WatchWindowedActionsRequest.UpdateWindow,
+    json_name: "updateWindow",
+    oneof: 0
+end
+
+defmodule Flyteidl2.Workflow.NodeExpansionParams do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.NodeExpansionParams",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :offset, 1, type: :int32, deprecated: false
+  field :limit, 2, type: :int32, deprecated: false
+end
+
+defmodule Flyteidl2.Workflow.WatchWindowedActionsResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchWindowedActionsResponse",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :window_items, 1,
+    repeated: true,
+    type: Flyteidl2.Workflow.WindowedItem,
+    json_name: "windowItems"
+
+  field :ancestors, 2, repeated: true, type: Flyteidl2.Workflow.WindowedItem
+  field :total_flat_count, 3, type: :int64, json_name: "totalFlatCount"
+  field :selected_flat_index, 4, type: :int64, json_name: "selectedFlatIndex"
+  field :initial_snapshot_complete, 5, type: :bool, json_name: "initialSnapshotComplete"
+  field :truncations, 6, repeated: true, type: Flyteidl2.Workflow.TruncationNotice
+  field :resync_hint, 7, type: :bool, json_name: "resyncHint"
+  field :hydration_complete, 8, type: :bool, json_name: "hydrationComplete"
+end
+
+defmodule Flyteidl2.Workflow.WindowedItem do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WindowedItem",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  oneof :item, 0
+
+  field :action, 1, type: Flyteidl2.Workflow.EnrichedAction, oneof: 0
+  field :group, 2, type: Flyteidl2.Workflow.GroupNode, oneof: 0
+  field :depth, 3, type: :int32
+  field :is_expanded, 4, type: :bool, json_name: "isExpanded"
+end
+
+defmodule Flyteidl2.Workflow.ActionLeaf do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.ActionLeaf",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :action_id, 1, type: :string, json_name: "actionId"
+  field :short_name, 2, type: :string, json_name: "shortName"
+  field :duration, 3, type: Google.Protobuf.Duration
+  field :phase, 4, type: Flyteidl2.Common.ActionPhase, enum: true
+  field :start_time, 5, type: Google.Protobuf.Timestamp, json_name: "startTime"
+end
+
+defmodule Flyteidl2.Workflow.GroupAggregations do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.GroupAggregations",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :failed, 1, repeated: true, type: Flyteidl2.Workflow.ActionLeaf
+
+  field :longest_duration, 2,
+    repeated: true,
+    type: Flyteidl2.Workflow.ActionLeaf,
+    json_name: "longestDuration"
+
+  field :longest_running, 3,
+    repeated: true,
+    type: Flyteidl2.Workflow.ActionLeaf,
+    json_name: "longestRunning"
+
+  field :longest_setup, 4,
+    repeated: true,
+    type: Flyteidl2.Workflow.ActionLeaf,
+    json_name: "longestSetup"
+end
+
+defmodule Flyteidl2.Workflow.GroupNode.ChildPhaseCountsEntry do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.GroupNode.ChildPhaseCountsEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :key, 1, type: :int32
+  field :value, 2, type: :int32
+end
+
+defmodule Flyteidl2.Workflow.GroupNode do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.GroupNode",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :id, 1, type: :string
+  field :group_name, 2, type: :string, json_name: "groupName"
+  field :parent_id, 3, type: :string, json_name: "parentId"
+
+  field :child_phase_counts, 4,
+    repeated: true,
+    type: Flyteidl2.Workflow.GroupNode.ChildPhaseCountsEntry,
+    json_name: "childPhaseCounts",
+    map: true
+
+  field :earliest_start_time, 5, type: Google.Protobuf.Timestamp, json_name: "earliestStartTime"
+  field :latest_end_time, 6, type: Google.Protobuf.Timestamp, json_name: "latestEndTime"
+  field :total_children, 7, type: :int32, json_name: "totalChildren"
+  field :meets_filter, 8, type: :bool, json_name: "meetsFilter"
+  field :aggregations, 9, type: Flyteidl2.Workflow.GroupAggregations
+end
+
+defmodule Flyteidl2.Workflow.TruncationNotice do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.TruncationNotice",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :reason, 1, type: Flyteidl2.Workflow.TruncationNotice.Reason, enum: true
+  field :tracked_action_count, 2, type: :int64, json_name: "trackedActionCount"
+  field :known_total_action_count, 3, type: :int64, json_name: "knownTotalActionCount"
+  field :message, 4, type: :string
+end
+
+defmodule Flyteidl2.Workflow.WatchClusterEventsRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchClusterEventsRequest",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :id, 1, type: Flyteidl2.Common.ActionIdentifier, deprecated: false
+  field :attempt, 2, type: :uint32, deprecated: false
+end
+
+defmodule Flyteidl2.Workflow.WatchClusterEventsResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchClusterEventsResponse",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :cluster_events, 1,
+    repeated: true,
+    type: Flyteidl2.Workflow.ClusterEvent,
+    json_name: "clusterEvents"
+end
+
+defmodule Flyteidl2.Workflow.AbortActionRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.AbortActionRequest",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :action_id, 1,
+    type: Flyteidl2.Common.ActionIdentifier,
+    json_name: "actionId",
+    deprecated: false
+
+  field :reason, 2, type: :string
+end
+
+defmodule Flyteidl2.Workflow.AbortActionResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.AbortActionResponse",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+end
+
+defmodule Flyteidl2.Workflow.EventPayload do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.EventPayload",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  oneof :value, 0
+
+  field :bool_value, 1, type: :bool, json_name: "boolValue", oneof: 0
+  field :int_value, 2, type: :int64, json_name: "intValue", oneof: 0
+  field :float_value, 3, type: :double, json_name: "floatValue", oneof: 0
+  field :string_value, 4, type: :string, json_name: "stringValue", oneof: 0
+end
+
+defmodule Flyteidl2.Workflow.SignalEventRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.SignalEventRequest",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :action_id, 1,
+    type: Flyteidl2.Common.ActionIdentifier,
+    json_name: "actionId",
+    deprecated: false
+
+  field :parent_action_name, 2, type: :string, json_name: "parentActionName"
+  field :payload, 3, type: Flyteidl2.Workflow.EventPayload, deprecated: false
+end
+
+defmodule Flyteidl2.Workflow.SignalEventResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.SignalEventResponse",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+end
+
+defmodule Flyteidl2.Workflow.WatchGroupsRequest.KnownSortField do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchGroupsRequest.KnownSortField",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  oneof :sort_by, 0
+
+  field :created_at, 1,
+    type: Flyteidl2.Common.Sort.Direction,
+    json_name: "createdAt",
+    enum: true,
+    oneof: 0
+end
+
+defmodule Flyteidl2.Workflow.WatchGroupsRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchGroupsRequest",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  oneof :scope_by, 0
+
+  field :project_id, 1, type: Flyteidl2.Common.ProjectIdentifier, json_name: "projectId", oneof: 0
+  field :start_date, 2, type: Google.Protobuf.Timestamp, json_name: "startDate", deprecated: false
+  field :end_date, 3, type: Google.Protobuf.Timestamp, json_name: "endDate"
+  field :request, 4, type: Flyteidl2.Common.ListRequest
+
+  field :known_sort_fields, 5,
+    repeated: true,
+    type: Flyteidl2.Workflow.WatchGroupsRequest.KnownSortField,
+    json_name: "knownSortFields"
+end
+
+defmodule Flyteidl2.Workflow.WatchGroupsResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchGroupsResponse",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :task_groups, 1,
+    repeated: true,
+    type: Flyteidl2.Workflow.TaskGroup,
+    json_name: "taskGroups"
+
+  field :sentinel, 2, type: :bool
+end
+
+defmodule Flyteidl2.Workflow.RunService.Service do
+  @moduledoc false
+
+  use GRPC.Service, name: "flyteidl2.workflow.RunService", protoc_gen_elixir_version: "0.17.0"
+
+  rpc :CreateRun, Flyteidl2.Workflow.CreateRunRequest, Flyteidl2.Workflow.CreateRunResponse
+
+  rpc :AbortRun, Flyteidl2.Workflow.AbortRunRequest, Flyteidl2.Workflow.AbortRunResponse
+
+  rpc :GetRunDetails,
+      Flyteidl2.Workflow.GetRunDetailsRequest,
+      Flyteidl2.Workflow.GetRunDetailsResponse
+
+  rpc :WatchRunDetails,
+      Flyteidl2.Workflow.WatchRunDetailsRequest,
+      stream(Flyteidl2.Workflow.WatchRunDetailsResponse)
+
+  rpc :GetActionDetails,
+      Flyteidl2.Workflow.GetActionDetailsRequest,
+      Flyteidl2.Workflow.GetActionDetailsResponse
+
+  rpc :WatchActionDetails,
+      Flyteidl2.Workflow.WatchActionDetailsRequest,
+      stream(Flyteidl2.Workflow.WatchActionDetailsResponse)
+
+  rpc :GetActionData,
+      Flyteidl2.Workflow.GetActionDataRequest,
+      Flyteidl2.Workflow.GetActionDataResponse
+
+  rpc :ListRuns, Flyteidl2.Workflow.ListRunsRequest, Flyteidl2.Workflow.ListRunsResponse
+
+  rpc :WatchRuns,
+      Flyteidl2.Workflow.WatchRunsRequest,
+      stream(Flyteidl2.Workflow.WatchRunsResponse)
+
+  rpc :ListActions, Flyteidl2.Workflow.ListActionsRequest, Flyteidl2.Workflow.ListActionsResponse
+
+  rpc :WatchActions,
+      Flyteidl2.Workflow.WatchActionsRequest,
+      stream(Flyteidl2.Workflow.WatchActionsResponse)
+
+  rpc :WatchClusterEvents,
+      Flyteidl2.Workflow.WatchClusterEventsRequest,
+      stream(Flyteidl2.Workflow.WatchClusterEventsResponse)
+
+  rpc :AbortAction, Flyteidl2.Workflow.AbortActionRequest, Flyteidl2.Workflow.AbortActionResponse
+
+  rpc :SignalEvent, Flyteidl2.Workflow.SignalEventRequest, Flyteidl2.Workflow.SignalEventResponse
+
+  rpc :WatchGroups,
+      Flyteidl2.Workflow.WatchGroupsRequest,
+      stream(Flyteidl2.Workflow.WatchGroupsResponse)
+
+  rpc :GetActionDataURIs,
+      Flyteidl2.Workflow.GetActionDataURIsRequest,
+      Flyteidl2.Workflow.GetActionDataURIsResponse
+
+  rpc :GetActionLogContext,
+      Flyteidl2.Workflow.GetActionLogContextRequest,
+      Flyteidl2.Workflow.GetActionLogContextResponse
+end
+
+defmodule Flyteidl2.Workflow.RunService.Stub do
+  @moduledoc false
+
+  use GRPC.Stub, service: Flyteidl2.Workflow.RunService.Service
+end
