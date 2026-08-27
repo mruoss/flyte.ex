@@ -80,6 +80,7 @@ defmodule Flyteidl2.Dataproxy.UploadInputsRequest do
   field :task_spec, 4, type: Flyteidl2.Task.TaskSpec, json_name: "taskSpec", oneof: 1
   field :trigger_name, 5, type: Flyteidl2.Common.TriggerName, json_name: "triggerName", oneof: 1
   field :inputs, 6, type: Flyteidl2.Task.Inputs
+  field :base_dir, 7, type: :string, json_name: "baseDir"
 end
 
 defmodule Flyteidl2.Dataproxy.UploadInputsResponse do
@@ -157,6 +158,8 @@ defmodule Flyteidl2.Dataproxy.GetActionDataRequest do
     type: Flyteidl2.Common.ActionIdentifier,
     json_name: "actionId",
     deprecated: false
+
+  field :run_source, 2, type: Flyteidl2.Workflow.RunSource, json_name: "runSource", enum: true
 end
 
 defmodule Flyteidl2.Dataproxy.GetActionDataResponse do
@@ -169,6 +172,8 @@ defmodule Flyteidl2.Dataproxy.GetActionDataResponse do
 
   field :inputs, 1, type: Flyteidl2.Task.Inputs
   field :outputs, 2, type: Flyteidl2.Task.Outputs
+  field :inputs_uri, 3, type: :string, json_name: "inputsUri"
+  field :outputs_uri, 4, type: :string, json_name: "outputsUri"
 end
 
 defmodule Flyteidl2.Dataproxy.TailLogsRequest do

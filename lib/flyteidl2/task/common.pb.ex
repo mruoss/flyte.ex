@@ -25,6 +25,7 @@ defmodule Flyteidl2.Task.TriggerAutomationSpecType do
   field :TYPE_UNSPECIFIED, 0
   field :TYPE_NONE, 1
   field :TYPE_SCHEDULE, 2
+  field :TYPE_ARTIFACT, 3
 end
 
 defmodule Flyteidl2.Task.NamedParameter do
@@ -86,6 +87,19 @@ defmodule Flyteidl2.Task.Schedule do
   field :kickoff_time_input_arg, 3, type: :string, json_name: "kickoffTimeInputArg"
 end
 
+defmodule Flyteidl2.Task.ArtifactTrigger do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.task.ArtifactTrigger",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :artifact_name, 1, type: :string, json_name: "artifactName", deprecated: false
+  field :version, 2, type: :string
+  field :input_arg, 3, type: :string, json_name: "inputArg"
+end
+
 defmodule Flyteidl2.Task.TriggerAutomationSpec do
   @moduledoc false
 
@@ -98,6 +112,7 @@ defmodule Flyteidl2.Task.TriggerAutomationSpec do
 
   field :type, 1, type: Flyteidl2.Task.TriggerAutomationSpecType, enum: true, deprecated: false
   field :schedule, 2, type: Flyteidl2.Task.Schedule, oneof: 0
+  field :artifact, 3, type: Flyteidl2.Task.ArtifactTrigger, oneof: 0
 end
 
 defmodule Flyteidl2.Task.NamedLiteral do
@@ -136,6 +151,21 @@ defmodule Flyteidl2.Task.Inputs do
   field :context, 2, repeated: true, type: Flyteidl2.Core.KeyValuePair
 end
 
+defmodule Flyteidl2.Task.ProducedArtifact do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.task.ProducedArtifact",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :output, 1, type: :string, deprecated: false
+  field :name, 2, type: :string, deprecated: false
+  field :version, 3, type: :string
+  field :info, 4, type: Flyteidl2.Core.ArtifactInfo
+  field :type, 5, type: Flyteidl2.Core.LiteralType
+end
+
 defmodule Flyteidl2.Task.Outputs do
   @moduledoc false
 
@@ -145,4 +175,9 @@ defmodule Flyteidl2.Task.Outputs do
     syntax: :proto3
 
   field :literals, 1, repeated: true, type: Flyteidl2.Task.NamedLiteral
+
+  field :produced_artifacts, 3,
+    repeated: true,
+    type: Flyteidl2.Task.ProducedArtifact,
+    json_name: "producedArtifacts"
 end

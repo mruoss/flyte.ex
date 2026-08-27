@@ -238,8 +238,16 @@ defmodule Flyteidl2.Task.TaskTriggerSpec do
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
+  oneof :input_wrapper, 0
+
   field :active, 1, type: :bool
-  field :inputs, 2, type: Flyteidl2.Task.Inputs
+  field :inputs, 2, type: Flyteidl2.Task.Inputs, oneof: 0
+
+  field :offloaded_input_data, 5,
+    type: Flyteidl2.Common.OffloadedInputData,
+    json_name: "offloadedInputData",
+    oneof: 0
+
   field :run_spec, 3, type: Flyteidl2.Task.RunSpec, json_name: "runSpec"
   field :description, 4, type: :string
 end

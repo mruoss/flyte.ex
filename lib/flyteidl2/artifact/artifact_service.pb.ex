@@ -3,7 +3,7 @@ defmodule Flyteidl2.Artifact.CreateArtifactRequest do
 
   use Protobuf,
     full_name: "flyteidl2.artifact.CreateArtifactRequest",
-    protoc_gen_elixir_version: "0.17.0",
+    protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
   field :artifact_id, 1,
@@ -19,7 +19,7 @@ defmodule Flyteidl2.Artifact.CreateArtifactResponse do
 
   use Protobuf,
     full_name: "flyteidl2.artifact.CreateArtifactResponse",
-    protoc_gen_elixir_version: "0.17.0",
+    protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
   field :artifact, 1, type: Flyteidl2.Artifact.Artifact
@@ -30,7 +30,7 @@ defmodule Flyteidl2.Artifact.GetArtifactRequest do
 
   use Protobuf,
     full_name: "flyteidl2.artifact.GetArtifactRequest",
-    protoc_gen_elixir_version: "0.17.0",
+    protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
   field :name, 1, type: Flyteidl2.Artifact.ArtifactName, deprecated: false
@@ -42,7 +42,7 @@ defmodule Flyteidl2.Artifact.GetArtifactResponse do
 
   use Protobuf,
     full_name: "flyteidl2.artifact.GetArtifactResponse",
-    protoc_gen_elixir_version: "0.17.0",
+    protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
   field :artifact, 1, type: Flyteidl2.Artifact.Artifact
@@ -53,7 +53,7 @@ defmodule Flyteidl2.Artifact.ListArtifactsRequest do
 
   use Protobuf,
     full_name: "flyteidl2.artifact.ListArtifactsRequest",
-    protoc_gen_elixir_version: "0.17.0",
+    protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
   field :request, 1, type: Flyteidl2.Common.ListRequest
@@ -71,7 +71,7 @@ defmodule Flyteidl2.Artifact.ListArtifactsResponse do
 
   use Protobuf,
     full_name: "flyteidl2.artifact.ListArtifactsResponse",
-    protoc_gen_elixir_version: "0.17.0",
+    protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
   field :artifacts, 1, repeated: true, type: Flyteidl2.Artifact.Artifact
@@ -83,7 +83,7 @@ defmodule Flyteidl2.Artifact.ListArtifactNamesRequest do
 
   use Protobuf,
     full_name: "flyteidl2.artifact.ListArtifactNamesRequest",
-    protoc_gen_elixir_version: "0.17.0",
+    protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
   field :request, 1, type: Flyteidl2.Common.ListRequest
@@ -99,7 +99,7 @@ defmodule Flyteidl2.Artifact.ArtifactGroup do
 
   use Protobuf,
     full_name: "flyteidl2.artifact.ArtifactGroup",
-    protoc_gen_elixir_version: "0.17.0",
+    protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
   field :latest, 1, type: Flyteidl2.Artifact.Artifact
@@ -111,7 +111,7 @@ defmodule Flyteidl2.Artifact.ListArtifactNamesResponse do
 
   use Protobuf,
     full_name: "flyteidl2.artifact.ListArtifactNamesResponse",
-    protoc_gen_elixir_version: "0.17.0",
+    protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
   field :groups, 1, repeated: true, type: Flyteidl2.Artifact.ArtifactGroup
@@ -123,7 +123,7 @@ defmodule Flyteidl2.Artifact.ArtifactService.Service do
 
   use GRPC.Service,
     name: "flyteidl2.artifact.ArtifactService",
-    protoc_gen_elixir_version: "0.17.0"
+    protoc_gen_elixir_version: "0.16.0"
 
   rpc :CreateArtifact,
       Flyteidl2.Artifact.CreateArtifactRequest,

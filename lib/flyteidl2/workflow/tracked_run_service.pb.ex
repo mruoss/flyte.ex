@@ -4,7 +4,7 @@ defmodule Flyteidl2.Workflow.CreateTrackedRunRequest.LabelsEntry do
   use Protobuf,
     full_name: "flyteidl2.workflow.CreateTrackedRunRequest.LabelsEntry",
     map: true,
-    protoc_gen_elixir_version: "0.17.0",
+    protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
   field :key, 1, type: :string
@@ -16,7 +16,7 @@ defmodule Flyteidl2.Workflow.CreateTrackedRunRequest do
 
   use Protobuf,
     full_name: "flyteidl2.workflow.CreateTrackedRunRequest",
-    protoc_gen_elixir_version: "0.17.0",
+    protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
   oneof :id, 0
@@ -48,7 +48,7 @@ defmodule Flyteidl2.Workflow.TrackedActionUpdate do
 
   use Protobuf,
     full_name: "flyteidl2.workflow.TrackedActionUpdate",
-    protoc_gen_elixir_version: "0.17.0",
+    protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
   oneof :spec, 0
@@ -66,7 +66,7 @@ defmodule Flyteidl2.Workflow.ReportTrackedActionsRequest do
 
   use Protobuf,
     full_name: "flyteidl2.workflow.ReportTrackedActionsRequest",
-    protoc_gen_elixir_version: "0.17.0",
+    protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
   field :run_id, 1, type: Flyteidl2.Common.RunIdentifier, json_name: "runId", deprecated: false
@@ -82,7 +82,7 @@ defmodule Flyteidl2.Workflow.ReportTrackedActionsResponse do
 
   use Protobuf,
     full_name: "flyteidl2.workflow.ReportTrackedActionsResponse",
-    protoc_gen_elixir_version: "0.17.0",
+    protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
   field :statuses, 1, repeated: true, type: Google.Rpc.Status
@@ -93,7 +93,7 @@ defmodule Flyteidl2.Workflow.TrackedRunService.Service do
 
   use GRPC.Service,
     name: "flyteidl2.workflow.TrackedRunService",
-    protoc_gen_elixir_version: "0.17.0"
+    protoc_gen_elixir_version: "0.16.0"
 
   rpc :CreateRun, Flyteidl2.Workflow.CreateTrackedRunRequest, Flyteidl2.Workflow.CreateRunResponse
 

@@ -1,3 +1,18 @@
+defmodule Flyteidl2.Workflow.TruncationNotice.Reason do
+  @moduledoc false
+
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.workflow.TruncationNotice.Reason",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :REASON_UNSPECIFIED, 0
+  field :REASON_RUN_NODE_LIMIT, 1
+  field :REASON_PARENT_CHILD_LIMIT, 2
+  field :REASON_HYDRATING, 3
+end
+
 defmodule Flyteidl2.Workflow.CreateRunRequest do
   @moduledoc false
 
@@ -26,6 +41,7 @@ defmodule Flyteidl2.Workflow.CreateRunRequest do
 
   field :run_spec, 5, type: Flyteidl2.Task.RunSpec, json_name: "runSpec"
   field :source, 8, type: Flyteidl2.Workflow.RunSource, enum: true
+  field :run_start_time, 10, type: Google.Protobuf.Timestamp, json_name: "runStartTime"
 end
 
 defmodule Flyteidl2.Workflow.CreateRunResponse do
@@ -252,6 +268,7 @@ defmodule Flyteidl2.Workflow.ListRunsRequest do
   field :trigger_name, 6, type: Flyteidl2.Common.TriggerName, json_name: "triggerName", oneof: 0
   field :task_name, 7, type: Flyteidl2.Task.TaskName, json_name: "taskName", oneof: 0
   field :task_id, 8, type: Flyteidl2.Task.TaskIdentifier, json_name: "taskId", oneof: 0
+  field :paused_actions_only, 9, type: :bool, json_name: "pausedActionsOnly"
 end
 
 defmodule Flyteidl2.Workflow.ListRunsResponse do
@@ -342,6 +359,251 @@ defmodule Flyteidl2.Workflow.WatchActionsResponse do
     repeated: true,
     type: Flyteidl2.Workflow.EnrichedAction,
     json_name: "enrichedActions"
+end
+
+defmodule Flyteidl2.Workflow.WatchWindowedActionsRequest.Subscribe.ExpandedNodesEntry do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchWindowedActionsRequest.Subscribe.ExpandedNodesEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :key, 1, type: :string
+  field :value, 2, type: Flyteidl2.Workflow.NodeExpansionParams
+end
+
+defmodule Flyteidl2.Workflow.WatchWindowedActionsRequest.Subscribe do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchWindowedActionsRequest.Subscribe",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :run_id, 1, type: Flyteidl2.Common.RunIdentifier, json_name: "runId", deprecated: false
+  field :selected_item_id, 2, type: :string, json_name: "selectedItemId"
+  field :overscan_before, 3, type: :int32, json_name: "overscanBefore", deprecated: false
+  field :overscan_after, 4, type: :int32, json_name: "overscanAfter", deprecated: false
+
+  field :expanded_nodes, 5,
+    repeated: true,
+    type: Flyteidl2.Workflow.WatchWindowedActionsRequest.Subscribe.ExpandedNodesEntry,
+    json_name: "expandedNodes",
+    map: true
+
+  field :phase_filter, 6,
+    repeated: true,
+    type: Flyteidl2.Common.ActionPhase,
+    json_name: "phaseFilter",
+    enum: true
+
+  field :name_filter, 7, type: :string, json_name: "nameFilter"
+end
+
+defmodule Flyteidl2.Workflow.WatchWindowedActionsRequest.UpdateWindow.ExpandedNodesEntry do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchWindowedActionsRequest.UpdateWindow.ExpandedNodesEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :key, 1, type: :string
+  field :value, 2, type: Flyteidl2.Workflow.NodeExpansionParams
+end
+
+defmodule Flyteidl2.Workflow.WatchWindowedActionsRequest.UpdateWindow do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchWindowedActionsRequest.UpdateWindow",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  oneof :window_anchor, 0
+
+  field :selected_item_id, 1, type: :string, json_name: "selectedItemId", oneof: 0
+  field :anchor_flat_index, 7, type: :uint64, json_name: "anchorFlatIndex", oneof: 0
+  field :overscan_before, 2, type: :int32, json_name: "overscanBefore", deprecated: false
+  field :overscan_after, 3, type: :int32, json_name: "overscanAfter", deprecated: false
+
+  field :expanded_nodes, 4,
+    repeated: true,
+    type: Flyteidl2.Workflow.WatchWindowedActionsRequest.UpdateWindow.ExpandedNodesEntry,
+    json_name: "expandedNodes",
+    map: true
+
+  field :phase_filter, 5,
+    repeated: true,
+    type: Flyteidl2.Common.ActionPhase,
+    json_name: "phaseFilter",
+    enum: true
+
+  field :name_filter, 6, type: :string, json_name: "nameFilter"
+end
+
+defmodule Flyteidl2.Workflow.WatchWindowedActionsRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchWindowedActionsRequest",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  oneof :msg, 0
+
+  field :subscribe, 1, type: Flyteidl2.Workflow.WatchWindowedActionsRequest.Subscribe, oneof: 0
+
+  field :update_window, 2,
+    type: Flyteidl2.Workflow.WatchWindowedActionsRequest.UpdateWindow,
+    json_name: "updateWindow",
+    oneof: 0
+end
+
+defmodule Flyteidl2.Workflow.NodeExpansionParams do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.NodeExpansionParams",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :offset, 1, type: :int32, deprecated: false
+  field :limit, 2, type: :int32, deprecated: false
+end
+
+defmodule Flyteidl2.Workflow.WatchWindowedActionsResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WatchWindowedActionsResponse",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :window_items, 1,
+    repeated: true,
+    type: Flyteidl2.Workflow.WindowedItem,
+    json_name: "windowItems"
+
+  field :ancestors, 2, repeated: true, type: Flyteidl2.Workflow.WindowedItem
+  field :total_flat_count, 3, type: :int64, json_name: "totalFlatCount"
+  field :selected_flat_index, 4, type: :int64, json_name: "selectedFlatIndex"
+  field :initial_snapshot_complete, 5, type: :bool, json_name: "initialSnapshotComplete"
+  field :truncations, 6, repeated: true, type: Flyteidl2.Workflow.TruncationNotice
+  field :resync_hint, 7, type: :bool, json_name: "resyncHint"
+  field :hydration_complete, 8, type: :bool, json_name: "hydrationComplete"
+end
+
+defmodule Flyteidl2.Workflow.WindowedItem do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.WindowedItem",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  oneof :item, 0
+
+  field :action, 1, type: Flyteidl2.Workflow.EnrichedAction, oneof: 0
+  field :group, 2, type: Flyteidl2.Workflow.GroupNode, oneof: 0
+  field :depth, 3, type: :int32
+  field :is_expanded, 4, type: :bool, json_name: "isExpanded"
+end
+
+defmodule Flyteidl2.Workflow.ActionLeaf do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.ActionLeaf",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :action_id, 1, type: :string, json_name: "actionId"
+  field :short_name, 2, type: :string, json_name: "shortName"
+  field :duration, 3, type: Google.Protobuf.Duration
+  field :phase, 4, type: Flyteidl2.Common.ActionPhase, enum: true
+  field :start_time, 5, type: Google.Protobuf.Timestamp, json_name: "startTime"
+end
+
+defmodule Flyteidl2.Workflow.GroupAggregations do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.GroupAggregations",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :failed, 1, repeated: true, type: Flyteidl2.Workflow.ActionLeaf
+
+  field :longest_duration, 2,
+    repeated: true,
+    type: Flyteidl2.Workflow.ActionLeaf,
+    json_name: "longestDuration"
+
+  field :longest_running, 3,
+    repeated: true,
+    type: Flyteidl2.Workflow.ActionLeaf,
+    json_name: "longestRunning"
+
+  field :longest_setup, 4,
+    repeated: true,
+    type: Flyteidl2.Workflow.ActionLeaf,
+    json_name: "longestSetup"
+end
+
+defmodule Flyteidl2.Workflow.GroupNode.ChildPhaseCountsEntry do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.GroupNode.ChildPhaseCountsEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :key, 1, type: :int32
+  field :value, 2, type: :int32
+end
+
+defmodule Flyteidl2.Workflow.GroupNode do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.GroupNode",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :id, 1, type: :string
+  field :group_name, 2, type: :string, json_name: "groupName"
+  field :parent_id, 3, type: :string, json_name: "parentId"
+
+  field :child_phase_counts, 4,
+    repeated: true,
+    type: Flyteidl2.Workflow.GroupNode.ChildPhaseCountsEntry,
+    json_name: "childPhaseCounts",
+    map: true
+
+  field :earliest_start_time, 5, type: Google.Protobuf.Timestamp, json_name: "earliestStartTime"
+  field :latest_end_time, 6, type: Google.Protobuf.Timestamp, json_name: "latestEndTime"
+  field :total_children, 7, type: :int32, json_name: "totalChildren"
+  field :meets_filter, 8, type: :bool, json_name: "meetsFilter"
+  field :aggregations, 9, type: Flyteidl2.Workflow.GroupAggregations
+end
+
+defmodule Flyteidl2.Workflow.TruncationNotice do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.TruncationNotice",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :reason, 1, type: Flyteidl2.Workflow.TruncationNotice.Reason, enum: true
+  field :tracked_action_count, 2, type: :int64, json_name: "trackedActionCount"
+  field :known_total_action_count, 3, type: :int64, json_name: "knownTotalActionCount"
+  field :message, 4, type: :string
 end
 
 defmodule Flyteidl2.Workflow.WatchClusterEventsRequest do

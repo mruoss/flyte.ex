@@ -28,9 +28,12 @@ defmodule Flyteidl2.Common.Filter.Function do
   field :LESS_THAN_OR_EQUAL, 5
   field :CONTAINS, 6
   field :VALUE_IN, 7
+  field :VALUE_NOT_IN, 9
   field :ENDS_WITH, 12
   field :NOT_ENDS_WITH, 13
   field :CONTAINS_CASE_INSENSITIVE, 14
+  field :EXISTS, 15
+  field :NOT_EXISTS, 16
 end
 
 defmodule Flyteidl2.Common.Sort do

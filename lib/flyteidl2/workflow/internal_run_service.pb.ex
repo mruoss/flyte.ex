@@ -20,6 +20,7 @@ defmodule Flyteidl2.Workflow.RecordActionRequest do
   field :task, 10, type: Flyteidl2.Workflow.TaskAction, oneof: 0
   field :trace, 11, type: Flyteidl2.Workflow.TraceAction, oneof: 0
   field :condition, 12, type: Flyteidl2.Workflow.ConditionAction, oneof: 0
+  field :recovered_from, 13, type: Flyteidl2.Common.ActionIdentifier, json_name: "recoveredFrom"
 end
 
 defmodule Flyteidl2.Workflow.RecordActionResponse do
@@ -74,6 +75,9 @@ defmodule Flyteidl2.Workflow.UpdateActionStatusRequest do
     deprecated: false
 
   field :status, 2, type: Flyteidl2.Workflow.ActionStatus, deprecated: false
+  field :output, 3, proto3_optional: true, type: Flyteidl2.Core.Literal
+  field :principal, 4, proto3_optional: true, type: Flyteidl2.Common.EnrichedIdentity
+  field :abort_reason, 5, proto3_optional: true, type: :string, json_name: "abortReason"
 end
 
 defmodule Flyteidl2.Workflow.UpdateActionStatusResponse do

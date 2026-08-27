@@ -44,6 +44,19 @@ defmodule Flyteidl2.Core.RuntimeMetadata.RuntimeType do
   field :FLYTE_SDK, 1
 end
 
+defmodule Flyteidl2.Core.ReusePolicy.Scope do
+  @moduledoc false
+
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.core.ReusePolicy.Scope",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :GLOBAL, 0
+  field :RUN, 1
+end
+
 defmodule Flyteidl2.Core.Container.Architecture do
   @moduledoc false
 
@@ -100,6 +113,19 @@ defmodule Flyteidl2.Core.DataLoadingConfig.LiteralMapFormat do
   field :JSON, 0
   field :YAML, 1
   field :PROTO, 2
+end
+
+defmodule Flyteidl2.Core.DataLoadingConfig.FileInputLayout do
+  @moduledoc false
+
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.core.DataLoadingConfig.FileInputLayout",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :DIRECT, 0
+  field :NAMED_DIR, 1
 end
 
 defmodule Flyteidl2.Core.Sql.Dialect do
@@ -247,6 +273,28 @@ defmodule Flyteidl2.Core.TaskMetadata do
   field :is_entrypoint, 20, type: :bool, json_name: "isEntrypoint"
   field :code_bundle_uri, 21, type: :string, json_name: "codeBundleUri"
   field :timeouts, 22, type: Flyteidl2.Core.TimeoutStrategy
+  field :produces_artifacts, 23, type: :bool, json_name: "producesArtifacts"
+end
+
+defmodule Flyteidl2.Core.ReusePolicy do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.core.ReusePolicy",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :min_replicas, 1, type: :int32, json_name: "minReplicas", deprecated: false
+  field :max_replicas, 2, type: :int32, json_name: "maxReplicas", deprecated: false
+  field :concurrency, 3, type: :int32, deprecated: false
+  field :idle_ttl, 4, type: Google.Protobuf.Duration, json_name: "idleTtl", deprecated: false
+
+  field :scaledown_ttl, 5,
+    type: Google.Protobuf.Duration,
+    json_name: "scaledownTtl",
+    deprecated: false
+
+  field :scope, 6, type: Flyteidl2.Core.ReusePolicy.Scope, enum: true, deprecated: false
 end
 
 defmodule Flyteidl2.Core.TaskTemplate.ConfigEntry do
@@ -288,6 +336,7 @@ defmodule Flyteidl2.Core.TaskTemplate do
     json_name: "extendedResources"
 
   field :config, 16, repeated: true, type: Flyteidl2.Core.TaskTemplate.ConfigEntry, map: true
+  field :reuse_policy, 19, type: Flyteidl2.Core.ReusePolicy, json_name: "reusePolicy"
 end
 
 defmodule Flyteidl2.Core.ContainerPort do
@@ -353,6 +402,11 @@ defmodule Flyteidl2.Core.DataLoadingConfig do
   field :output_path, 3, type: :string, json_name: "outputPath"
   field :format, 4, type: Flyteidl2.Core.DataLoadingConfig.LiteralMapFormat, enum: true
   field :io_strategy, 5, type: Flyteidl2.Core.IOStrategy, json_name: "ioStrategy"
+
+  field :file_input_layout, 6,
+    type: Flyteidl2.Core.DataLoadingConfig.FileInputLayout,
+    json_name: "fileInputLayout",
+    enum: true
 end
 
 defmodule Flyteidl2.Core.K8sPod do

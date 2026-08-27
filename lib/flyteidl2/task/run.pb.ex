@@ -12,6 +12,20 @@ defmodule Flyteidl2.Task.CacheLookupScope do
   field :CACHE_LOOKUP_SCOPE_PROJECT_DOMAIN, 2
 end
 
+defmodule Flyteidl2.Task.TaskSpecSource do
+  @moduledoc false
+
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.task.TaskSpecSource",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :TASK_SPEC_SOURCE_UNSPECIFIED, 0
+  field :TASK_SPEC_SOURCE_DEPLOYED, 1
+  field :TASK_SPEC_SOURCE_EPHEMERAL, 2
+end
+
 defmodule Flyteidl2.Task.Labels.ValuesEntry do
   @moduledoc false
 
@@ -98,6 +112,21 @@ defmodule Flyteidl2.Task.CacheConfig do
     enum: true
 end
 
+defmodule Flyteidl2.Task.Recover do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.task.Recover",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :force_rerun_actions, 1,
+    repeated: true,
+    type: :string,
+    json_name: "forceRerunActions",
+    deprecated: false
+end
+
 defmodule Flyteidl2.Task.RunSpec do
   @moduledoc false
 
@@ -113,7 +142,7 @@ defmodule Flyteidl2.Task.RunSpec do
   field :envs, 3, type: Flyteidl2.Task.Envs
   field :interruptible, 4, type: Google.Protobuf.BoolValue
   field :overwrite_cache, 5, type: :bool, json_name: "overwriteCache", deprecated: true
-  field :cluster, 6, type: :string
+  field :queue, 6, type: :string
   field :raw_data_storage, 7, type: Flyteidl2.Task.RawDataStorage, json_name: "rawDataStorage"
   field :security_context, 8, type: Flyteidl2.Core.SecurityContext, json_name: "securityContext"
   field :cache_config, 9, type: Flyteidl2.Task.CacheConfig, json_name: "cacheConfig"
@@ -123,6 +152,25 @@ defmodule Flyteidl2.Task.RunSpec do
     type: Flyteidl2.Task.InlineRuleList,
     json_name: "notificationRules",
     oneof: 0
+
+  field :run_start_time, 12, type: Google.Protobuf.Timestamp, json_name: "runStartTime"
+  field :max_action_concurrency, 13, type: :uint32, json_name: "maxActionConcurrency"
+  field :run_base_dir, 14, type: :string, json_name: "runBaseDir"
+
+  field :related_to, 15,
+    type: Flyteidl2.Common.RunIdentifier,
+    json_name: "relatedTo",
+    deprecated: true
+
+  field :cluster_pool, 16, type: :string, json_name: "clusterPool"
+
+  field :task_spec_source, 17,
+    type: Flyteidl2.Task.TaskSpecSource,
+    json_name: "taskSpecSource",
+    enum: true
+
+  field :relation, 18, type: Flyteidl2.Common.Relation
+  field :recover, 19, type: Flyteidl2.Task.Recover
 end
 
 defmodule Flyteidl2.Task.InlineRuleList do

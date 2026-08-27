@@ -20,6 +20,30 @@ defmodule Flyteidl2.App.Status.DeploymentStatus do
   field :DEPLOYMENT_STATUS_DEPLOYING, 10
 end
 
+defmodule Flyteidl2.App.Status.Substate do
+  @moduledoc false
+
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.app.Status.Substate",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :SUBSTATE_UNSPECIFIED, 0
+  field :PULLING_IMAGE, 1
+  field :INITIALIZING, 2
+  field :WEBHOOK_ERROR, 3
+  field :IMAGE_PULL_ERROR, 4
+  field :SECRET_MOUNT_ERROR, 5
+  field :CRASH_LOOP, 6
+  field :OOM_KILLED, 7
+  field :RUNNING, 8
+  field :SCALED_TO_ZERO, 9
+  field :SCALING_FROM_ZERO, 10
+  field :SCALING_UP, 11
+  field :SCALING_DOWN, 12
+end
+
 defmodule Flyteidl2.App.Spec.DesiredState do
   @moduledoc false
 
@@ -73,6 +97,8 @@ defmodule Flyteidl2.App.Meta do
   field :id, 1, type: Flyteidl2.App.Identifier, deprecated: false
   field :revision, 2, type: :uint64, deprecated: false
   field :labels, 3, repeated: true, type: Flyteidl2.App.Meta.LabelsEntry, map: true
+  field :code_bundle_uri, 4, type: :string, json_name: "codeBundleUri"
+  field :source_code, 5, type: Flyteidl2.Task.SourceCode, json_name: "sourceCode"
 end
 
 defmodule Flyteidl2.App.AppWrapper do
@@ -121,6 +147,8 @@ defmodule Flyteidl2.App.Condition do
   field :message, 3, type: :string
   field :revision, 4, type: :uint64, deprecated: false
   field :actor, 5, type: Flyteidl2.Common.EnrichedIdentity
+  field :substate, 6, type: Flyteidl2.App.Status.Substate, enum: true
+  field :deployment_id, 7, type: :string, json_name: "deploymentId"
 end
 
 defmodule Flyteidl2.App.Status do
@@ -143,6 +171,9 @@ defmodule Flyteidl2.App.Status do
   field :materialized_inputs, 9,
     type: Flyteidl2.App.MaterializedInputs,
     json_name: "materializedInputs"
+
+  field :last_started_at, 10, type: Google.Protobuf.Timestamp, json_name: "lastStartedAt"
+  field :last_assigned_cluster, 11, type: :string, json_name: "lastAssignedCluster"
 end
 
 defmodule Flyteidl2.App.K8sMetadata do
@@ -233,14 +264,8 @@ defmodule Flyteidl2.App.Input do
 
   field :name, 1, type: :string, deprecated: false
   field :string_value, 2, type: :string, json_name: "stringValue", oneof: 0, deprecated: false
-
-  field :artifact_query, 3,
-    type: Flyteidl2.Core.ArtifactQuery,
-    json_name: "artifactQuery",
-    oneof: 0
-
-  field :artifact_id, 4, type: Flyteidl2.Core.ArtifactID, json_name: "artifactId", oneof: 0
   field :app_id, 5, type: Flyteidl2.App.Identifier, json_name: "appId", oneof: 0
+  field :artifact_id, 6, type: Flyteidl2.Core.ArtifactVersionId, json_name: "artifactId", oneof: 0
 end
 
 defmodule Flyteidl2.App.MaterializedInputs do

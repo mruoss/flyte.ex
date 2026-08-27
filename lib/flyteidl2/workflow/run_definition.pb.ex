@@ -40,6 +40,8 @@ defmodule Flyteidl2.Workflow.RunSource do
   field :RUN_SOURCE_WEB, 1
   field :RUN_SOURCE_CLI, 2
   field :RUN_SOURCE_SCHEDULE_TRIGGER, 3
+  field :RUN_SOURCE_TRACKED, 4
+  field :RUN_SOURCE_ARTIFACT_TRIGGER, 5
 end
 
 defmodule Flyteidl2.Workflow.ErrorInfo.Kind do
@@ -56,6 +58,33 @@ defmodule Flyteidl2.Workflow.ErrorInfo.Kind do
   field :KIND_SYSTEM, 2
 end
 
+defmodule Flyteidl2.Workflow.ClusterEvent.Type do
+  @moduledoc false
+
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.workflow.ClusterEvent.Type",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :TYPE_UNSPECIFIED, 0
+  field :TYPE_NORMAL, 1
+  field :TYPE_WARNING, 2
+end
+
+defmodule Flyteidl2.Workflow.Run.LabelsEntry do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.Run.LabelsEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :key, 1, type: :string
+  field :value, 2, type: :string
+end
+
 defmodule Flyteidl2.Workflow.Run do
   @moduledoc false
 
@@ -65,6 +94,7 @@ defmodule Flyteidl2.Workflow.Run do
     syntax: :proto3
 
   field :action, 1, type: Flyteidl2.Workflow.Action
+  field :labels, 2, repeated: true, type: Flyteidl2.Workflow.Run.LabelsEntry, map: true
 end
 
 defmodule Flyteidl2.Workflow.RunDetails do
@@ -90,7 +120,7 @@ defmodule Flyteidl2.Workflow.TaskAction do
   field :id, 1, type: Flyteidl2.Task.TaskIdentifier
   field :spec, 2, type: Flyteidl2.Task.TaskSpec, deprecated: false
   field :cache_key, 3, type: Google.Protobuf.StringValue, json_name: "cacheKey"
-  field :cluster, 4, type: :string
+  field :queue, 4, type: :string
 end
 
 defmodule Flyteidl2.Workflow.TraceAction do
@@ -119,8 +149,8 @@ defmodule Flyteidl2.Workflow.ConditionAction do
 
   field :name, 1, type: :string, deprecated: false
   field :type, 6, type: Flyteidl2.Core.LiteralType
-  field :prompt, 7, type: :string
-  field :description, 8, type: :string
+  field :prompt, 7, type: :string, deprecated: false
+  field :description, 8, type: :string, deprecated: false
 
   field :prompt_type, 9,
     type: Flyteidl2.Workflow.ConditionPromptType,
@@ -202,6 +232,8 @@ defmodule Flyteidl2.Workflow.ActionMetadata do
   field :trigger_name, 14, type: :string, json_name: "triggerName"
   field :trigger_type, 15, type: Flyteidl2.Task.TriggerAutomationSpec, json_name: "triggerType"
   field :source, 16, type: Flyteidl2.Workflow.RunSource, enum: true
+  field :relation, 17, type: Flyteidl2.Common.Relation
+  field :recovered_from, 18, type: Flyteidl2.Common.ActionIdentifier, json_name: "recoveredFrom"
 end
 
 defmodule Flyteidl2.Workflow.ActionStatus do
@@ -279,6 +311,8 @@ defmodule Flyteidl2.Workflow.ErrorInfo do
 
   field :message, 1, type: :string
   field :kind, 2, type: Flyteidl2.Workflow.ErrorInfo.Kind, enum: true
+  field :code, 3, type: :string
+  field :gpu_fault, 4, type: Flyteidl2.Core.GpuFault, json_name: "gpuFault"
 end
 
 defmodule Flyteidl2.Workflow.AbortInfo do
@@ -291,6 +325,18 @@ defmodule Flyteidl2.Workflow.AbortInfo do
 
   field :reason, 1, type: :string
   field :aborted_by, 2, type: Flyteidl2.Common.EnrichedIdentity, json_name: "abortedBy"
+end
+
+defmodule Flyteidl2.Workflow.SignalInfo do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.SignalInfo",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :signalled_by, 1, type: Flyteidl2.Common.EnrichedIdentity, json_name: "signalledBy"
+  field :output, 2, type: Flyteidl2.Core.Literal
 end
 
 defmodule Flyteidl2.Workflow.ActionDetails do
@@ -310,6 +356,7 @@ defmodule Flyteidl2.Workflow.ActionDetails do
   field :status, 3, type: Flyteidl2.Workflow.ActionStatus
   field :error_info, 4, type: Flyteidl2.Workflow.ErrorInfo, json_name: "errorInfo", oneof: 0
   field :abort_info, 5, type: Flyteidl2.Workflow.AbortInfo, json_name: "abortInfo", oneof: 0
+  field :signal_info, 10, type: Flyteidl2.Workflow.SignalInfo, json_name: "signalInfo", oneof: 0
   field :task, 6, type: Flyteidl2.Task.TaskSpec, oneof: 1
   field :trace, 8, type: Flyteidl2.Task.TraceSpec, oneof: 1
   field :condition, 9, type: Flyteidl2.Workflow.ConditionAction, oneof: 1
@@ -355,6 +402,7 @@ defmodule Flyteidl2.Workflow.ActionAttempt do
 
   field :cluster, 12, type: :string
   field :log_context, 13, type: Flyteidl2.Core.LogContext, json_name: "logContext"
+  field :cache_metadata, 14, type: Flyteidl2.Common.CacheMetadata, json_name: "cacheMetadata"
 end
 
 defmodule Flyteidl2.Workflow.ClusterEvent do
@@ -367,6 +415,11 @@ defmodule Flyteidl2.Workflow.ClusterEvent do
 
   field :occurred_at, 1, type: Google.Protobuf.Timestamp, json_name: "occurredAt"
   field :message, 2, type: :string
+  field :type, 3, type: Flyteidl2.Workflow.ClusterEvent.Type, enum: true
+  field :reason, 4, type: :string
+  field :source_component, 5, type: :string, json_name: "sourceComponent"
+  field :count, 6, type: :int32
+  field :gpu_fault, 7, type: Flyteidl2.Core.GpuFault, json_name: "gpuFault"
 end
 
 defmodule Flyteidl2.Workflow.PhaseTransition do
@@ -424,6 +477,7 @@ defmodule Flyteidl2.Workflow.ActionEvent do
     json_name: "clusterEvents"
 
   field :reported_time, 15, type: Google.Protobuf.Timestamp, json_name: "reportedTime"
+  field :cache_metadata, 16, type: Flyteidl2.Common.CacheMetadata, json_name: "cacheMetadata"
 end
 
 defmodule Flyteidl2.Workflow.ActionSpec do

@@ -127,6 +127,16 @@ defmodule Flyteidl2.Task.ListVersionsResponse.VersionResponse do
     type: Google.Protobuf.Timestamp,
     json_name: "deployedAt",
     deprecated: false
+
+  field :deployed_by, 3,
+    type: Flyteidl2.Common.EnrichedIdentity,
+    json_name: "deployedBy",
+    deprecated: false
+
+  field :latest_run, 4,
+    proto3_optional: true,
+    type: Flyteidl2.Task.LatestRunSummary,
+    json_name: "latestRun"
 end
 
 defmodule Flyteidl2.Task.ListVersionsResponse do

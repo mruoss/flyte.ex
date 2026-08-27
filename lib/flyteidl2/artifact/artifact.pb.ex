@@ -3,7 +3,7 @@ defmodule Flyteidl2.Artifact.ArtifactName do
 
   use Protobuf,
     full_name: "flyteidl2.artifact.ArtifactName",
-    protoc_gen_elixir_version: "0.17.0",
+    protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
   field :org, 1, type: :string, deprecated: false
@@ -17,7 +17,7 @@ defmodule Flyteidl2.Artifact.ArtifactIdentifier do
 
   use Protobuf,
     full_name: "flyteidl2.artifact.ArtifactIdentifier",
-    protoc_gen_elixir_version: "0.17.0",
+    protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
   field :name, 1, type: Flyteidl2.Artifact.ArtifactName, deprecated: false
@@ -29,7 +29,7 @@ defmodule Flyteidl2.Artifact.TaskActionSource do
 
   use Protobuf,
     full_name: "flyteidl2.artifact.TaskActionSource",
-    protoc_gen_elixir_version: "0.17.0",
+    protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
   field :action, 1, type: Flyteidl2.Common.ActionIdentifier, deprecated: false
@@ -41,7 +41,7 @@ defmodule Flyteidl2.Artifact.ArtifactSource do
 
   use Protobuf,
     full_name: "flyteidl2.artifact.ArtifactSource",
-    protoc_gen_elixir_version: "0.17.0",
+    protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
   oneof :source, 0
@@ -59,7 +59,7 @@ defmodule Flyteidl2.Artifact.ArtifactSpec do
 
   use Protobuf,
     full_name: "flyteidl2.artifact.ArtifactSpec",
-    protoc_gen_elixir_version: "0.17.0",
+    protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
   field :value, 1, type: Flyteidl2.Core.Literal, deprecated: false
@@ -73,7 +73,7 @@ defmodule Flyteidl2.Artifact.Artifact do
 
   use Protobuf,
     full_name: "flyteidl2.artifact.Artifact",
-    protoc_gen_elixir_version: "0.17.0",
+    protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
   field :artifact_id, 1, type: Flyteidl2.Artifact.ArtifactIdentifier, json_name: "artifactId"

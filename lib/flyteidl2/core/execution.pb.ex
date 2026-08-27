@@ -75,6 +75,35 @@ defmodule Flyteidl2.Core.ExecutionError.ErrorKind do
   field :SYSTEM, 2
 end
 
+defmodule Flyteidl2.Core.GpuFault.Kind do
+  @moduledoc false
+
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.core.GpuFault.Kind",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :KIND_UNSPECIFIED, 0
+  field :KIND_XID, 1
+  field :KIND_SXID, 2
+end
+
+defmodule Flyteidl2.Core.GpuFault.Severity do
+  @moduledoc false
+
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.core.GpuFault.Severity",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :SEVERITY_UNSPECIFIED, 0
+  field :SEVERITY_USER, 1
+  field :SEVERITY_WARN, 2
+  field :SEVERITY_CRITICAL, 3
+end
+
 defmodule Flyteidl2.Core.ContainerError.Kind do
   @moduledoc false
 
@@ -173,6 +202,27 @@ defmodule Flyteidl2.Core.ExecutionError do
   field :timestamp, 5, type: Google.Protobuf.Timestamp
   field :worker, 6, type: :string
   field :recoverability, 7, type: Flyteidl2.Core.ContainerError.Kind, enum: true
+  field :gpu_fault, 8, type: Flyteidl2.Core.GpuFault, json_name: "gpuFault"
+end
+
+defmodule Flyteidl2.Core.GpuFault do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.core.GpuFault",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :kind, 1, type: Flyteidl2.Core.GpuFault.Kind, enum: true
+  field :code, 2, type: :uint32
+  field :name, 3, type: :string
+  field :severity, 4, type: Flyteidl2.Core.GpuFault.Severity, enum: true
+  field :gpu_uuid, 5, type: :string, json_name: "gpuUuid"
+  field :gpu_index, 6, proto3_optional: true, type: :uint32, json_name: "gpuIndex"
+  field :pci_bus_id, 7, type: :string, json_name: "pciBusId"
+  field :node, 8, type: :string
+  field :pid, 9, type: :uint32
+  field :process, 10, type: :string
 end
 
 defmodule Flyteidl2.Core.ContainerError do
@@ -235,7 +285,8 @@ defmodule Flyteidl2.Core.LogContext do
   field :pods, 1, repeated: true, type: Flyteidl2.Core.PodLogContext
   field :primary_pod_name, 2, type: :string, json_name: "primaryPodName"
   field :connector, 3, type: Flyteidl2.Core.ConnectorLogContext
-  field :pod_name_prefix, 4, type: :string, json_name: "podNamePrefix"
+  field :pod_name_prefix, 4, type: :string, json_name: "podNamePrefix", deprecated: true
+  field :pod_name_prefixes, 5, repeated: true, type: :string, json_name: "podNamePrefixes"
 end
 
 defmodule Flyteidl2.Core.ConnectorLogContext do

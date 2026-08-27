@@ -41,6 +41,63 @@ defmodule Flyteidl2.Core.ArtifactKey do
   field :org, 4, type: :string
 end
 
+defmodule Flyteidl2.Core.ArtifactVersionId do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.core.ArtifactVersionId",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :key, 1, type: Flyteidl2.Core.ArtifactKey
+  field :version, 2, type: :string
+end
+
+defmodule Flyteidl2.Core.ArtifactCard do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.core.ArtifactCard",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :uri, 1, type: :string, deprecated: false
+  field :format, 2, type: :string, deprecated: false
+  field :type, 3, type: :string, deprecated: false
+end
+
+defmodule Flyteidl2.Core.ArtifactInfo.UserMetadataEntry do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.core.ArtifactInfo.UserMetadataEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :key, 1, type: :string
+  field :value, 2, type: :string
+end
+
+defmodule Flyteidl2.Core.ArtifactInfo do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.core.ArtifactInfo",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :description, 1, type: :string, deprecated: false
+
+  field :user_metadata, 2,
+    repeated: true,
+    type: Flyteidl2.Core.ArtifactInfo.UserMetadataEntry,
+    json_name: "userMetadata",
+    map: true
+
+  field :card, 3, type: Flyteidl2.Core.ArtifactCard
+end
+
 defmodule Flyteidl2.Core.ArtifactBindingData do
   @moduledoc false
 

@@ -10,6 +10,7 @@ defmodule Flyteidl2.App.TailLogsRequest do
 
   field :app_id, 1, type: Flyteidl2.App.Identifier, json_name: "appId", oneof: 0
   field :replica_id, 2, type: Flyteidl2.App.ReplicaIdentifier, json_name: "replicaId", oneof: 0
+  field :source, 3, type: Flyteidl2.Logs.Dataplane.LogsSource, enum: true
 end
 
 defmodule Flyteidl2.App.ReplicaIdentifierList do
@@ -42,6 +43,8 @@ defmodule Flyteidl2.App.LogLines do
     repeated: true,
     type: Flyteidl2.Logs.Dataplane.LogLine,
     json_name: "structuredLines"
+
+  field :source, 4, type: Flyteidl2.Logs.Dataplane.LogLineSource, enum: true
 end
 
 defmodule Flyteidl2.App.LogLinesBatch do

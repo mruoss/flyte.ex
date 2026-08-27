@@ -9,6 +9,7 @@ defmodule Flyteidl2.Notification.EventType do
 
   field :EVENT_TYPE_UNSPECIFIED, 0
   field :EVENT_TYPE_RUN_COMPLETED, 1
+  field :EVENT_TYPE_ACTION_PAUSED, 2
 end
 
 defmodule Flyteidl2.Notification.HttpMethod do
@@ -55,6 +56,20 @@ defmodule Flyteidl2.Notification.RunCompletedNotificationTemplateData do
   field :run, 1, type: Flyteidl2.Common.RunIdentifier, deprecated: false
   field :phase, 2, type: Flyteidl2.Common.ActionPhase, enum: true
   field :error, 3, type: :string
+end
+
+defmodule Flyteidl2.Notification.ActionPausedNotificationTemplateData do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.notification.ActionPausedNotificationTemplateData",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :action, 1, type: Flyteidl2.Common.ActionIdentifier, deprecated: false
+  field :prompt, 2, type: :string
+  field :description, 3, type: :string
+  field :prompt_type, 4, type: :string, json_name: "promptType"
 end
 
 defmodule Flyteidl2.Notification.WebhookDeliveryTemplate.HeadersEntry do

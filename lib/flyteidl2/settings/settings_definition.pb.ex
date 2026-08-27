@@ -113,19 +113,6 @@ defmodule Flyteidl2.Settings.BoolSetting do
   field :scope_level, 3, type: Flyteidl2.Settings.ScopeLevel, json_name: "scopeLevel", enum: true
 end
 
-defmodule Flyteidl2.Settings.StringListSetting do
-  @moduledoc false
-
-  use Protobuf,
-    full_name: "flyteidl2.settings.StringListSetting",
-    protoc_gen_elixir_version: "0.16.0",
-    syntax: :proto3
-
-  field :state, 1, type: Flyteidl2.Settings.SettingState, enum: true
-  field :list_value, 2, type: Flyteidl2.Settings.StringValues, json_name: "listValue"
-  field :scope_level, 3, type: Flyteidl2.Settings.ScopeLevel, json_name: "scopeLevel", enum: true
-end
-
 defmodule Flyteidl2.Settings.StringMapSetting do
   @moduledoc false
 
@@ -163,6 +150,16 @@ defmodule Flyteidl2.Settings.RunSettings do
   field :default_queue, 1,
     type: Flyteidl2.Settings.StringSetting,
     json_name: "defaultQueue",
+    deprecated: false
+
+  field :max_action_concurrency, 2,
+    type: Flyteidl2.Settings.Int64Setting,
+    json_name: "maxActionConcurrency",
+    deprecated: false
+
+  field :run_base_dir, 3,
+    type: Flyteidl2.Settings.StringSetting,
+    json_name: "runBaseDir",
     deprecated: false
 end
 
@@ -225,6 +222,20 @@ defmodule Flyteidl2.Settings.TaskResourceSettings do
     deprecated: false
 end
 
+defmodule Flyteidl2.Settings.AppSettings do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.settings.AppSettings",
+    protoc_gen_elixir_version: "0.16.0",
+    syntax: :proto3
+
+  field :disallow_anonymous, 1,
+    type: Flyteidl2.Settings.BoolSetting,
+    json_name: "disallowAnonymous",
+    deprecated: false
+end
+
 defmodule Flyteidl2.Settings.Settings do
   @moduledoc false
 
@@ -247,5 +258,12 @@ defmodule Flyteidl2.Settings.Settings do
   field :environment_variables, 7,
     type: Flyteidl2.Settings.StringMapSetting,
     json_name: "environmentVariables",
+    deprecated: false
+
+  field :app, 8, type: Flyteidl2.Settings.AppSettings, deprecated: false
+
+  field :pod_template_name, 9,
+    type: Flyteidl2.Settings.StringSetting,
+    json_name: "podTemplateName",
     deprecated: false
 end

@@ -3,7 +3,7 @@ defmodule Flyteidl2.Common.CacheMetadata do
 
   use Protobuf,
     full_name: "flyteidl2.common.CacheMetadata",
-    protoc_gen_elixir_version: "0.17.0",
+    protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
 
   field :source_action_attempt, 1,

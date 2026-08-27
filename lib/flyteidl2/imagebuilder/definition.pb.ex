@@ -19,6 +19,7 @@ defmodule Flyteidl2.Imagebuilder.Image do
 
   field :id, 1, type: Flyteidl2.Imagebuilder.ImageIdentifier
   field :fqin, 2, type: :string
+  field :build_run, 3, type: Flyteidl2.Common.RunIdentifier, json_name: "buildRun"
 end
 
 defmodule Flyteidl2.Imagebuilder.AptPackages do

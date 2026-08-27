@@ -25,6 +25,7 @@ defmodule Flyteidl2.Actions.Action do
   field :task, 7, type: Flyteidl2.Workflow.TaskAction, oneof: 0
   field :trace, 8, type: Flyteidl2.Workflow.TraceAction, oneof: 0
   field :condition, 9, type: Flyteidl2.Workflow.ConditionAction, oneof: 0
+  field :recovered_from, 10, type: Flyteidl2.Common.ActionIdentifier, json_name: "recoveredFrom"
 end
 
 defmodule Flyteidl2.Actions.EnqueueRequest do
@@ -63,7 +64,6 @@ defmodule Flyteidl2.Actions.UpdateRequest do
 
   field :attempt, 2, type: :uint32, deprecated: false
   field :status, 3, type: Flyteidl2.Workflow.ActionStatus, deprecated: false
-  field :state, 4, type: :string
 end
 
 defmodule Flyteidl2.Actions.UpdateResponse do
@@ -73,33 +73,6 @@ defmodule Flyteidl2.Actions.UpdateResponse do
     full_name: "flyteidl2.actions.UpdateResponse",
     protoc_gen_elixir_version: "0.16.0",
     syntax: :proto3
-end
-
-defmodule Flyteidl2.Actions.GetLatestStateRequest do
-  @moduledoc false
-
-  use Protobuf,
-    full_name: "flyteidl2.actions.GetLatestStateRequest",
-    protoc_gen_elixir_version: "0.16.0",
-    syntax: :proto3
-
-  field :action_id, 1,
-    type: Flyteidl2.Common.ActionIdentifier,
-    json_name: "actionId",
-    deprecated: false
-
-  field :attempt, 2, type: :uint32, deprecated: false
-end
-
-defmodule Flyteidl2.Actions.GetLatestStateResponse do
-  @moduledoc false
-
-  use Protobuf,
-    full_name: "flyteidl2.actions.GetLatestStateResponse",
-    protoc_gen_elixir_version: "0.16.0",
-    syntax: :proto3
-
-  field :state, 1, type: :string, deprecated: false
 end
 
 defmodule Flyteidl2.Actions.WatchForUpdatesRequest do
@@ -153,6 +126,11 @@ defmodule Flyteidl2.Actions.AbortRequest do
     deprecated: false
 
   field :reason, 2, proto3_optional: true, type: :string
+
+  field :aborted_by, 3,
+    proto3_optional: true,
+    type: Flyteidl2.Common.EnrichedIdentity,
+    json_name: "abortedBy"
 end
 
 defmodule Flyteidl2.Actions.AbortResponse do
@@ -179,6 +157,11 @@ defmodule Flyteidl2.Actions.SignalRequest do
 
   field :parent_action_name, 2, type: :string, json_name: "parentActionName", deprecated: false
   field :value, 3, type: Flyteidl2.Core.Literal, deprecated: false
+
+  field :signalled_by, 4,
+    proto3_optional: true,
+    type: Flyteidl2.Common.EnrichedIdentity,
+    json_name: "signalledBy"
 end
 
 defmodule Flyteidl2.Actions.SignalResponse do
@@ -196,10 +179,6 @@ defmodule Flyteidl2.Actions.ActionsService.Service do
   use GRPC.Service, name: "flyteidl2.actions.ActionsService", protoc_gen_elixir_version: "0.16.0"
 
   rpc :Enqueue, Flyteidl2.Actions.EnqueueRequest, Flyteidl2.Actions.EnqueueResponse
-
-  rpc :GetLatestState,
-      Flyteidl2.Actions.GetLatestStateRequest,
-      Flyteidl2.Actions.GetLatestStateResponse
 
   rpc :WatchForUpdates,
       Flyteidl2.Actions.WatchForUpdatesRequest,
