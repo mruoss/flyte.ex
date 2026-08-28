@@ -3,13 +3,12 @@ defmodule Flyte.MixProject do
 
   @app :flyte
   @source_url "https://github.com/mruoss/flyte.ex"
-  @version "2.0.44"
+  @version "2.0.43"
 
   def project do
     [
       app: @app,
-      description:
-        "Elixir files generated from Flyte's protobuf files using protobuf-elixir.",
+      description: "Elixir files generated from Flyte's protobuf files using protobuf-elixir.",
       version: @version,
       elixir: "~> 1.16",
       start_permanent: Mix.env() == :prod,
