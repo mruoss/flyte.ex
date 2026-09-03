@@ -274,6 +274,11 @@ defmodule Flyteidl2.Core.TaskMetadata do
   field :code_bundle_uri, 21, type: :string, json_name: "codeBundleUri"
   field :timeouts, 22, type: Flyteidl2.Core.TimeoutStrategy
   field :produces_artifacts, 23, type: :bool, json_name: "producesArtifacts"
+
+  field :cache_max_age, 24,
+    type: Google.Protobuf.Duration,
+    json_name: "cacheMaxAge",
+    deprecated: false
 end
 
 defmodule Flyteidl2.Core.ReusePolicy do

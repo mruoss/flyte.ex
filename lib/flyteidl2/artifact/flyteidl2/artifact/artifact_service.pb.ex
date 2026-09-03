@@ -118,6 +118,31 @@ defmodule Flyteidl2.Artifact.ListArtifactNamesResponse do
   field :token, 2, type: :string
 end
 
+defmodule Flyteidl2.Artifact.ListArtifactMetadataKeysRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.artifact.ListArtifactMetadataKeysRequest",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :project_id, 1,
+    type: Flyteidl2.Common.ProjectIdentifier,
+    json_name: "projectId",
+    deprecated: false
+end
+
+defmodule Flyteidl2.Artifact.ListArtifactMetadataKeysResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.artifact.ListArtifactMetadataKeysResponse",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :keys, 1, repeated: true, type: :string
+end
+
 defmodule Flyteidl2.Artifact.ArtifactService.Service do
   @moduledoc false
 
@@ -138,6 +163,10 @@ defmodule Flyteidl2.Artifact.ArtifactService.Service do
   rpc :ListArtifactNames,
       Flyteidl2.Artifact.ListArtifactNamesRequest,
       Flyteidl2.Artifact.ListArtifactNamesResponse
+
+  rpc :ListArtifactMetadataKeys,
+      Flyteidl2.Artifact.ListArtifactMetadataKeysRequest,
+      Flyteidl2.Artifact.ListArtifactMetadataKeysResponse
 end
 
 defmodule Flyteidl2.Artifact.ArtifactService.Stub do

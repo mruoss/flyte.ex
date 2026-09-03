@@ -164,6 +164,7 @@ defmodule Flyteidl2.Task.ProducedArtifact do
   field :version, 3, type: :string
   field :info, 4, type: Flyteidl2.Core.ArtifactInfo
   field :type, 5, type: Flyteidl2.Core.LiteralType
+  field :parent_artifact, 6, type: Flyteidl2.Core.ArtifactVersionId, json_name: "parentArtifact"
 end
 
 defmodule Flyteidl2.Task.Outputs do

@@ -66,6 +66,7 @@ defmodule Flyteidl2.Artifact.ArtifactSpec do
   field :type, 2, type: Flyteidl2.Core.LiteralType, deprecated: false
   field :info, 3, type: Flyteidl2.Core.ArtifactInfo
   field :source, 6, type: Flyteidl2.Artifact.ArtifactSource
+  field :parent_artifact, 7, type: Flyteidl2.Core.ArtifactVersionId, json_name: "parentArtifact"
 end
 
 defmodule Flyteidl2.Artifact.Artifact do
