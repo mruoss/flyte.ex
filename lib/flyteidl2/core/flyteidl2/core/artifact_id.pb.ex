@@ -35,10 +35,10 @@ defmodule Flyteidl2.Core.ArtifactKey do
     protoc_gen_elixir_version: "0.17.0",
     syntax: :proto3
 
-  field :project, 1, type: :string
-  field :domain, 2, type: :string
-  field :name, 3, type: :string
-  field :org, 4, type: :string
+  field :project, 1, type: :string, deprecated: false
+  field :domain, 2, type: :string, deprecated: false
+  field :name, 3, type: :string, deprecated: false
+  field :org, 4, type: :string, deprecated: false
 end
 
 defmodule Flyteidl2.Core.ArtifactVersionId do
@@ -50,7 +50,7 @@ defmodule Flyteidl2.Core.ArtifactVersionId do
     syntax: :proto3
 
   field :key, 1, type: Flyteidl2.Core.ArtifactKey
-  field :version, 2, type: :string
+  field :version, 2, type: :string, deprecated: false
 end
 
 defmodule Flyteidl2.Core.ArtifactCard do
