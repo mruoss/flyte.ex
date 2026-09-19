@@ -64,6 +64,7 @@ defmodule Flyteidl2.Artifact.ListArtifactsRequest do
     deprecated: false
 
   field :name, 3, proto3_optional: true, type: :string, deprecated: false
+  field :latest_per_partition, 4, type: :bool, json_name: "latestPerPartition"
 end
 
 defmodule Flyteidl2.Artifact.ListArtifactsResponse do
@@ -104,6 +105,19 @@ defmodule Flyteidl2.Artifact.ArtifactGroup do
 
   field :latest, 1, type: Flyteidl2.Artifact.Artifact
   field :versions, 2, type: :uint64
+
+  field :partition_schema, 3,
+    type: Flyteidl2.Artifact.ArtifactPartitionSchema,
+    json_name: "partitionSchema"
+
+  field :latest_time_partition, 4,
+    type: Google.Protobuf.Timestamp,
+    json_name: "latestTimePartition"
+
+  field :latest_partitions, 5,
+    repeated: true,
+    type: Flyteidl2.Core.Partitions,
+    json_name: "latestPartitions"
 end
 
 defmodule Flyteidl2.Artifact.ListArtifactNamesResponse do
@@ -130,6 +144,8 @@ defmodule Flyteidl2.Artifact.ListArtifactMetadataKeysRequest do
     type: Flyteidl2.Common.ProjectIdentifier,
     json_name: "projectId",
     deprecated: false
+
+  field :name, 2, proto3_optional: true, type: :string, deprecated: false
 end
 
 defmodule Flyteidl2.Artifact.ListArtifactMetadataKeysResponse do
@@ -141,6 +157,114 @@ defmodule Flyteidl2.Artifact.ListArtifactMetadataKeysResponse do
     syntax: :proto3
 
   field :keys, 1, repeated: true, type: :string
+end
+
+defmodule Flyteidl2.Artifact.DeclareArtifactRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.artifact.DeclareArtifactRequest",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :name, 1, type: Flyteidl2.Artifact.ArtifactName, deprecated: false
+
+  field :partition_schema, 2,
+    type: Flyteidl2.Artifact.ArtifactPartitionSchema,
+    json_name: "partitionSchema",
+    deprecated: false
+end
+
+defmodule Flyteidl2.Artifact.DeclareArtifactResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.artifact.DeclareArtifactResponse",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :partition_schema, 1,
+    type: Flyteidl2.Artifact.ArtifactPartitionSchema,
+    json_name: "partitionSchema"
+end
+
+defmodule Flyteidl2.Artifact.GetArtifactSchemaRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.artifact.GetArtifactSchemaRequest",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :name, 1, type: Flyteidl2.Artifact.ArtifactName, deprecated: false
+end
+
+defmodule Flyteidl2.Artifact.GetArtifactSchemaResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.artifact.GetArtifactSchemaResponse",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :partition_schema, 1,
+    type: Flyteidl2.Artifact.ArtifactPartitionSchema,
+    json_name: "partitionSchema"
+
+  field :declared, 2, type: :bool
+end
+
+defmodule Flyteidl2.Artifact.ListPartitionValuesRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.artifact.ListPartitionValuesRequest",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :request, 1, type: Flyteidl2.Common.ListRequest
+
+  field :project_id, 2,
+    type: Flyteidl2.Common.ProjectIdentifier,
+    json_name: "projectId",
+    deprecated: false
+
+  field :name, 3, type: :string, deprecated: false
+  field :key, 4, type: :string, deprecated: false
+end
+
+defmodule Flyteidl2.Artifact.ListPartitionValuesResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.artifact.ListPartitionValuesResponse",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :values, 1, repeated: true, type: :string
+end
+
+defmodule Flyteidl2.Artifact.DeleteArtifactRequest do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.artifact.DeleteArtifactRequest",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :artifact_id, 1,
+    type: Flyteidl2.Artifact.ArtifactIdentifier,
+    json_name: "artifactId",
+    deprecated: false
+end
+
+defmodule Flyteidl2.Artifact.DeleteArtifactResponse do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.artifact.DeleteArtifactResponse",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
 end
 
 defmodule Flyteidl2.Artifact.ArtifactService.Service do
@@ -167,6 +291,22 @@ defmodule Flyteidl2.Artifact.ArtifactService.Service do
   rpc :ListArtifactMetadataKeys,
       Flyteidl2.Artifact.ListArtifactMetadataKeysRequest,
       Flyteidl2.Artifact.ListArtifactMetadataKeysResponse
+
+  rpc :DeleteArtifact,
+      Flyteidl2.Artifact.DeleteArtifactRequest,
+      Flyteidl2.Artifact.DeleteArtifactResponse
+
+  rpc :DeclareArtifact,
+      Flyteidl2.Artifact.DeclareArtifactRequest,
+      Flyteidl2.Artifact.DeclareArtifactResponse
+
+  rpc :GetArtifactSchema,
+      Flyteidl2.Artifact.GetArtifactSchemaRequest,
+      Flyteidl2.Artifact.GetArtifactSchemaResponse
+
+  rpc :ListPartitionValues,
+      Flyteidl2.Artifact.ListPartitionValuesRequest,
+      Flyteidl2.Artifact.ListPartitionValuesResponse
 end
 
 defmodule Flyteidl2.Artifact.ArtifactService.Stub do

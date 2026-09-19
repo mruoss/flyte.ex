@@ -221,6 +221,7 @@ defmodule Flyteidl2.App.Spec do
     enum: true
 
   field :cluster_pool, 6, type: :string, json_name: "clusterPool"
+  field :cluster, 16, type: :string
   field :images, 7, type: Flyteidl2.App.ImageSpecSet
   field :security_context, 8, type: Flyteidl2.App.SecurityContext, json_name: "securityContext"
 

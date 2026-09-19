@@ -171,6 +171,34 @@ defmodule Flyteidl2.Task.RunSpec do
 
   field :relation, 18, type: Flyteidl2.Common.Relation
   field :recover, 19, type: Flyteidl2.Task.Recover
+  field :default_settings, 20, type: Flyteidl2.Task.DefaultSettings, json_name: "defaultSettings"
+end
+
+defmodule Flyteidl2.Task.DefaultSettings do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.task.DefaultSettings",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :pod_template_name, 1, type: :string, json_name: "podTemplateName"
+
+  field :task_resource_defaults, 2,
+    type: Flyteidl2.Task.TaskResourceDefaults,
+    json_name: "taskResourceDefaults"
+end
+
+defmodule Flyteidl2.Task.TaskResourceDefaults do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.task.TaskResourceDefaults",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :requests, 1, repeated: true, type: Flyteidl2.Core.Resources.ResourceEntry
+  field :max, 2, repeated: true, type: Flyteidl2.Core.Resources.ResourceEntry
 end
 
 defmodule Flyteidl2.Task.InlineRuleList do

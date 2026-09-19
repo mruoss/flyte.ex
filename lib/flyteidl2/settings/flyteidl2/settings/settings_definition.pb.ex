@@ -234,6 +234,11 @@ defmodule Flyteidl2.Settings.AppSettings do
     type: Flyteidl2.Settings.BoolSetting,
     json_name: "disallowAnonymous",
     deprecated: false
+
+  field :app_dns_strategy, 2,
+    type: Flyteidl2.Settings.StringSetting,
+    json_name: "appDnsStrategy",
+    deprecated: false
 end
 
 defmodule Flyteidl2.Settings.Settings do
