@@ -12,6 +12,7 @@ defmodule Flyteidl2.Core.Granularity do
   field :HOUR, 2
   field :DAY, 3
   field :MONTH, 4
+  field :WEEK, 5
 end
 
 defmodule Flyteidl2.Core.Operator do
@@ -208,6 +209,7 @@ defmodule Flyteidl2.Core.TimePartition do
 
   field :value, 1, type: Flyteidl2.Core.LabelValue
   field :granularity, 2, type: Flyteidl2.Core.Granularity, enum: true
+  field :key, 3, type: :string, deprecated: false
 end
 
 defmodule Flyteidl2.Core.ArtifactID do

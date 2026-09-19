@@ -87,6 +87,32 @@ defmodule Flyteidl2.Task.Schedule do
   field :kickoff_time_input_arg, 3, type: :string, json_name: "kickoffTimeInputArg"
 end
 
+defmodule Flyteidl2.Task.ArtifactTrigger.PartitionsEntry do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.task.ArtifactTrigger.PartitionsEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :key, 1, type: :string
+  field :value, 2, type: :string
+end
+
+defmodule Flyteidl2.Task.ArtifactTrigger.PartitionInputArgsEntry do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.task.ArtifactTrigger.PartitionInputArgsEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :key, 1, type: :string
+  field :value, 2, type: :string
+end
+
 defmodule Flyteidl2.Task.ArtifactTrigger do
   @moduledoc false
 
@@ -98,6 +124,17 @@ defmodule Flyteidl2.Task.ArtifactTrigger do
   field :artifact_name, 1, type: :string, json_name: "artifactName", deprecated: false
   field :version, 2, type: :string
   field :input_arg, 3, type: :string, json_name: "inputArg"
+
+  field :partitions, 4,
+    repeated: true,
+    type: Flyteidl2.Task.ArtifactTrigger.PartitionsEntry,
+    map: true
+
+  field :partition_input_args, 5,
+    repeated: true,
+    type: Flyteidl2.Task.ArtifactTrigger.PartitionInputArgsEntry,
+    json_name: "partitionInputArgs",
+    map: true
 end
 
 defmodule Flyteidl2.Task.TriggerAutomationSpec do
@@ -170,6 +207,9 @@ defmodule Flyteidl2.Task.ProducedArtifact do
     type: Flyteidl2.Core.ArtifactVersionId,
     json_name: "parentArtifacts",
     deprecated: false
+
+  field :partitions, 7, type: Flyteidl2.Core.Partitions
+  field :time_partition, 8, type: Flyteidl2.Core.TimePartition, json_name: "timePartition"
 end
 
 defmodule Flyteidl2.Task.Outputs do
