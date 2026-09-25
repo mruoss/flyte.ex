@@ -139,6 +139,19 @@ defmodule Flyteidl2.Settings.QuantitySetting do
   field :scope_level, 3, type: Flyteidl2.Settings.ScopeLevel, json_name: "scopeLevel", enum: true
 end
 
+defmodule Flyteidl2.Settings.AcceleratorSetting do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.settings.AcceleratorSetting",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :state, 1, type: Flyteidl2.Settings.SettingState, enum: true
+  field :accelerator_value, 2, type: Flyteidl2.Core.GPUAccelerator, json_name: "acceleratorValue"
+  field :scope_level, 3, type: Flyteidl2.Settings.ScopeLevel, json_name: "scopeLevel", enum: true
+end
+
 defmodule Flyteidl2.Settings.RunSettings do
   @moduledoc false
 
@@ -219,6 +232,11 @@ defmodule Flyteidl2.Settings.TaskResourceSettings do
   field :mirror_limits_request, 3,
     type: Flyteidl2.Settings.BoolSetting,
     json_name: "mirrorLimitsRequest",
+    deprecated: false
+
+  field :default_accelerator, 4,
+    type: Flyteidl2.Settings.AcceleratorSetting,
+    json_name: "defaultAccelerator",
     deprecated: false
 end
 
