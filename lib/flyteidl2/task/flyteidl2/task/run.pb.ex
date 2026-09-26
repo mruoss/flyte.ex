@@ -199,6 +199,10 @@ defmodule Flyteidl2.Task.TaskResourceDefaults do
 
   field :requests, 1, repeated: true, type: Flyteidl2.Core.Resources.ResourceEntry
   field :max, 2, repeated: true, type: Flyteidl2.Core.Resources.ResourceEntry
+
+  field :default_accelerator, 3,
+    type: Flyteidl2.Core.GPUAccelerator,
+    json_name: "defaultAccelerator"
 end
 
 defmodule Flyteidl2.Task.InlineRuleList do

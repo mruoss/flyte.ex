@@ -1,3 +1,53 @@
+defmodule Flyteidl2.Core.AcceleratorModel do
+  @moduledoc false
+
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.core.AcceleratorModel",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :ACCELERATOR_MODEL_UNSPECIFIED, 0
+  field :NVIDIA_K80, 1
+  field :NVIDIA_M60, 2
+  field :NVIDIA_P4, 3
+  field :NVIDIA_P100, 4
+  field :NVIDIA_V100, 5
+  field :NVIDIA_T4, 6
+  field :NVIDIA_A10, 7
+  field :NVIDIA_A10G, 8
+  field :NVIDIA_A100, 9
+  field :NVIDIA_A100_80GB, 10
+  field :NVIDIA_L4, 11
+  field :NVIDIA_L40S, 12
+  field :NVIDIA_H100, 13
+  field :NVIDIA_H100_MEGA_80GB, 14
+  field :NVIDIA_H200, 15
+  field :NVIDIA_B200, 16
+  field :NVIDIA_GB200, 17
+  field :NVIDIA_GB10, 18
+  field :NVIDIA_RTX_PRO_6000, 19
+  field :GOOGLE_TPU_V5E, 100
+  field :GOOGLE_TPU_V5P, 101
+  field :GOOGLE_TPU_V6E, 102
+  field :AMAZON_INF1, 200
+  field :AMAZON_INF2, 201
+  field :AMAZON_TRN1, 202
+  field :AMAZON_TRN1N, 203
+  field :AMAZON_TRN2, 204
+  field :AMAZON_TRN2U, 205
+  field :AMD_MI100, 300
+  field :AMD_MI210, 301
+  field :AMD_MI250, 302
+  field :AMD_MI250X, 303
+  field :AMD_MI300A, 304
+  field :AMD_MI300X, 305
+  field :AMD_MI325X, 306
+  field :AMD_MI350X, 307
+  field :AMD_MI355X, 308
+  field :HABANA_GAUDI1, 400
+end
+
 defmodule Flyteidl2.Core.Resources.ResourceName do
   @moduledoc false
 
@@ -184,6 +234,11 @@ defmodule Flyteidl2.Core.GPUAccelerator do
   field :device_class, 4,
     type: Flyteidl2.Core.GPUAccelerator.DeviceClass,
     json_name: "deviceClass",
+    enum: true
+
+  field :accelerator_model, 5,
+    type: Flyteidl2.Core.AcceleratorModel,
+    json_name: "acceleratorModel",
     enum: true
 end
 
