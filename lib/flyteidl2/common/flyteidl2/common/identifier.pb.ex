@@ -47,6 +47,20 @@ defmodule Flyteidl2.Common.ClusterPoolIdentifier do
   field :name, 2, type: :string
 end
 
+defmodule Flyteidl2.Common.QueueIdentifier do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.common.QueueIdentifier",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :organization, 1, type: :string
+  field :domain, 2, type: :string
+  field :project, 3, type: :string
+  field :name, 4, type: :string, deprecated: false
+end
+
 defmodule Flyteidl2.Common.ClusterConfigIdentifier do
   @moduledoc false
 

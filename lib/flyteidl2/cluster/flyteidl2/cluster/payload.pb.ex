@@ -56,6 +56,8 @@ defmodule Flyteidl2.Cluster.SelectClusterRequest do
     json_name: "clusterId",
     oneof: 0
 
+  field :queue_id, 11, type: Flyteidl2.Common.QueueIdentifier, json_name: "queueId", oneof: 0
+
   field :operation, 8,
     type: Flyteidl2.Cluster.SelectClusterRequest.Operation,
     enum: true,
