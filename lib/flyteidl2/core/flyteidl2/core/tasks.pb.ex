@@ -27,6 +27,7 @@ defmodule Flyteidl2.Core.AcceleratorModel do
   field :NVIDIA_GB200, 17
   field :NVIDIA_GB10, 18
   field :NVIDIA_RTX_PRO_6000, 19
+  field :NVIDIA_RTX_PRO_4500, 20
   field :GOOGLE_TPU_V5E, 100
   field :GOOGLE_TPU_V5P, 101
   field :GOOGLE_TPU_V6E, 102
@@ -46,6 +47,19 @@ defmodule Flyteidl2.Core.AcceleratorModel do
   field :AMD_MI350X, 307
   field :AMD_MI355X, 308
   field :HABANA_GAUDI1, 400
+end
+
+defmodule Flyteidl2.Core.WorkerKind do
+  @moduledoc false
+
+  use Protobuf,
+    enum: true,
+    full_name: "flyteidl2.core.WorkerKind",
+    protoc_gen_elixir_version: "0.17.0",
+    syntax: :proto3
+
+  field :WORKER_KIND_UNSPECIFIED, 0
+  field :WORKER_KIND_SANDBOX, 1
 end
 
 defmodule Flyteidl2.Core.Resources.ResourceName do
@@ -397,6 +411,7 @@ defmodule Flyteidl2.Core.TaskTemplate do
 
   field :config, 16, repeated: true, type: Flyteidl2.Core.TaskTemplate.ConfigEntry, map: true
   field :reuse_policy, 19, type: Flyteidl2.Core.ReusePolicy, json_name: "reusePolicy"
+  field :worker_kind, 20, type: Flyteidl2.Core.WorkerKind, json_name: "workerKind", enum: true
 end
 
 defmodule Flyteidl2.Core.ContainerPort do
