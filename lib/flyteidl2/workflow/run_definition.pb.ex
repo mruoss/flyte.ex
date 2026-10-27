@@ -184,6 +184,7 @@ defmodule Flyteidl2.Workflow.TaskActionMetadata do
   field :id, 1, type: Flyteidl2.Task.TaskIdentifier
   field :task_type, 2, type: :string, json_name: "taskType"
   field :short_name, 3, type: :string, json_name: "shortName"
+  field :queue, 4, proto3_optional: true, type: :string
 end
 
 defmodule Flyteidl2.Workflow.TraceActionMetadata do

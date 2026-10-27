@@ -29,6 +29,7 @@ defmodule Flyteidl2.Dataproxy.CreateUploadLocationRequest do
   field :add_content_md5_metadata, 7, type: :bool, json_name: "addContentMd5Metadata"
   field :org, 8, type: :string
   field :content_length, 9, type: :int64, json_name: "contentLength"
+  field :queue, 10, type: :string
 end
 
 defmodule Flyteidl2.Dataproxy.CreateUploadLocationResponse.HeadersEntry do
@@ -81,6 +82,7 @@ defmodule Flyteidl2.Dataproxy.UploadInputsRequest do
   field :trigger_name, 5, type: Flyteidl2.Common.TriggerName, json_name: "triggerName", oneof: 1
   field :inputs, 6, type: Flyteidl2.Task.Inputs
   field :base_dir, 7, type: :string, json_name: "baseDir"
+  field :queue, 8, type: :string
 end
 
 defmodule Flyteidl2.Dataproxy.UploadInputsResponse do
