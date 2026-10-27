@@ -62,6 +62,7 @@ defmodule Flyteidl2.Core.WorkerKind do
   field :WORKER_KIND_UNSPECIFIED, 0
   field :WORKER_KIND_SANDBOX, 1
   field :WORKER_KIND_MICROVM, 2
+  field :WORKER_KIND_REUSABLE, 3
 end
 
 defmodule Flyteidl2.Core.Resources.ResourceName do
@@ -372,6 +373,8 @@ defmodule Flyteidl2.Core.ReusePolicy do
     deprecated: false
 
   field :scope, 6, type: Flyteidl2.Core.ReusePolicy.Scope, enum: true, deprecated: false
+  field :name, 7, type: :string
+  field :version, 8, type: :string
 end
 
 defmodule Flyteidl2.Core.TaskTemplate.ConfigEntry do
