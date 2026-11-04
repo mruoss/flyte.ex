@@ -21,7 +21,7 @@ defmodule Flyteidl2.Workflow.EnqueueActionRequest do
   field :run_spec, 3, type: Flyteidl2.Task.RunSpec, json_name: "runSpec"
   field :input_uri, 6, type: :string, json_name: "inputUri", deprecated: false
   field :run_output_base, 7, type: :string, json_name: "runOutputBase", deprecated: false
-  field :group, 8, type: :string
+  field :group, 8, type: :string, deprecated: false
   field :subject, 9, type: :string
   field :task, 10, type: Flyteidl2.Workflow.TaskAction, oneof: 0
   field :trace, 11, type: Flyteidl2.Workflow.TraceAction, oneof: 0

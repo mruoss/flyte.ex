@@ -318,8 +318,11 @@ defmodule Flyteidl2.Workflow.ListActionsRequest do
     protoc_gen_elixir_version: "0.17.1",
     syntax: :proto3
 
+  oneof :scope_by, 0
+
   field :request, 1, type: Flyteidl2.Common.ListRequest
-  field :run_id, 2, type: Flyteidl2.Common.RunIdentifier, json_name: "runId", deprecated: false
+  field :run_id, 2, type: Flyteidl2.Common.RunIdentifier, json_name: "runId", oneof: 0
+  field :queue_id, 3, type: Flyteidl2.Common.QueueIdentifier, json_name: "queueId", oneof: 0
 end
 
 defmodule Flyteidl2.Workflow.ListActionsResponse do
@@ -332,6 +335,7 @@ defmodule Flyteidl2.Workflow.ListActionsResponse do
 
   field :actions, 1, repeated: true, type: Flyteidl2.Workflow.Action
   field :token, 2, type: :string
+  field :total_count, 3, proto3_optional: true, type: :uint64, json_name: "totalCount"
 end
 
 defmodule Flyteidl2.Workflow.WatchActionsRequest do

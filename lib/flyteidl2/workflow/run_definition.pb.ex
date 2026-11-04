@@ -256,6 +256,8 @@ defmodule Flyteidl2.Workflow.ActionStatus do
     enum: true
 
   field :duration_ms, 6, proto3_optional: true, type: :uint64, json_name: "durationMs"
+  field :queued_at, 7, type: Google.Protobuf.Timestamp, json_name: "queuedAt"
+  field :worker_assigned_at, 9, type: Google.Protobuf.Timestamp, json_name: "workerAssignedAt"
 end
 
 defmodule Flyteidl2.Workflow.Action do

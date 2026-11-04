@@ -250,4 +250,5 @@ defmodule Flyteidl2.Task.TaskTriggerSpec do
 
   field :run_spec, 3, type: Flyteidl2.Task.RunSpec, json_name: "runSpec"
   field :description, 4, type: :string
+  field :task_version, 6, type: :string, json_name: "taskVersion", deprecated: false
 end

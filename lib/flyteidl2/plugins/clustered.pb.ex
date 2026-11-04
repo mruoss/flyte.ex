@@ -87,4 +87,5 @@ defmodule Flyteidl2.Plugins.ClusterFailurePolicy do
 
   field :max_restarts, 1, type: :int32, json_name: "maxRestarts"
   field :restart_on_host_maintenance, 2, type: :bool, json_name: "restartOnHostMaintenance"
+  field :resume_after_preemption, 3, type: :bool, json_name: "resumeAfterPreemption"
 end
