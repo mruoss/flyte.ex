@@ -172,6 +172,7 @@ defmodule Flyteidl2.Task.RunSpec do
   field :relation, 18, type: Flyteidl2.Common.Relation
   field :recover, 19, type: Flyteidl2.Task.Recover
   field :default_settings, 20, type: Flyteidl2.Task.DefaultSettings, json_name: "defaultSettings"
+  field :k8s_metadata, 21, type: Flyteidl2.Common.K8sMetadata, json_name: "k8sMetadata"
 end
 
 defmodule Flyteidl2.Task.DefaultSettings do

@@ -20,7 +20,7 @@ defmodule Flyteidl2.Actions.Action do
 
   field :input_uri, 3, type: :string, json_name: "inputUri", deprecated: false
   field :run_output_base, 4, type: :string, json_name: "runOutputBase", deprecated: false
-  field :group, 5, type: :string
+  field :group, 5, type: :string, deprecated: false
   field :subject, 6, type: :string
   field :task, 7, type: Flyteidl2.Workflow.TaskAction, oneof: 0
   field :trace, 8, type: Flyteidl2.Workflow.TraceAction, oneof: 0

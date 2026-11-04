@@ -238,6 +238,7 @@ defmodule Flyteidl2.App.Spec do
   field :inputs, 13, type: Flyteidl2.App.InputList
   field :links, 14, repeated: true, type: Flyteidl2.App.Link
   field :timeouts, 15, type: Flyteidl2.App.TimeoutConfig
+  field :k8s_metadata, 17, type: Flyteidl2.Common.K8sMetadata, json_name: "k8sMetadata"
 end
 
 defmodule Flyteidl2.App.Link do

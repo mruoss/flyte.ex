@@ -55,7 +55,7 @@ defmodule Flyteidl2.Workflow.TrackedActionUpdate do
 
   field :event, 1, type: Flyteidl2.Workflow.ActionEvent, deprecated: false
   field :parent_name, 2, type: :string, json_name: "parentName"
-  field :group, 3, type: :string
+  field :group, 3, type: :string, deprecated: false
   field :task, 4, type: Flyteidl2.Workflow.TaskAction, oneof: 0
   field :trace, 5, type: Flyteidl2.Workflow.TraceAction, oneof: 0
   field :status, 6, type: Flyteidl2.Workflow.ActionStatus
