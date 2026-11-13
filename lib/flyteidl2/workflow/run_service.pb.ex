@@ -27,7 +27,12 @@ defmodule Flyteidl2.Workflow.CreateRunRequest do
 
   oneof :input_wrapper, 2
 
-  field :run_id, 1, type: Flyteidl2.Common.RunIdentifier, json_name: "runId", oneof: 0
+  field :run_id, 1,
+    type: Flyteidl2.Common.RunIdentifier,
+    json_name: "runId",
+    oneof: 0,
+    deprecated: false
+
   field :project_id, 6, type: Flyteidl2.Common.ProjectIdentifier, json_name: "projectId", oneof: 0
   field :task_id, 2, type: Flyteidl2.Task.TaskIdentifier, json_name: "taskId", oneof: 1
   field :task_spec, 3, type: Flyteidl2.Task.TaskSpec, json_name: "taskSpec", oneof: 1

@@ -188,6 +188,67 @@ defmodule Flyteidl2.Task.Inputs do
   field :context, 2, repeated: true, type: Flyteidl2.Core.KeyValuePair
 end
 
+defmodule Flyteidl2.Task.ActionOverridesData.InputUrisEntry do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.task.ActionOverridesData.InputUrisEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.17.1",
+    syntax: :proto3
+
+  field :key, 1, type: :string
+  field :value, 2, type: :string
+end
+
+defmodule Flyteidl2.Task.ActionOverridesData.CodeBundlesEntry do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.task.ActionOverridesData.CodeBundlesEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.17.1",
+    syntax: :proto3
+
+  field :key, 1, type: :string
+  field :value, 2, type: Flyteidl2.Task.ActionCodeBundle
+end
+
+defmodule Flyteidl2.Task.ActionOverridesData do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.task.ActionOverridesData",
+    protoc_gen_elixir_version: "0.17.1",
+    syntax: :proto3
+
+  field :input_uris, 1,
+    repeated: true,
+    type: Flyteidl2.Task.ActionOverridesData.InputUrisEntry,
+    json_name: "inputUris",
+    map: true
+
+  field :code_bundles, 2,
+    repeated: true,
+    type: Flyteidl2.Task.ActionOverridesData.CodeBundlesEntry,
+    json_name: "codeBundles",
+    map: true
+
+  field :ancestor_actions, 3, repeated: true, type: :string, json_name: "ancestorActions"
+end
+
+defmodule Flyteidl2.Task.ActionCodeBundle do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.task.ActionCodeBundle",
+    protoc_gen_elixir_version: "0.17.1",
+    syntax: :proto3
+
+  field :tgz, 1, type: :string, deprecated: false
+  field :version, 2, type: :string
+end
+
 defmodule Flyteidl2.Task.ProducedArtifact do
   @moduledoc false
 

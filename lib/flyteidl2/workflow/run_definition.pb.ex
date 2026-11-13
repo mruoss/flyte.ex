@@ -235,6 +235,7 @@ defmodule Flyteidl2.Workflow.ActionMetadata do
   field :source, 16, type: Flyteidl2.Workflow.RunSource, enum: true
   field :relation, 17, type: Flyteidl2.Common.Relation
   field :recovered_from, 18, type: Flyteidl2.Common.ActionIdentifier, json_name: "recoveredFrom"
+  field :override_applied, 19, type: :bool, json_name: "overrideApplied"
 end
 
 defmodule Flyteidl2.Workflow.ActionStatus do
