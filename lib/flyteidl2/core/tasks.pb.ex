@@ -28,6 +28,7 @@ defmodule Flyteidl2.Core.AcceleratorModel do
   field :NVIDIA_GB10, 18
   field :NVIDIA_RTX_PRO_6000, 19
   field :NVIDIA_RTX_PRO_4500, 20
+  field :NVIDIA_A2, 21
   field :GOOGLE_TPU_V5E, 100
   field :GOOGLE_TPU_V5P, 101
   field :GOOGLE_TPU_V6E, 102

@@ -83,6 +83,7 @@ defmodule Flyteidl2.Dataproxy.UploadInputsRequest do
   field :inputs, 6, type: Flyteidl2.Task.Inputs
   field :base_dir, 7, type: :string, json_name: "baseDir"
   field :queue, 8, type: :string
+  field :for_trigger, 9, type: :bool, json_name: "forTrigger"
 end
 
 defmodule Flyteidl2.Dataproxy.UploadInputsResponse do

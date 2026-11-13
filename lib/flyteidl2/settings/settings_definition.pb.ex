@@ -188,6 +188,11 @@ defmodule Flyteidl2.Settings.SecuritySettings do
     type: Flyteidl2.Settings.StringSetting,
     json_name: "serviceAccount",
     deprecated: false
+
+  field :kubernetes_namespace, 2,
+    type: Flyteidl2.Settings.StringSetting,
+    json_name: "kubernetesNamespace",
+    deprecated: false
 end
 
 defmodule Flyteidl2.Settings.StorageSettings do

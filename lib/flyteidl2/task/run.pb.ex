@@ -125,6 +125,8 @@ defmodule Flyteidl2.Task.Recover do
     type: :string,
     json_name: "forceRerunActions",
     deprecated: false
+
+  field :fork, 4, type: :bool
 end
 
 defmodule Flyteidl2.Task.RunSpec do
