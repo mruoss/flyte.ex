@@ -85,6 +85,19 @@ defmodule Flyteidl2.Workflow.Run.LabelsEntry do
   field :value, 2, type: :string
 end
 
+defmodule Flyteidl2.Workflow.Run.AnnotationsEntry do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.workflow.Run.AnnotationsEntry",
+    map: true,
+    protoc_gen_elixir_version: "0.17.1",
+    syntax: :proto3
+
+  field :key, 1, type: :string
+  field :value, 2, type: :string
+end
+
 defmodule Flyteidl2.Workflow.Run do
   @moduledoc false
 
@@ -95,6 +108,7 @@ defmodule Flyteidl2.Workflow.Run do
 
   field :action, 1, type: Flyteidl2.Workflow.Action
   field :labels, 2, repeated: true, type: Flyteidl2.Workflow.Run.LabelsEntry, map: true
+  field :annotations, 3, repeated: true, type: Flyteidl2.Workflow.Run.AnnotationsEntry, map: true
 end
 
 defmodule Flyteidl2.Workflow.RunDetails do

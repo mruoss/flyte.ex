@@ -264,6 +264,20 @@ defmodule Flyteidl2.Settings.AppSettings do
     deprecated: false
 end
 
+defmodule Flyteidl2.Settings.ObservabilitySettings do
+  @moduledoc false
+
+  use Protobuf,
+    full_name: "flyteidl2.settings.ObservabilitySettings",
+    protoc_gen_elixir_version: "0.17.1",
+    syntax: :proto3
+
+  field :log_retention_days, 1,
+    type: Flyteidl2.Settings.Int64Setting,
+    json_name: "logRetentionDays",
+    deprecated: false
+end
+
 defmodule Flyteidl2.Settings.Settings do
   @moduledoc false
 
@@ -294,4 +308,6 @@ defmodule Flyteidl2.Settings.Settings do
     type: Flyteidl2.Settings.StringSetting,
     json_name: "podTemplateName",
     deprecated: false
+
+  field :observability, 10, type: Flyteidl2.Settings.ObservabilitySettings, deprecated: false
 end

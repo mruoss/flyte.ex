@@ -64,6 +64,7 @@ defmodule Flyteidl2.Core.WorkerKind do
   field :WORKER_KIND_SANDBOX, 1
   field :WORKER_KIND_MICROVM, 2
   field :WORKER_KIND_REUSABLE, 3
+  field :WORKER_KIND_GVISOR, 4
 end
 
 defmodule Flyteidl2.Core.Resources.ResourceName do
