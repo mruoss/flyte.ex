@@ -27,6 +27,8 @@ defmodule Flyteidl2.Actions.Action do
   field :condition, 9, type: Flyteidl2.Workflow.ConditionAction, oneof: 0
   field :recovered_from, 10, type: Flyteidl2.Common.ActionIdentifier, json_name: "recoveredFrom"
   field :override_applied, 11, type: :bool, json_name: "overrideApplied"
+  field :created_by, 12, type: Flyteidl2.Common.EnrichedIdentity, json_name: "createdBy"
+  field :trigger, 13, type: Flyteidl2.Common.TriggerName
 end
 
 defmodule Flyteidl2.Actions.EnqueueRequest do
